@@ -111,9 +111,9 @@ a{color:inherit}
   font-size:.2em;
   letter-spacing:.06em;
   text-transform:none;
-  color:var(--periwinkle);
+  color:var(--ink);
   vertical-align:baseline;
-  margin-left:.34em;
+  margin-left:0;
   font-variation-settings:normal;
 }
 .role{
@@ -200,12 +200,17 @@ a{color:inherit}
 }
 .page-head .lede{max-width:52ch;margin:18px 0 0;font-size:19px;line-height:1.6;color:var(--muted)}
 
-.strands{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));border-top:1px solid var(--rule)}
-.strand{padding:26px 26px 30px 0;border-bottom:1px solid var(--rule)}
-.strand + .strand{padding-left:26px;border-left:1px solid var(--rule)}
-.strand h2{margin:0 0 10px;font-size:23px;font-weight:400;line-height:1.3;letter-spacing:-.01em}
-.strand p{margin:0;font-size:16.5px;line-height:1.6;color:var(--muted)}
+.strands{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--rule)}
+.strand{padding:26px 30px 28px 0;border-bottom:1px solid var(--rule)}
+.strand:nth-child(even){padding-left:30px;padding-right:0;border-left:1px solid var(--rule)}
+.strand h2{margin:0 0 10px;font-size:22px;font-weight:400;line-height:1.3;letter-spacing:-.01em}
+.strand p{margin:0;font-size:16px;line-height:1.6;color:var(--muted)}
 .strand .tag{display:block;margin-bottom:14px}
+.strand .venues{
+  display:block;margin-top:14px;
+  font-family:var(--mono);font-size:10.5px;font-weight:500;
+  letter-spacing:.11em;text-transform:uppercase;color:var(--periwinkle);
+}
 
 .pubs{border-top:1px solid var(--rule)}
 .pub{
@@ -258,7 +263,8 @@ footer p{margin:0;font-family:var(--mono);font-size:11px;letter-spacing:.06em;co
   .d-arrow{grid-row:1}
   .pub{grid-template-columns:52px 1fr;gap:12px}
   .pub .venue{grid-column:2;text-align:left;margin-top:5px}
-  .strand + .strand{padding-left:0;border-left:none}
+  .strands{grid-template-columns:1fr}
+  .strand:nth-child(even){padding-left:0;border-left:none}
   .strand{padding-right:0}
 }
 </style>
@@ -290,7 +296,7 @@ footer p{margin:0;font-family:var(--mono);font-size:11px;letter-spacing:.06em;co
 
       <div class="hero-mid">
         <h1 class="display">
-          <span class="w">Hae In Park<span class="phd">Ph.D.</span><span class="rule" style="--d:.10s"></span></span>
+          <span class="w">Hae In Park&nbsp;<span class="phd">Ph.D.</span><span class="rule" style="--d:.10s"></span></span>
         </h1>
         <p class="role">Applied Linguist</p>
 
@@ -312,11 +318,11 @@ footer p{margin:0;font-family:var(--mono);font-size:11px;letter-spacing:.06em;co
       <div class="direct">
         <a class="direct-row" href="cv.pdf">
           <span class="d-label">Curriculum vitae</span>
-          <span class="d-val">PDF &middot; updated YYYY.MM</span>
+          <span class="d-val">PDF &middot; updated 2026.07</span>
           <span class="d-arrow" aria-hidden="true">&darr;</span>
         </a>
         <a class="direct-row" href="mailto:haeinpark@khu.ac.kr">
-          <span class="d-label">Get in touch</span>
+          <span class="d-label">Email</span>
           <span class="d-val">haeinpark@khu.ac.kr</span>
           <span class="d-arrow" aria-hidden="true">&rarr;</span>
         </a>
@@ -331,26 +337,36 @@ footer p{margin:0;font-family:var(--mono);font-size:11px;letter-spacing:.06em;co
       <div class="page-head">
         <p class="label">01 / Research</p>
         <h1>Research</h1>
-        <p class="lede">Three strands, all concerned with the same problem: what a quantitative measure of language is actually telling us.</p>
+        <p class="lede">Four strands, running from how bilingualism reshapes cognition to whether the instruments the field relies on can support the claims built with them.</p>
       </div>
 
       <div class="strands">
         <article class="strand">
-          <span class="label tag">Measurement</span>
-          <h2>L2 proficiency assessment</h2>
-          <p>The elicited imitation task as a proficiency measure: scoring, norming, and what an EIT score can and cannot be asked to do in a research design.</p>
+          <span class="label tag">Instrument</span>
+          <h2>Elicited imitation and proficiency measurement</h2>
+          <p>Whether the elicited imitation task can carry the weight placed on it. Parallel form equivalence, rater and scoring effects, performance with heritage speakers, the contribution of working memory, and current work on automated scoring and an EIT response corpus.</p>
+          <span class="venues">SSLA &middot; Modern Language Journal &middot; RMAL</span>
         </article>
 
         <article class="strand">
           <span class="label tag">Cognition</span>
-          <h2>Bilingualism and cognition</h2>
-          <p>How two languages in one mind shape conceptualization, with particular attention to motion event construal and linguistic relativity.</p>
+          <h2>Bilingualism and event construal</h2>
+          <p>How Korean&ndash;English bilinguals conceptualize motion. Cross-linguistic and cross-cultural work on agentivity in caused motion events, the encoding of complex motion, and the conditions under which a second language shifts nonverbal categorization.</p>
+          <span class="venues">Bilingualism: Language and Cognition &middot; Lingua &middot; Frontiers in Psychology</span>
         </article>
 
         <article class="strand">
-          <span class="label tag">Method</span>
-          <h2>SLA research methods</h2>
-          <p>Instrument transparency, replication, and the reporting practices that determine whether a quantitative finding in SLA can be built on.</p>
+          <span class="label tag">Practice</span>
+          <h2>Measurement practice in SLA</h2>
+          <p>How the field reports proficiency and why it matters. Survey and replication work on researcher beliefs, reporting conventions, and whether results from different studies can meaningfully be compared at all.</p>
+          <span class="venues">Language Learning &middot; SSLA</span>
+        </article>
+
+        <article class="strand">
+          <span class="label tag">Beliefs</span>
+          <h2>Beliefs about language and its users</h2>
+          <p>What learners and speakers take bilingualism to be worth. Native speakerism in evaluations of teacher legitimacy and accent, monolingual assumptions about bilingual competence, and the perceived benefits of learning an additional language.</p>
+          <span class="venues">Modern English Education &middot; work in progress</span>
         </article>
       </div>
     </div>
