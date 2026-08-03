@@ -281,18 +281,19 @@ a{color:inherit}
   text-transform:uppercase;line-height:1.05;
 }
 .channel-note{max-width:66ch;margin:0;font-size:18px;line-height:1.62;color:var(--muted)}
-.films{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:26px 0 0;max-width:660px}
+.films{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:26px 0 0;max-width:600px}
 .film{display:block;text-decoration:none}
+.thumb{position:relative;display:block;line-height:0}
 .film img{
   display:block;width:100%;aspect-ratio:16/9;object-fit:cover;
-  background:var(--rule);border:1px solid var(--rule);
-  transition:border-color .18s ease;
+  background:var(--rule);border-radius:5px;
+  transition:opacity .18s ease;
 }
-.film:hover img,.film:focus-visible img{border-color:var(--periwinkle)}
-.film .ft{display:block;margin-top:13px;font-size:18px;line-height:1.4}
+.film:hover img,.film:focus-visible img{opacity:.88}
+.film .ft{display:block;margin-top:11px;font-size:16.5px;line-height:1.38}
 .film .fm{
-  display:block;margin-top:6px;
-  font-family:var(--mono);font-size:12px;font-weight:500;
+  display:block;margin-top:5px;
+  font-family:var(--mono);font-size:11.5px;font-weight:500;
   letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
 }
 
@@ -345,7 +346,7 @@ footer p{margin:0;font-family:var(--mono);font-size:13px;letter-spacing:.04em;co
   .ref{font-size:18px;padding:14px 0 14px 1.7em;text-indent:-1.7em}
 
   .trow{grid-template-columns:1fr;gap:3px;padding:12px 0}
-  .films{grid-template-columns:1fr;gap:20px;max-width:340px}
+  .films{grid-template-columns:1fr;gap:20px;max-width:320px}
   .beyond{margin-top:44px;padding-top:32px}
   .channel-note{font-size:17px}
   .trow .terms{text-align:left}
@@ -743,18 +744,22 @@ footer p{margin:0;font-family:var(--mono);font-size:13px;letter-spacing:.04em;co
 
         <div class="films">
           <a class="film" href="https://www.youtube.com/watch?v=fjD0FoKm8qU" target="_blank" rel="noopener noreferrer">
-            <img src="https://i.ytimg.com/vi/fjD0FoKm8qU/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720">
+            <span class="thumb">
+              <img src="https://i.ytimg.com/vi/fjD0FoKm8qU/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720">
+            </span>
             <span class="ft">Bilingualism as a Cognitive Reserve Factor</span>
-            <span class="fm">Second Language Acquisition &middot; 14:49</span>
+            <span class="fm">Second Language Acquisition</span>
           </a>
           <a class="film" href="https://www.youtube.com/watch?v=PiQa6llWcwQ" target="_blank" rel="noopener noreferrer">
-            <img src="https://i.ytimg.com/vi/PiQa6llWcwQ/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720">
+            <span class="thumb">
+              <img src="https://i.ytimg.com/vi/PiQa6llWcwQ/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720">
+            </span>
             <span class="ft">Forbidden Fruits</span>
-            <span class="fm">Second Language Acquisition &middot; 11:27</span>
+            <span class="fm">Second Language Acquisition</span>
           </a>
         </div>
 
-        <div class="direct" style="margin-top:32px;max-width:660px">
+        <div class="direct" style="margin-top:30px;max-width:600px">
           <a class="direct-row" href="https://www.youtube.com/@appliedlinguist.khu.2022" target="_blank" rel="noopener noreferrer">
             <span class="d-label">Applied Linguistics Out Loud</span>
             <span class="d-val">YouTube &middot; 12 videos</span>
