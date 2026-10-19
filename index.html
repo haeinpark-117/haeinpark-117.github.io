@@ -498,6 +498,44 @@ a{color:inherit}
 .vid.is-playing{background:#000}
 .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
+/* ---------- research trajectory timeline ---------- */
+.tl{margin:0 0 clamp(34px,5vh,52px)}
+.tl-h{display:flex;align-items:baseline;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+.tl-legend{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;
+  font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.tl-legend s{text-decoration:none;display:flex;align-items:center;gap:6px}
+.tl-legend s i{width:9px;height:9px;border-radius:50%;background:var(--muted);display:block}
+.tl-legend s i.hollow{background:transparent;border:1.5px solid var(--muted)}
+.lane{display:grid;grid-template-columns:210px minmax(0,1fr);gap:20px;align-items:center;
+  padding:14px 0;border-bottom:1px solid var(--rule)}
+.lane:first-of-type{border-top:1px solid var(--rule)}
+.lane-k{display:flex;flex-direction:column;gap:3px}
+.lane-n{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--c)}
+.lane-t{font-size:17.5px;line-height:1.3}
+.track{position:relative;height:28px}
+.track::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--rule)}
+.span{position:absolute;top:50%;transform:translateY(-50%);height:3px;border-radius:2px;
+  background:var(--c);opacity:.22}
+.dot{position:absolute;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;
+  background:var(--c);display:block;transition:transform .16s ease}
+.dot.open{background:var(--paper);border:1.5px solid var(--c)}
+.dot em{
+  position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);
+  min-width:200px;max-width:280px;padding:10px 12px;border-radius:5px;
+  background:var(--ink);color:#fff;font-style:normal;font-size:14px;line-height:1.35;
+  opacity:0;visibility:hidden;transition:opacity .15s ease;z-index:6;pointer-events:none;
+  box-shadow:0 8px 24px rgba(20,20,43,.18);
+}
+.dot em b{display:block;margin-top:5px;font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.dot:hover em,.dot:focus em,.dot:focus-visible em{opacity:1;visibility:visible}
+.dot:hover,.dot:focus{outline:none;transform:scale(1.3)}
+.axis-row{display:grid;grid-template-columns:210px minmax(0,1fr);gap:20px}
+.axis{position:relative;height:24px;margin-top:11px}
+.axis .tick{position:absolute;transform:translateX(-50%);font-family:var(--mono);font-size:11.5px;
+  font-weight:500;letter-spacing:.06em;color:var(--muted)}
+
 .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:36px}
 .contact-grid dt{margin-bottom:8px}
 .contact-grid dd{margin:0;font-family:var(--mono);font-size:17px;line-height:1.85}
@@ -555,6 +593,13 @@ footer p{margin:0;font-family:var(--mono);font-size:13px;letter-spacing:.04em;co
   .gitem .terms{text-align:left}
   .gname{font-size:19px}
   .films{grid-template-columns:1fr;gap:22px}
+  .lane,.axis-row{grid-template-columns:1fr;gap:7px}
+  .lane{padding:12px 0}
+  .lane-k{flex-direction:row;align-items:baseline;gap:11px}
+  .lane-t{font-size:16.5px}
+  /* no hover on touch, and a floating label would push the page sideways */
+  .dot em{display:none}
+  .tl-h{margin-bottom:14px}
   .beyond{margin-top:44px;padding-top:32px}
   .tsec{margin-top:44px;padding-top:32px}
   .vid .pbtn i{width:52px;height:52px}
@@ -782,7 +827,94 @@ footer p{margin:0;font-family:var(--mono);font-size:13px;letter-spacing:.04em;co
       <div class="page-head">
         <p class="label">02 / Research</p>
         <h1>Research</h1>
-        <p class="lede">Four strands: how proficiency is measured, how bilingualism reshapes cognition, how research in the field is designed and reported, and what speakers believe about language.</p>
+        <p class="lede">Four strands: what second language proficiency is and how it is measured, whether the elicited imitation task holds up as an instrument, how bilingualism reshapes cognition, and what speakers believe about language.</p>
+      </div>
+
+      <div class="tl">
+        <div class="tl-h">
+          <span class="label">Trajectory, 2014&ndash;2026</span>
+          <div class="tl-legend">
+            <s><i></i>Published</s>
+            <s><i class="hollow"></i>Under review or in preparation</s>
+          </div>
+        </div>
+
+          <div class="lane" style="--c:var(--acc-1)">
+            <div class="lane-k"><span class="lane-n">01 Proficiency</span><span class="lane-t">L2 proficiency</span></div>
+            <div class="track">
+              <span class="span" style="left:65.17%;width:23.50%"></span>
+              <span class="dot" style="left:calc(65.17% + 0.0px)" title="Proficiency reporting practices in SLA — Language Learning" tabindex="0"><em>Proficiency reporting practices in SLA<b>Language Learning</b></em></span>
+              <span class="dot" style="left:calc(80.83% + -4.5px)" title="Korean bilingual Vocabulary Size Test — English Teaching" tabindex="0"><em>Korean bilingual Vocabulary Size Test<b>English Teaching</b></em></span>
+              <span class="dot" style="left:calc(80.83% + 4.5px)" title="Word difficulty in Korean EFL learners — Korean Applied Linguistics" tabindex="0"><em>Word difficulty in Korean EFL learners<b>Korean Applied Linguistics</b></em></span>
+              <span class="dot" style="left:calc(88.67% + -4.5px)" title="Proficiency assessment practices in SLA — SSLA" tabindex="0"><em>Proficiency assessment practices in SLA<b>SSLA</b></em></span>
+              <span class="dot" style="left:calc(88.67% + 4.5px)" title="L2 proficiency and Miranda rights — Int. J. Speech, Lang. & Law" tabindex="0"><em>L2 proficiency and Miranda rights<b>Int. J. Speech, Lang. & Law</b></em></span>
+            </div>
+          </div>
+          <div class="lane" style="--c:var(--acc-2)">
+            <div class="lane-k"><span class="lane-n">02 Instrument</span><span class="lane-t">Elicited imitation</span></div>
+            <div class="track">
+              <span class="span" style="left:41.67%;width:54.83%"></span>
+              <span class="dot" style="left:calc(41.67% + 0.0px)" title="Revisiting the Spanish EIT — SSLA" tabindex="0"><em>Revisiting the Spanish EIT<b>SSLA</b></em></span>
+              <span class="dot" style="left:calc(49.50% + 0.0px)" title="Working memory and EIT performance — Modern Language Journal" tabindex="0"><em>Working memory and EIT performance<b>Modern Language Journal</b></em></span>
+              <span class="dot" style="left:calc(65.17% + 0.0px)" title="EIT as a measure of heritage proficiency — SSLA" tabindex="0"><em>EIT as a measure of heritage proficiency<b>SSLA</b></em></span>
+              <span class="dot" style="left:calc(73.00% + -4.5px)" title="Raters and scoring procedures in EIT — RMAL" tabindex="0"><em>Raters and scoring procedures in EIT<b>RMAL</b></em></span>
+              <span class="dot" style="left:calc(73.00% + 4.5px)" title="EIT and listening in forensic contexts — RMAL" tabindex="0"><em>EIT and listening in forensic contexts<b>RMAL</b></em></span>
+              <span class="dot" style="left:calc(80.83% + 0.0px)" title="EIT in SLA research (special issue) — RMAL" tabindex="0"><em>EIT in SLA research (special issue)<b>RMAL</b></em></span>
+              <span class="dot" style="left:calc(96.50% + -9.0px)" title="Parallel form equivalence for the EIT — SSLA · in press" tabindex="0"><em>Parallel form equivalence for the EIT<b>SSLA · in press</b></em></span>
+              <span class="dot open" style="left:calc(96.50% + 0.0px)" title="Automated EIT scoring: word error rate — under review" tabindex="0"><em>Automated EIT scoring: word error rate<b>under review</b></em></span>
+              <span class="dot open" style="left:calc(96.50% + 9.0px)" title="Rubric-based LLM scoring for EIT — in preparation" tabindex="0"><em>Rubric-based LLM scoring for EIT<b>in preparation</b></em></span>
+            </div>
+          </div>
+          <div class="lane" style="--c:var(--acc-3)">
+            <div class="lane-k"><span class="lane-n">03 Cognition</span><span class="lane-t">Bilingual construal</span></div>
+            <div class="track">
+              <span class="span" style="left:2.50%;width:94.00%"></span>
+              <span class="dot" style="left:calc(2.50% + 0.0px)" title="Cognitive shift in the bilingual mind — Bilingualism: Lang. & Cognition" tabindex="0"><em>Cognitive shift in the bilingual mind<b>Bilingualism: Lang. & Cognition</b></em></span>
+              <span class="dot" style="left:calc(26.00% + 0.0px)" title="Cultural differences in event construal — Korean J. Applied Linguistics" tabindex="0"><em>Cultural differences in event construal<b>Korean J. Applied Linguistics</b></em></span>
+              <span class="dot" style="left:calc(49.50% + -4.5px)" title="How bilinguals speak and think about motion — Bilingualism: Lang. & Cognition" tabindex="0"><em>How bilinguals speak and think about motion<b>Bilingualism: Lang. & Cognition</b></em></span>
+              <span class="dot" style="left:calc(49.50% + 4.5px)" title="Encoding of complex motion events — Linguistic Research" tabindex="0"><em>Encoding of complex motion events<b>Linguistic Research</b></em></span>
+              <span class="dot" style="left:calc(65.17% + -4.5px)" title="Agentivity in caused motion events — Frontiers in Psychology" tabindex="0"><em>Agentivity in caused motion events<b>Frontiers in Psychology</b></em></span>
+              <span class="dot" style="left:calc(65.17% + 4.5px)" title="Motion event construal and context — Lingua" tabindex="0"><em>Motion event construal and context<b>Lingua</b></em></span>
+              <span class="dot open" style="left:calc(96.50% + 0.0px)" title="Agentive and non-agentive frames — in preparation" tabindex="0"><em>Agentive and non-agentive frames<b>in preparation</b></em></span>
+            </div>
+          </div>
+          <div class="lane" style="--c:var(--acc-4)">
+            <div class="lane-k"><span class="lane-n">04 Beliefs</span><span class="lane-t">Beliefs about language</span></div>
+            <div class="track">
+              <span class="span" style="left:88.67%;width:7.83%"></span>
+              <span class="dot" style="left:calc(88.67% + 0.0px)" title="Perceived benefits of bilingualism — Modern English Education" tabindex="0"><em>Perceived benefits of bilingualism<b>Modern English Education</b></em></span>
+              <span class="dot open" style="left:calc(96.50% + -9.0px)" title="Reconfiguring native speakerism? — under review" tabindex="0"><em>Reconfiguring native speakerism?<b>under review</b></em></span>
+              <span class="dot open" style="left:calc(96.50% + 0.0px)" title="The monolingual view of bilingualism scale — under review" tabindex="0"><em>The monolingual view of bilingualism scale<b>under review</b></em></span>
+              <span class="dot open" style="left:calc(96.50% + 9.0px)" title="Costs of AI use among Korean EFL learners — under review" tabindex="0"><em>Costs of AI use among Korean EFL learners<b>under review</b></em></span>
+            </div>
+          </div>
+          <div class="lane" style="--c:#8A8AA0">
+            <div class="lane-k"><span class="lane-n">Adjacent</span><span class="lane-t">Other work</span></div>
+            <div class="track">
+              <span class="span" style="left:10.33%;width:86.17%"></span>
+              <span class="dot" style="left:calc(10.33% + 0.0px)" title="Cross-linguistic influence in ab initio L3 — Bilingualism: Lang. & Cognition" tabindex="0"><em>Cross-linguistic influence in ab initio L3<b>Bilingualism: Lang. & Cognition</b></em></span>
+              <span class="dot" style="left:calc(18.17% + -4.5px)" title="The usage-based study of language learning — Georgetown UP (ed.)" tabindex="0"><em>The usage-based study of language learning<b>Georgetown UP (ed.)</b></em></span>
+              <span class="dot" style="left:calc(18.17% + 4.5px)" title="Error, feedback, and repair — Routledge handbook (ch.)" tabindex="0"><em>Error, feedback, and repair<b>Routledge handbook (ch.)</b></em></span>
+              <span class="dot" style="left:calc(33.83% + 0.0px)" title="Usage-inspired L2 instruction — John Benjamins (ed.)" tabindex="0"><em>Usage-inspired L2 instruction<b>John Benjamins (ed.)</b></em></span>
+              <span class="dot" style="left:calc(65.17% + 0.0px)" title="Interactional metadiscourse, 1980–2021 — English Teaching" tabindex="0"><em>Interactional metadiscourse, 1980–2021<b>English Teaching</b></em></span>
+              <span class="dot" style="left:calc(73.00% + 0.0px)" title="Interactive metadiscourse over time — English Teaching" tabindex="0"><em>Interactive metadiscourse over time<b>English Teaching</b></em></span>
+              <span class="dot" style="left:calc(96.50% + -4.5px)" title="Study abroad, work abroad, or stay home — Modern Language Journal" tabindex="0"><em>Study abroad, work abroad, or stay home<b>Modern Language Journal</b></em></span>
+              <span class="dot open" style="left:calc(96.50% + 4.5px)" title="Individual differences in L2 structural priming — under review" tabindex="0"><em>Individual differences in L2 structural priming<b>under review</b></em></span>
+            </div>
+          </div>
+
+        <div class="axis-row">
+          <div></div>
+          <div class="axis">
+            <span class="tick" style="left:2.50%">2014</span>
+            <span class="tick" style="left:18.17%">2016</span>
+            <span class="tick" style="left:33.83%">2018</span>
+            <span class="tick" style="left:49.50%">2020</span>
+            <span class="tick" style="left:65.17%">2022</span>
+            <span class="tick" style="left:80.83%">2024</span>
+            <span class="tick" style="left:96.50%">2026</span>
+          </div>
+        </div>
       </div>
 
       <div class="strands">
@@ -790,9 +922,9 @@ footer p{margin:0;font-family:var(--mono);font-size:13px;letter-spacing:.04em;co
         <article class="strand" style="--acc:var(--acc-1)">
           <div class="s-num">01</div>
           <div>
-            <span class="tag">Practice</span>
-            <h2>Measurement practice in SLA</h2>
-            <p>How the field reports proficiency and why it matters. Survey and replication work on researcher beliefs, reporting conventions, and whether results from different studies can meaningfully be compared at all.</p>
+            <span class="tag">Proficiency</span>
+            <h2>L2 proficiency and how it is measured</h2>
+            <p>What proficiency is taken to be, how it is assessed, and how the field reports it. Survey and replication work on researcher beliefs and reporting conventions, validation of vocabulary measures for Korean learners, and what proficiency accounts for beyond the classroom.</p>
           </div>
           <div class="s-right">
             <span class="papers-h">Selected work</span>
@@ -803,6 +935,9 @@ footer p{margin:0;font-family:var(--mono);font-size:13px;letter-spacing:.04em;co
               <li><a class="paper" href="https://doi.org/10.1111/lang.12475" target="_blank" rel="noopener noreferrer">
                 <span class="pt">Proficiency reporting practices in research on second language acquisition</span>
                 <span class="pm">Language Learning &middot; 2022</span></a></li>
+              <li><a class="paper" href="https://doi.org/10.15858/engtea.79.2.202406.139" target="_blank" rel="noopener noreferrer">
+                <span class="pt">Validation of the Korean bilingual version of the Vocabulary Size Test</span>
+                <span class="pm">English Teaching &middot; 2024</span></a></li>
             </ul>
           </div>
         </article>
@@ -811,7 +946,7 @@ footer p{margin:0;font-family:var(--mono);font-size:13px;letter-spacing:.04em;co
           <div class="s-num">02</div>
           <div>
             <span class="tag">Instrument</span>
-            <h2>Elicited imitation and proficiency measurement</h2>
+            <h2>Elicited imitation as a measure</h2>
             <p>Whether the elicited imitation task can carry the weight placed on it. Parallel form equivalence, rater and scoring effects, performance with heritage speakers, the contribution of working memory, and current work on automated scoring and an EIT response corpus.</p>
           </div>
           <div class="s-right">
