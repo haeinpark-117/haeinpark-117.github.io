@@ -103,18 +103,21 @@ a{color:inherit}
   display:grid;
   grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);
   gap:clamp(28px,4.5vw,72px);
-  align-items:end;
+  align-items:start;
   padding:0 0 clamp(26px,5vh,48px);
 }
+.hero-text .role{margin-top:0}
+.portrait{align-self:start}
 .hero-text{min-width:0}
 .portrait{margin:0;align-self:end;justify-self:end}
 .portrait img{display:block;height:clamp(300px,50vh,540px);width:auto;max-width:100%}
 
+.hero-head{padding-bottom:clamp(10px,2vh,22px)}
 .display{
-  margin:12px 0 0;
+  margin:10px 0 0;
   font-family:var(--grot);font-weight:900;
-  font-size:clamp(38px,5.6vw,78px);
-  line-height:.95;letter-spacing:-.045em;white-space:nowrap;
+  font-size:clamp(48px,9vw,120px);
+  line-height:.9;letter-spacing:-.045em;white-space:nowrap;
 }
 .display em{font-family:var(--serif-display);font-weight:600;font-style:normal;color:var(--blue);letter-spacing:-.03em;margin-left:.16em}
 .role{
@@ -474,9 +477,9 @@ footer p{margin:0;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;
 
   .hero{padding-top:26px}
   .hero-mid{grid-template-columns:1fr;gap:22px;align-items:start;padding-bottom:28px}
-  .portrait{justify-self:start;order:-1}
+  .portrait{justify-self:start;order:1;margin-top:8px}
   .portrait img{height:clamp(240px,38vh,340px)}
-  .display{font-size:clamp(40px,11vw,56px);white-space:normal}
+  .display{font-size:clamp(44px,13.5vw,72px);white-space:normal}
   .direct-row{grid-template-columns:1fr 24px;gap:8px}
   .d-val{grid-column:1;grid-row:2;margin-top:2px}
   .d-arrow{grid-row:1}
@@ -553,10 +556,13 @@ footer p{margin:0;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;
   <section class="view" id="home">
     <div class="wrap hero">
 
+      <div class="hero-head">
+        <p class="label">Seoul, South Korea</p>
+        <h1 class="display">Hae In <em>Park</em></h1>
+      </div>
+
       <div class="hero-mid">
         <div class="hero-text">
-          <p class="label">Seoul, South Korea</p>
-          <h1 class="display">Hae In <em>Park</em></h1>
           <p class="role">Applied linguist &middot; Ph.D.</p>
 
           <p class="affil">
@@ -572,12 +578,6 @@ footer p{margin:0;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;
             what bilingualism and multilingualism afford, and how inquiry into these questions
             can be conducted with the methodological rigor they require.
           </p>
-
-          <div class="pills">
-            <a class="pill solid" href="#research">See the research &rarr;</a>
-            <a class="pill" href="#publications">Publications</a>
-            <a class="pill" href="cv.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
-          </div>
         </div>
 
         <figure class="portrait">
