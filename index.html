@@ -101,16 +101,15 @@ a{color:inherit}
 .hero{padding-top:clamp(30px,6vh,64px)}
 .hero-mid{
   display:grid;
-  grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);
+  grid-template-columns:minmax(0,1.22fr) minmax(240px,.78fr);
   gap:clamp(28px,4.5vw,72px);
   align-items:start;
   padding:0 0 clamp(26px,5vh,48px);
 }
 .hero-text .role{margin-top:0}
-.portrait{align-self:start}
 .hero-text{min-width:0}
-.portrait{margin:0;align-self:end;justify-self:end}
-.portrait img{display:block;height:clamp(300px,50vh,540px);width:auto;max-width:100%}
+.portrait{margin:0;position:relative;align-self:stretch;justify-self:stretch;min-height:260px}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:right top}
 
 .hero-head{padding-bottom:clamp(10px,2vh,22px)}
 .display{
@@ -125,7 +124,7 @@ a{color:inherit}
   font-family:var(--grot);font-weight:700;font-size:clamp(16px,1.9vw,20px);
   letter-spacing:-.005em;color:var(--ink);
 }
-.affil{margin:12px 0 0;font-family:var(--mono);font-size:14.5px;line-height:1.8;color:var(--muted)}
+.affil{margin:12px 0 0;font-family:var(--mono);font-size:13.5px;line-height:1.8;color:var(--muted);white-space:nowrap}
 .affil strong{color:var(--ink);font-weight:600}
 .thesis{max-width:58ch;margin:clamp(20px,3.4vh,30px) 0 0;font-size:clamp(18px,1.6vw,20px);line-height:1.62;color:var(--ink)}
 .thesis em{font-style:italic;background:linear-gradient(transparent 58%,var(--green) 58%);}
@@ -472,13 +471,18 @@ footer p{margin:0;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;
   *{animation:none !important;transition:none !important}
 }
 
+@media (max-width:1000px){
+  .affil{white-space:normal}
+}
+
 @media (max-width:720px){
   body{font-size:18.5px}
 
   .hero{padding-top:26px}
   .hero-mid{grid-template-columns:1fr;gap:22px;align-items:start;padding-bottom:28px}
-  .portrait{justify-self:start;order:1;margin-top:8px}
-  .portrait img{height:clamp(240px,38vh,340px)}
+  .portrait{justify-self:start;order:1;margin-top:8px;align-self:auto;min-height:0}
+  .portrait img{position:static;width:auto;height:clamp(240px,38vh,340px);max-width:100%;object-fit:unset}
+  .affil{white-space:normal;font-size:14px}
   .display{font-size:clamp(44px,13.5vw,72px);white-space:normal}
   .direct-row{grid-template-columns:1fr 24px;gap:8px}
   .d-val{grid-column:1;grid-row:2;margin-top:2px}
