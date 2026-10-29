@@ -6,17 +6,25 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#ffffff">
 <meta name="description" content="RE:CONNECT AELTS — 경희대학교 응용영어통번역학과 동문 지도">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RE:CONNECT AELTS">
+<meta property="og:url" content="https://haeinpark-117.github.io/alumni/">
 <meta property="og:title" content="RE:CONNECT AELTS · Alumni Map">
-<meta property="og:description" content="경희대학교 응용영어통번역학과 동문은 지금 어디에?">
-<title>RE:CONNECT AELTS</title>
+<meta property="og:image" content="https://haeinpark-117.github.io/alumni/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RE:CONNECT AELTS · Alumni Map">
+<meta property="og:description" content="응통MAP · 다시 잇는 응통, 지금 우린 어디에? 경희대학교 응용영어통번역학과 동문 지도">
+<title>RE:CONNECT AELTS · Alumni Map</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;800&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Gothic+A1:wght@200;300&family=Montserrat:wght@400;600;800&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--pinc:#FFFFFF;--blue:#3BB3E0;--sky:#3BB3E0;--turq:#7FE8B5;--skyd:#1B86AE;--ink:#111;--paper:#fff;--river:#111;--muted:#6b6b6b;--page:#EDEDED;--hair:#d8d8d8}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%}
 body{background:var(--page);color:var(--ink);font-family:'Noto Sans KR',system-ui,sans-serif;overflow:hidden}
-.app{display:grid;grid-template-columns:1fr 400px;height:100vh}
+.app{display:grid;grid-template-columns:1fr 340px;height:100vh}
 .mapwrap{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:18px}
 svg#map{width:100%;height:100%;display:block;filter:drop-shadow(0 6px 18px rgba(0,0,0,.12))}
 .mont{font-family:'Montserrat',sans-serif}
@@ -84,6 +92,16 @@ svg [tabindex]:focus,svg [tabindex]:focus-visible{outline:none}
 .cnow::before{content:"NOW";display:block;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:.16em;font-size:10.5px;color:var(--skyd);margin-bottom:2px}
 
 *{-webkit-tap-highlight-color:transparent}
+.tbar{display:none}
+@media (min-width:861px){
+  body{background:#fff}
+  .mapwrap{flex-direction:column;align-items:stretch;padding:0}
+  .tbar{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:6px 24px;padding:20px 28px 14px;border-bottom:2px solid #111}
+  .tt1{font-family:'Archivo Black','Arial Black',sans-serif;font-size:42px;line-height:1;color:#111;text-shadow:0 -3px #EF4E36,0 -6px #F6C76A,0 3px #3BB3E0,0 6px #7FE8B5;padding:6px 0}
+  .tt2{font:600 12px Montserrat,'Noto Sans KR',sans-serif;letter-spacing:.22em;color:#111;padding-bottom:6px;min-width:0}
+  svg#map{flex:1;min-height:0;filter:none}
+  svg#map .pframe{display:none}
+}
 .sheet-x,.scrim{display:none}
 @media (max-width:860px){
   body{overflow:auto;background:#fff}
@@ -116,22 +134,42 @@ svg [tabindex]:focus,svg [tabindex]:focus-visible{outline:none}
   .pin.active .tag rect{fill:#fff;stroke:#111;stroke-width:2}.pin.active .tagtxt{fill:#111}
   .edge.active .b{fill:#111}.edge.active .tt{fill:#fff}
 }
+
+/* ---------- intro ---------- */
+#intro{position:fixed;inset:0;z-index:100;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;transition:opacity .7s ease,transform .7s ease}
+#intro.out{opacity:0;transform:translateY(-24px);pointer-events:none}
+#intro .i1{font-family:'Archivo Black','Arial Black',sans-serif;font-size:clamp(40px,7vw,112px);line-height:1;color:#111;letter-spacing:-.01em;
+  text-shadow:0 -.05em #EF4E36,0 -.1em #F6C76A,0 .05em #3BB3E0,0 .1em #7FE8B5;opacity:0;transform:scale(.94);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+#intro .i1.on{opacity:1;transform:none}
+#intro .i2{font-family:'Gothic A1','Noto Sans KR',sans-serif;font-weight:200;letter-spacing:.04em;font-size:clamp(16px,3.3vw,46px);text-wrap:balance;color:#111;margin-top:.7em;min-height:1.3em;line-height:1.3}
+#intro .i3{font-family:'Noto Sans KR',sans-serif;font-weight:400;font-size:clamp(18px,2.4vw,30px);color:#444;margin-top:.7em;min-height:1.5em;letter-spacing:.02em}
+#intro .cur{display:inline-block;width:.08em;height:1em;margin-left:.08em;background:#111;vertical-align:-.12em;animation:blink .9s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+#intro .skip{position:absolute;right:20px;bottom:calc(18px + env(safe-area-inset-bottom));font:600 12px Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase;background:none;border:none;color:#888;cursor:pointer;padding:8px}
+#intro .skip:hover{color:#111}
+body.intro-on{overflow:hidden}
 </style>
 </head>
 <body>
+<div id="intro" role="dialog" aria-label="RE:CONNECT AELTS">
+  <div class="i1">RE:CONNECT AELTS</div>
+  <div class="i2"></div>
+  
+  <button class="skip" type="button">Skip →</button>
+</div>
 <div class="app">
- <div class="mapwrap">
+ <div class="mapwrap"><div class="tbar"><div class="tt1">RE:CONNECT AELTS</div><div class="tt2">ALUMNI MAP · 응용영어통번역학과 동문 지도</div></div>
   <svg id="map" viewBox="0 0 800 1070" preserveAspectRatio="xMidYMid meet" role="img" aria-label="RE:CONNECT AELTS 동문 지도">
-   <defs><clipPath id="mapclip"><rect x="50" y="50" width="700" height="730"/></clipPath></defs>
-   <rect width="800" height="1070" fill="#fff"/>
-   <rect x="16" y="16" width="768" height="1038" fill="none" stroke="#111" stroke-width="3"/>
-   <rect x="28" y="28" width="744" height="1014" fill="none" stroke="#111" stroke-width="1.2"/>
+   <defs><clipPath id="mapclip"><rect id="cliprect" x="50" y="50" width="700" height="730"/></clipPath></defs>
+   <rect id="bgr" x="-2000" width="4800" height="1070" fill="#fff"/>
+   <rect class="pframe" x="16" y="16" width="768" height="1038" fill="none" stroke="#111" stroke-width="3"/>
+   <rect class="pframe" x="28" y="28" width="744" height="1014" fill="none" stroke="#111" stroke-width="1.2"/>
    <g clip-path="url(#mapclip)">
      <g id="sfill"></g><g id="tex"></g><g id="roads"></g><g id="water"></g><g id="bound"></g>
    </g>
-   <rect x="50" y="50" width="700" height="730" fill="none" stroke="#111" stroke-width="1.2"/>
+   <rect class="pframe" x="50" y="50" width="700" height="730" fill="none" stroke="#111" stroke-width="1.2"/>
    <g id="leaders"></g><g id="marks"></g><g id="edges"></g>
-   <g transform="translate(400,876)" text-anchor="middle">
+   <g class="pframe" transform="translate(400,876)" text-anchor="middle">
      <g id="ttl" font-family="'Archivo Black', 'Arial Black', sans-serif" font-size="62" letter-spacing="0"><text y="-6" fill="#F6C76A">RE:CONNECT AELTS</text><text y="-3" fill="#EF4E36">RE:CONNECT AELTS</text><text y="6" fill="#7FE8B5">RE:CONNECT AELTS</text><text y="3" fill="#3BB3E0">RE:CONNECT AELTS</text><text y="0" fill="#111">RE:CONNECT AELTS</text></g>
      <text y="54" class="mont" font-weight="600" font-size="22" letter-spacing="12" fill="#111">ALUMNI MAP</text>
      <text y="84" class="mont" font-weight="400" font-size="17" letter-spacing="2" fill="#111">37° 35′ 48″ N, 127° 03′ 06″ E</text>
@@ -161,11 +199,11 @@ function inPoly(x,y,poly){let c=false;for(let i=0,j=poly.length-1;i<poly.length;
 /* Street texture (decorative, procedural) */
 let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647;};
 const MTN=[[126.985,37.665,62],[127.08,37.67,30],[126.962,37.59,20],[126.99,37.551,13],[126.958,37.447,40],[127.01,37.462,16],[127.1,37.565,16],[126.83,37.62,18]].map(([lo,la,r])=>[...P(lo,la),r]);
-const HAN=pts([[127.22,37.585],[127.17,37.565],[127.13,37.552],[127.105,37.535],[127.09,37.52],[127.07,37.522],[127.06,37.533],[127.045,37.535],[127.03,37.53],[127.01,37.522],[126.99,37.515],[126.97,37.515],[126.95,37.52],[126.935,37.53],[126.915,37.54],[126.9,37.548],[126.885,37.56],[126.86,37.575],[126.82,37.59],[126.78,37.605],[126.74,37.62],[126.70,37.64]]);
+const HAN=pts([[127.45,37.60],[127.32,37.598],[127.22,37.585],[127.17,37.565],[127.13,37.552],[127.105,37.535],[127.09,37.52],[127.07,37.522],[127.06,37.533],[127.045,37.535],[127.03,37.53],[127.01,37.522],[126.99,37.515],[126.97,37.515],[126.95,37.52],[126.935,37.53],[126.915,37.54],[126.9,37.548],[126.885,37.56],[126.86,37.575],[126.82,37.59],[126.78,37.605],[126.74,37.62],[126.70,37.64],[126.62,37.69],[126.52,37.75],[126.40,37.80]]);
 function nearRiver(x,y){for(let i=0;i<HAN.length-1;i++){const[a,b]=[HAN[i],HAN[i+1]];const dx=b[0]-a[0],dy=b[1]-a[1];let t=((x-a[0])*dx+(y-a[1])*dy)/(dx*dx+dy*dy);t=Math.max(0,Math.min(1,t));if(Math.hypot(x-a[0]-t*dx,y-a[1]-t*dy)<20)return true;}return false;}
 let dIn="",dOut="";
-for(let k=0;k<1500;k++){
-  const cx=50+rnd()*700,cy=50+rnd()*760,R=18+rnd()*22,ang=rnd()*Math.PI,sp=6+rnd()*6;
+for(let k=0;k<4600;k++){
+  const cx=-650+rnd()*2100,cy=40+rnd()*760,R=18+rnd()*22,ang=rnd()*Math.PI,sp=6+rnd()*6;
   if(MTN.some(([mx,my,mr])=>Math.hypot(cx-mx,cy-my)<mr)||nearRiver(cx,cy))continue;
   const inside=inPoly(cx,cy,SEOUL);let d="";
   for(const a of [ang,ang+Math.PI/2+(rnd()-.5)*.4]){const ux=Math.cos(a),uy=Math.sin(a),vx=-uy,vy=ux;
@@ -287,7 +325,7 @@ function row(k,num,sq){const n=(byKey[k]||[]).length;const sub=PINS[k]?PINS[k].a
   return `<li><button data-k="${k}">${ic}<span class="nm">${esc(TITLES[k])}${sub?`<small>${sub}</small>`:""}</span><span class="ct">${n}</span></button></li>`;}
 function home(){document.body.classList.remove("sheet-open");setActive(null);
   const n=ALUMNI.length,ab=["nj","my","au"].reduce((t,k)=>t+(byKey[k]||[]).length,0),se=ALUMNI.filter(a=>PINS[a.key]||a.key==="seoul_etc"||a.key==="khu").length;
-  phead.innerHTML=`<div class="kicker">RE:CONNECT AELTS · 2026</div><h2>동문은 지금 어디에?</h2><p>지도 위 핀이나 동그라미를 누르면 동문 근황이 열립니다.</p>
+  phead.innerHTML=`<div class="kicker">RE:CONNECT AELTS · 2026</div><h2>응통MAP</h2><p>지도 위 핀이나 동그라미를 누르면 동문 근황이 열립니다.</p>
    <div class="stats"><div class="stat"><b>${n}</b><span>참여 동문</span></div><div class="stat"><b>${se}</b><span>서울</span></div><div class="stat"><b>${ab}</b><span>해외</span></div></div>`;
   pbody.innerHTML=`<div class="grp">Seoul · 직장 위치</div><ul class="lst" style="list-style:none;margin:0;padding:0">${Object.keys(PINS).map(k=>row(k,PINS[k].n)).join("")}${row("khu","★",true)}${row("seoul_etc","·",true)}</ul>
    <div class="grp">서울 밖</div><ul class="lst" style="list-style:none;margin:0;padding:0">${["hwaseong","incheon","anyang","sejong"].map(k=>row(k,"→",true)).join("")}</ul>
@@ -307,6 +345,33 @@ document.getElementById("scrim").onclick=()=>home();
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.body.classList.contains("sheet-open"))home();});
 function bind(g,k){g.addEventListener("click",()=>show(k));g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();show(k);}});}
 home();
+/* desktop: widen the map to fill the available area */
+const svgEl=document.getElementById("map"),clipR=document.getElementById("cliprect");
+function layout(){
+  if(isMobile()){svgEl.setAttribute("viewBox","0 0 800 1070");clipR.setAttribute("x",50);clipR.setAttribute("width",700);return;}
+  const r=svgEl.getBoundingClientRect();if(!r.width||!r.height)return;
+  const H=730,W=Math.max(700,H*r.width/r.height),x0=400-W/2;
+  svgEl.setAttribute("viewBox",`${x0} 50 ${W} ${H}`);clipR.setAttribute("x",x0);clipR.setAttribute("width",W);
+}
+layout();addEventListener("resize",layout);
+/* ---------- intro sequence ---------- */
+(function(){
+  const box=document.getElementById("intro"),i1=box.querySelector(".i1"),i2=box.querySelector(".i2"),i3=box.querySelector(".i3");
+  let done=false;const T=[];const later=(f,ms)=>T.push(setTimeout(f,ms));
+  function finish(){if(done)return;done=true;T.forEach(clearTimeout);box.classList.add("out");document.body.classList.remove("intro-on");
+    try{sessionStorage.setItem("aeltsIntro","1")}catch(e){}setTimeout(()=>box.remove(),800);layout();}
+  let seen=false;try{seen=sessionStorage.getItem("aeltsIntro")==="1"}catch(e){}
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(seen||location.hash==="#map"){box.remove();return;}
+  document.body.classList.add("intro-on");
+  box.querySelector(".skip").onclick=finish;box.addEventListener("click",e=>{if(!e.target.closest(".skip"))finish();});
+  addEventListener("keydown",e=>{if(!done&&(e.key==="Escape"||e.key==="Enter"||e.key===" "))finish();});
+  if(reduce){i1.classList.add("on");i2.textContent="다시 잇는 응통, 지금 우린 어디에?";later(finish,2200);return;}
+  function type(el,text,speed,cb){const cur=document.createElement("span");cur.className="cur";el.textContent="";el.appendChild(cur);let i=0;
+    (function step(){if(done)return;if(i<text.length){cur.before(text[i++]);later(step,speed);}else cb&&cb(cur);})();}
+  later(()=>i1.classList.add("on"),250);
+  later(()=>type(i2,"다시 잇는 응통, 지금 우린 어디에?",110,()=>later(finish,1500)),1100);
+})();
 </script>
 </body>
 </html>
