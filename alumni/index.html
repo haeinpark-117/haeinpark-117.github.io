@@ -330,7 +330,7 @@ function home(){document.body.classList.remove("sheet-open");setActive(null);
   pbody.innerHTML=`<div class="grp">Seoul · 직장 위치</div><ul class="lst" style="list-style:none;margin:0;padding:0">${Object.keys(PINS).map(k=>row(k,PINS[k].n)).join("")}${row("khu","★",true)}${row("seoul_etc","·",true)}</ul>
    <div class="grp">서울 밖</div><ul class="lst" style="list-style:none;margin:0;padding:0">${["hwaseong","incheon","anyang","sejong"].map(k=>row(k,"→",true)).join("")}</ul>
    <div class="grp">Abroad</div><ul class="lst" style="list-style:none;margin:0;padding:0">${["nj","my","au"].map(k=>row(k,"✈",true)).join("")}</ul>
-   <p class="hint">직장 위치는 구(區) 단위의 대략적인 표시입니다. '분야와 도시만'을 선택한 동문은 이름 대신 '응통 동문'으로 표시됩니다.</p>`;
+   <p class="hint">직장 위치는 구(區) 단위의 대략적인 표시입니다. 이름은 공개를 희망한 동문만 표시됩니다.</p>`;
   pbody.querySelectorAll("button[data-k]").forEach(b=>b.onclick=()=>show(b.dataset.k));}
 function card(a){const nm=a.full?esc(a.name):"응통 동문",sub=[a.org,a.role].filter(Boolean).map(esc).join(" · ");
   return `<div class="card${a.full?"":" private"}"><div class="ctop"><div class="av">${esc(a.id)}<small>학번</small></div><div><div class="cname">${nm}</div><div class="crole">${sub}</div></div></div>${a.now?`<div class="cnow">${esc(a.now)}</div>`:""}</div>`;}
