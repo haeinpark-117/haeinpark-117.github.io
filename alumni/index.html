@@ -301,7 +301,11 @@ Object.entries(PINS).forEach(([k,p])=>{const[x,y]=P(...p.ll),n=(byKey[k]||[]).le
 
 /* region circles (other cities · abroad) */
 function pill(x,y,txt){const w=txt.length*7.6+18;el("rect",{x,y,width:w,height:20,fill:"#111"},edges);el("text",{x:x+9,y:y+14,class:"mont","font-weight":800,"font-size":10.5,"letter-spacing":"1.5",fill:"#fff"},edges).textContent=txt;}
-pill(64,162,"ABROAD ✈");
+{const x=64,y=162,w=104;el("rect",{x,y,width:w,height:20,fill:"#111"},edges);
+ el("text",{x:x+9,y:y+14,class:"mont","font-weight":800,"font-size":10.5,"letter-spacing":"1.5",fill:"#fff"},edges).textContent="ABROAD";
+ /* airplane icon (pointing right) */
+ const pg=el("g",{transform:`translate(${x+w-15},${y+10}) scale(.62)`},edges);
+ el("path",{d:"M-11,-1.6 L-3,-1.6 L-9,-11 L-5.5,-11 L4.5,-1.6 L10,-1.6 Q13,0 10,1.6 L4.5,1.6 L-5.5,11 L-9,11 L-3,1.6 L-11,1.6 L-13,4.5 L-15.5,4.5 L-14,0 L-15.5,-4.5 L-13,-4.5 Z",fill:"#fff"},pg);}
 Object.entries(EDGES).forEach(([k,e])=>{const n=(byKey[k]||[]).length;
   const g=el("g",{class:"edge",tabindex:0,role:"button","aria-label":`${TITLES[k]} 동문 ${n}명`,transform:`translate(${e.x},${e.y})`},edges);
     const ty=e.etc?"etc":e.air?"air":"dom";
