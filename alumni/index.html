@@ -414,22 +414,29 @@ function setActive(k){Object.entries(NODES).forEach(([kk,n])=>n.classList.toggle
 function row(k,num,sq){const n=(byKey[k]||[]).length;const sub=PINS[k]?PINS[k].area:"";
   const ic=PINS[k]?`<svg class="pi" viewBox="-12 -32 24 34" width="18" height="24"><path d="M0,0 C-3,-7 -10,-12 -10,-19 A10,10 0 1 1 10,-19 C10,-12 3,-7 0,0Z" fill="#fff" stroke="#111" stroke-width="2"/><circle cx="0" cy="-19" r="3.6" fill="#111"/></svg>`:`<span class="num sq"><span>${num}</span></span>`;
   return `<li><button data-k="${k}">${ic}<span class="nm">${esc(TITLES[k])}${sub?`<small>${sub}</small>`:""}</span><span class="ct">${n}</span></button></li>`;}
+const PIN_IC=`<svg class="pi" viewBox="-12 -32 24 34" width="18" height="24"><path d="M0,0 C-3,-7 -10,-12 -10,-19 A10,10 0 1 1 10,-19 C10,-12 3,-7 0,0Z" fill="#fff" stroke="#111" stroke-width="2"/><circle cx="0" cy="-19" r="3.6" fill="#111"/></svg>`;
+const REGIONS=[["인천 · Incheon",["incheon","kal"]],["안양 · Anyang",["anyang"]],["화성 · 동탄 · Hwaseong",["hwaseong"]],["세종 · Sejong",["sejong"]],["해외 · Abroad",["nj","my","au"]]];
+const REG_SUB={incheon:"인천 거주",kal:"인천 근무",anyang:"안양 거주",hwaseong:"화성 · 동탄 거주",sejong:"세종 거주",nj:"미국 뉴저지",my:"말레이시아",au:"호주 울릉공"};
+const orgName=o=>o==="회사"?"기업":o;
+function orgRows(k){const list=byKey[k]||[];const orgs=[...new Set(list.map(a=>orgName(a.org)))];
+  return orgs.map(o=>{const n=list.filter(a=>orgName(a.org)===o).length;
+    return `<li><button data-k="${k}" data-org="${esc(o)}">${PIN_IC}<span class="nm">${esc(o)}<small>${REG_SUB[k]||""}</small></span><span class="ct">${n}</span></button></li>`;}).join("");}
 function home(){document.body.classList.remove("sheet-open");setActive(null);
   const n=ALUMNI.length,ab=["nj","my","au"].reduce((t,k)=>t+(byKey[k]||[]).length,0),se=ALUMNI.filter(a=>PINS[a.key]||a.key==="seoul_etc"||a.key==="khu").length;
   phead.innerHTML=`<div class="kicker">RE:CONNECT AELTS · 2026</div><h2>응통MAP</h2><p>지도 위 핀이나 동그라미를 누르면 동문 근황이 열립니다.</p>
    <div class="stats"><div class="stat"><b>${n}</b><span>참여 동문</span></div><div class="stat"><b>${se}</b><span>서울</span></div><div class="stat"><b>${ab}</b><span>해외</span></div></div>`;
-  pbody.innerHTML=`<div class="grp">Seoul · 직장 위치</div><ul class="lst" style="list-style:none;margin:0;padding:0">${Object.keys(PINS).map(k=>row(k,PINS[k].n)).join("")}${row("khu","★",true)}${row("seoul_etc","·",true)}</ul>
-   <div class="grp">서울 밖</div><ul class="lst" style="list-style:none;margin:0;padding:0">${["hwaseong","incheon","kal","anyang","sejong"].map(k=>row(k,"→",true)).join("")}</ul>
-   <div class="grp">Abroad</div><ul class="lst" style="list-style:none;margin:0;padding:0">${["nj","my","au"].map(k=>row(k,"✈",true)).join("")}</ul>
+  const ul=s=>`<ul class="lst" style="list-style:none;margin:0;padding:0">${s}</ul>`;
+  pbody.innerHTML=`<div class="grp">서울 · Seoul</div>${ul(Object.keys(PINS).map(k=>row(k,PINS[k].n)).join("")+row("khu","★",true)+row("seoul_etc","·",true))}
+   ${REGIONS.map(([lbl,keys])=>`<div class="grp">${lbl}</div>${ul(keys.map(k=>orgRows(k)).join(""))}`).join("")}
    <p class="hint">직장 위치는 구(區) 단위의 대략적인 표시입니다. 이름은 공개를 희망한 동문만 표시됩니다.</p>`;
-  pbody.querySelectorAll("button[data-k]").forEach(b=>b.onclick=()=>show(b.dataset.k));}
+  pbody.querySelectorAll("button[data-k]").forEach(b=>b.onclick=()=>show(b.dataset.k,b.dataset.org));}
 function card(a){if(a.star)return `<div class="card star"><div class="ctop"><div class="av av-star" aria-label="동문회장">★</div><div><div class="cname">${esc(a.name)}</div><div class="crole">${esc(a.sub)}</div></div></div></div>`;
   const nm=a.full?esc(a.name):"응통 동문",sub=[a.org,a.role].filter(Boolean).map(esc).join(" · ");
   return `<div class="card${a.full?"":" private"}"><div class="ctop"><div class="av">${esc(a.id)}<small>학번</small></div><div><div class="cname">${nm}</div><div class="crole">${sub}</div></div></div>${a.now?`<div class="cnow">${esc(a.now)}</div>`:""}</div>`;}
-function show(k){setActive(k);const list=[...(byKey[k]||[])].sort((a,b)=>(b.star?1:0)-(a.star?1:0)||+a.id-+b.id);
+function show(k,org){setActive(k);const list=[...(byKey[k]||[])].filter(a=>!org||orgName(a.org)===org).sort((a,b)=>(b.star?1:0)-(a.star?1:0)||+a.id-+b.id);
   const orgs=[...new Set(list.map(a=>a.org==="회사"?"기업":a.org).filter(Boolean))].join(" · ");
-  const area=OUTPINS[k]?`<span class="loc">${OUTPINS[k].area} · ${esc(orgs)}</span>`:k==="sejong"?`<span class="loc">세종 거주 · ${esc(orgs)}</span>`:k==="khu"?`<span class="loc">동대문구 회기동 · 서울캠퍼스</span>`:PINS[k]?`<span class="loc">${PINS[k].area}</span>`:(orgs?`<span class="loc">${esc(orgs)}</span>`:"");
-  phead.innerHTML=`<button class="back" id="back">← Back to map list</button><h2>${esc(TITLES[k])}</h2><p>${list.length}명의 동문 · 실명 공개 ${list.filter(a=>a.full).length}명</p>${area}`;
+  const area=org?`<span class="loc">${REG_SUB[k]||esc(TITLES[k])}</span>`:OUTPINS[k]?`<span class="loc">${OUTPINS[k].area} · ${esc(orgs)}</span>`:k==="sejong"?`<span class="loc">세종 거주 · ${esc(orgs)}</span>`:k==="khu"?`<span class="loc">동대문구 회기동 · 서울캠퍼스</span>`:PINS[k]?`<span class="loc">${PINS[k].area}</span>`:(orgs?`<span class="loc">${esc(orgs)}</span>`:"");
+  phead.innerHTML=`<button class="back" id="back">← Back to map list</button><h2>${esc(org||TITLES[k])}</h2><p>${list.length}명의 동문 · 실명 공개 ${list.filter(a=>a.full).length}명</p>${area}`;
   pbody.innerHTML=list.map(card).join("");pbody.scrollTop=0;document.getElementById("back").onclick=home;
   if(isMobile()){document.body.classList.add("sheet-open");const x=document.createElement("button");x.className="sheet-x";x.setAttribute("aria-label","닫기");x.textContent="×";x.onclick=home;phead.appendChild(x);}}
 const isMobile=()=>window.matchMedia("(max-width:860px)").matches;
