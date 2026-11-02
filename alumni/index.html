@@ -119,7 +119,8 @@ svg [tabindex]:focus,svg [tabindex]:focus-visible{outline:none}
   .phead h2{font-size:23px}
   .lst button{padding:12px 2px}
   /* detail view becomes a bottom sheet */
-  body.sheet-open{overflow:hidden}
+  body.sheet-open .pbody{overscroll-behavior:contain}
+  body.sheet-open .scrim{touch-action:none}
   body.sheet-open .scrim{display:block;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:20}
   body.sheet-open .panel{position:fixed;left:0;right:0;bottom:0;max-height:78vh;z-index:21;border-top:none;border-radius:18px 18px 0 0;box-shadow:0 -8px 30px rgba(0,0,0,.25);min-height:0;animation:up .22s ease-out}
   body.sheet-open .pbody{overflow-y:auto;-webkit-overflow-scrolling:touch}
@@ -151,7 +152,7 @@ svg [tabindex]:focus,svg [tabindex]:focus-visible{outline:none}
 @keyframes blink{50%{opacity:0}}
 #intro .skip{position:absolute;right:20px;bottom:calc(18px + env(safe-area-inset-bottom));font:600 12px Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase;background:none;border:none;color:#888;cursor:pointer;padding:8px}
 #intro .skip:hover{color:#111}
-body.intro-on{overflow:hidden}
+#intro{touch-action:none;overscroll-behavior:none}
 </style>
 </head>
 <body>
@@ -476,7 +477,7 @@ layout();addEventListener("resize",layout);
   const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   if(seen||location.hash==="#map"){box.remove();return;}
   document.body.classList.add("intro-on");
-  box.querySelector(".skip").onclick=finish;box.addEventListener("click",e=>{if(!e.target.closest(".skip"))finish();});
+  box.querySelector(".skip").onclick=finish;box.addEventListener("touchmove",e=>e.preventDefault(),{passive:false});box.addEventListener("click",e=>{if(!e.target.closest(".skip"))finish();});
   addEventListener("keydown",e=>{if(!done&&(e.key==="Escape"||e.key==="Enter"||e.key===" "))finish();});
   if(reduce){i1.classList.add("on");i2.textContent="다시 잇는 응통, 지금 우린 어디에?";later(finish,2200);return;}
   function type(el,text,speed,cb){const cur=document.createElement("span");cur.className="cur";el.textContent="";el.appendChild(cur);let i=0;
