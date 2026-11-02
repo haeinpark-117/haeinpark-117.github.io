@@ -460,8 +460,9 @@ function layout(){
   const r=svgEl.getBoundingClientRect();if(!r.width||!r.height)return;
   const H=730,W=Math.max(700,H*r.width/r.height),x0=400-W/2;
   svgEl.setAttribute("viewBox",`${x0} 50 ${W} ${H}`);clipR.setAttribute("x",x0);clipR.setAttribute("width",W);
-  abG.setAttribute("transform",`translate(${x0+16},64)`);
-  krG.setAttribute("transform",`translate(${x0+W-16-170},64)`);
+  const sc=Math.max(.7,Math.min(1,(W-560)/480));
+  abG.setAttribute("transform",`translate(${x0+16},64) scale(${sc.toFixed(3)})`);
+  krG.setAttribute("transform",`translate(${x0+W-16-170*sc},64) scale(${sc.toFixed(3)})`);
   NODES.seoul_etc&&NODES.seoul_etc.setAttribute("transform",`translate(${x0+16+50},${50+H-16-50})`);
 }
 layout();addEventListener("resize",layout);
