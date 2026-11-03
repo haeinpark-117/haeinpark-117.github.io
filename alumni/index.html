@@ -24,7 +24,8 @@
 *{box-sizing:border-box}
 html,body{margin:0;height:100%}
 body{background:var(--page);color:var(--ink);font-family:'Noto Sans KR',system-ui,sans-serif;overflow:hidden}
-.app{display:grid;grid-template-columns:1fr 340px;height:100vh}
+.app{display:grid;grid-template-columns:1fr 340px;grid-template-rows:minmax(0,1fr);height:100vh;height:100dvh}
+@media (min-width:861px){html,body{overflow:hidden;overscroll-behavior:none}.app{position:fixed;inset:0;height:auto}}
 .mapwrap{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:18px}
 svg#map{width:100%;height:100%;display:block;filter:drop-shadow(0 6px 18px rgba(0,0,0,.12))}
 .mont{font-family:'Montserrat',sans-serif}
@@ -56,7 +57,8 @@ svg [tabindex]:focus,svg [tabindex]:focus-visible{outline:none}
 #map:has(.edge:hover,.pin:hover) .pin.active:not(:hover) .tagtxt{fill:#fff}
 #map:has(.edge:hover,.pin:hover) .campus.active:not(:hover) image{transform:none}
 
-.panel{background:var(--paper);border-left:2px solid var(--ink);display:flex;flex-direction:column;min-height:0}
+.panel{background:var(--paper);border-left:2px solid var(--ink);display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.phead{flex:none}
 .phead{padding:24px 24px 16px;border-bottom:1.5px solid var(--ink)}
 .kicker{font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:.16em;font-size:11px;color:var(--muted);text-transform:uppercase}
 .phead h2{font-weight:900;font-size:26px;margin:6px 0 4px;letter-spacing:-.02em;line-height:1.25}
@@ -66,7 +68,7 @@ svg [tabindex]:focus,svg [tabindex]:focus-visible{outline:none}
 .stat:last-child{border-right:none}
 .stat b{font-family:'Montserrat',sans-serif;font-weight:800;font-size:26px;display:block;line-height:1.1}
 .stat span{font-size:12px;color:var(--muted)}
-.pbody{padding:14px 20px 28px;overflow-y:auto;flex:1}
+.pbody{padding:14px 20px 28px;overflow-y:auto;flex:1;min-height:0;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
 .grp{font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:.14em;font-size:11px;color:var(--muted);margin:16px 0 4px;text-transform:uppercase}
 .grp:first-child{margin-top:4px}
 .lst button{width:100%;display:flex;align-items:center;gap:10px;background:none;border:none;border-bottom:1px solid var(--hair);padding:10px 2px;cursor:pointer;font:inherit;color:var(--ink);text-align:left}
