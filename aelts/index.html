@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AELTS 응통과</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Gothic+A1:wght@500;700;800&family=IBM+Plex+Sans+KR:wght@400;500&family=DM+Mono&display=swap">
+<style>
+:root{--sky:#BFE0F2;--paper:#FFFFFF;--red:#EE3B24;--ink:#1B1B1B;--muted:#4F6472;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--sky);color:var(--ink);font-family:"IBM Plex Sans KR",system-ui,sans-serif;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:48px 40px}
+.inner{max-width:860px;margin:0 auto}
+header{text-align:center}
+.eyebrow{font-family:"DM Mono",monospace;font-size:12.5px;letter-spacing:.06em;color:var(--red);text-transform:uppercase;margin:0}
+h1{font-family:"Instrument Serif",serif;font-weight:400;color:var(--red);font-size:clamp(72px,16vw,160px);line-height:.86;margin:16px 0 6px;text-transform:uppercase;transform:scaleY(1.12);transform-origin:center top}
+.ko{font-family:"Gothic A1",sans-serif;font-weight:700;color:var(--red);font-size:clamp(18px,3vw,24px);margin:26px 0 0}
+.strip{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 18px;border-top:1.5px solid var(--red);border-bottom:1.5px solid var(--red);padding:8px 2px;font-family:"DM Mono",monospace;font-size:12.5px;color:var(--red);text-transform:uppercase;margin-top:28px}
+.list{display:flex;flex-direction:column;gap:12px;margin-top:32px}
+a.item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;align-items:center;background:var(--paper);border:2px solid var(--red);padding:18px 20px;color:var(--ink);text-decoration:none;transition:background .15s,color .15s}
+a.item:hover,a.item:focus-visible{background:var(--red);color:var(--paper);outline:none}
+a.item:hover .en,a.item:focus-visible .en,a.item:hover .d,a.item:focus-visible .d{color:var(--paper)}
+.en{font-family:"Instrument Serif",serif;font-size:34px;line-height:1;color:var(--red);text-transform:uppercase}
+.t{font-family:"Gothic A1",sans-serif;font-weight:800;font-size:17px}
+.d{font-size:13px;color:var(--muted);font-family:"DM Mono",monospace}
+.arrow{font-family:"Instrument Serif",serif;font-size:40px;line-height:1;grid-row:1/4;grid-column:2}
+footer{margin-top:40px;font-family:"DM Mono",monospace;font-size:12px;color:var(--red);border-top:1.5px solid var(--red);padding-top:10px;text-transform:uppercase}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="inner">
+  <header>
+    <p class="eyebrow">Kyung Hee University · Applied English Linguistics &amp; Translation Studies</p>
+    <h1>AELTS</h1>
+    <p class="ko">응용영어통번역학과</p>
+    <div class="strip"><span>AELTS · KHU 응통과</span><span>Department Pages</span></div>
+  </header>
+  <nav class="list" aria-label="학과 페이지">
+    <a class="item" href="contest-review/">
+      <span class="en">Contest Review</span>
+      <span class="t">2026 번역 콘테스트 참가 후기</span>
+      <span class="d">2026. 10. 27 – 10. 29 · 응답 39명</span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </nav>
+  <footer>AELTS · Kyung Hee University</footer>
+</div>
+</body>
+</html>
