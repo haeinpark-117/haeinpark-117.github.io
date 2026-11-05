@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AELTS 번역 콘테스트 후기</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Gothic+A1:wght@500;700;800&family=IBM+Plex+Sans+KR:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: retro event-poster — centered condensed-serif headline on sky blue with starbursts → outlined KPI boxes → ruled info strip → chart cards → quote boxes → table → barcode footer.
+   Single deliberate light theme (poster paper), every color set explicitly. */
+:root{
+  --sky:#BFE0F2; --sky-deep:#9CCBE6; --paper:#FFFFFF; --red:#EE3B24; --salmon:#F69A86; --ink:#1B1B1B; --muted:#4F6472; --steel:#8FA8B8; --track:#E6F1F8;
+  --serif:"Instrument Serif","Times New Roman",serif;
+  --display:"Gothic A1","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --sans:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"DM Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--sky);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 40px}
+.inner{max-width:1080px;margin:0 auto}
+.num{font-family:var(--serif);font-variant-numeric:tabular-nums}
+
+/* HERO */
+.hero{position:relative;text-align:center;padding-block:40px 30px;overflow:hidden}
+.hero .quote{font-family:var(--display);font-weight:800;color:var(--red);font-size:clamp(16px,2.4vw,22px);margin:0}
+.hero .quote-en{font-family:var(--serif);font-style:italic;color:var(--red);font-size:16px;margin:2px 0 0}
+.hero h1{font-family:var(--serif);font-weight:400;color:var(--red);font-size:clamp(64px,15vw,168px);line-height:.86;letter-spacing:-.01em;margin:18px 0 10px;text-transform:uppercase;transform:scaleY(1.12);transform-origin:center top}
+.hero h1 span{display:block}
+.hero .ko{font-family:var(--display);font-weight:700;color:var(--red);font-size:clamp(18px,3vw,28px);line-height:1.35;margin:28px 0 0}
+.burst{position:absolute;pointer-events:none}
+.burst polygon{fill:var(--red)}
+.burst.o polygon{fill:var(--paper);stroke:var(--red);stroke-width:2}
+.b1{width:86px;left:4%;top:44%}
+.b2{width:54px;right:6%;top:18%}
+.b3{width:120px;right:3%;bottom:4%}
+.b4{width:40px;left:14%;top:12%}
+.b5{width:52px;left:20%;bottom:22%}
+.cloud{position:absolute;background:var(--paper);border-radius:999px;filter:blur(1px);opacity:.92}
+.c1{width:160px;height:54px;left:-30px;top:30%;box-shadow:40px -22px 0 6px var(--paper),90px -6px 0 0 var(--paper)}
+.c2{width:150px;height:50px;right:-20px;top:58%;box-shadow:-46px -20px 0 4px var(--paper),-96px -4px 0 -2px var(--paper)}
+
+.event{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 18px;margin-top:22px;font-family:var(--display);font-weight:800;color:var(--ink);font-size:clamp(15px,2.2vw,20px);position:relative}
+.event b{color:var(--red)}
+.event small{display:block;width:100%;font-family:var(--sans);font-weight:500;font-size:13px;color:var(--muted)}
+
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:8px}
+.kpi{background:var(--paper);border:2px solid var(--red);padding:14px 16px 12px;display:flex;flex-direction:column;gap:0;min-width:0;text-align:left}
+.kpi .l{font-family:var(--display);font-weight:800;font-size:14px;color:var(--red)}
+.kpi .v{font-family:var(--serif);font-size:68px;line-height:.95;color:var(--red);margin-top:4px}
+.kpi .v small{font-size:28px;margin-left:2px}
+.kpi .n{font-size:12.5px;color:var(--muted);margin-top:4px}
+.kpi.solid{background:var(--red);border-color:var(--red)}
+.kpi.solid .l,.kpi.solid .v{color:var(--paper)}
+.kpi.solid .n{color:#FFE3DC}
+
+/* ruled info strip */
+.strip{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 18px;border-top:1.5px solid var(--red);border-bottom:1.5px solid var(--red);padding:8px 2px;font-family:var(--mono);font-size:12.5px;color:var(--red);letter-spacing:.04em;margin-top:28px;text-transform:uppercase}
+
+main{display:flex;flex-direction:column;gap:40px;margin-top:40px}
+.sechead{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;flex-wrap:wrap}
+h2{margin:0;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;text-wrap:balance}
+h2 .en{font-family:var(--serif);font-weight:400;font-size:44px;line-height:1;color:var(--red);text-transform:uppercase}
+h2 .ko{font-family:var(--display);font-weight:800;font-size:17px;color:var(--ink)}
+h3{font-family:var(--display);font-weight:800;font-size:16px;margin:0;color:var(--ink)}
+.note{font-size:12.5px;color:var(--muted)}
+.card{background:var(--paper);border:1.5px solid var(--red);padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.secwrap{display:flex;flex-direction:column;gap:14px}
+
+/* experience */
+.exp{display:grid;grid-template-columns:250px minmax(0,1fr);gap:30px;align-items:center}
+.donut{position:relative;width:220px;max-width:100%;aspect-ratio:1;margin:0 auto}
+.donut svg{width:100%;height:100%;transform:rotate(-90deg)}
+.donut .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.donut .center b{font-family:var(--serif);font-weight:400;font-size:60px;line-height:.9;color:var(--red)}
+.donut .center span{font-size:12.5px;color:var(--muted)}
+.stacks{display:flex;flex-direction:column;gap:16px;min-width:0}
+.stackrow{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;align-items:center}
+.stackrow .lbl{font-family:var(--display);font-weight:800;font-size:14px;line-height:1.3}
+.stackrow .lbl small{display:block;color:var(--muted);font-weight:500;font-size:12px;font-family:var(--mono)}
+.stack{display:flex;height:36px;overflow:hidden;background:var(--track);border:1.5px solid var(--ink)}
+.stack span{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12.5px;font-weight:500;white-space:nowrap;overflow:hidden}
+.stack span+span{border-left:1.5px solid var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;margin-right:6px;vertical-align:-1px;border:1.5px solid var(--ink)}
+.callout{display:flex;gap:12px;align-items:center;background:var(--sky);padding:10px 14px;font-size:13.5px}
+.callout b{color:var(--red)}
+.callout svg{flex:none;width:30px}
+
+/* filters */
+.filters{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;background:var(--paper);border:2px solid var(--red);padding:10px 14px}
+.fgroup{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fgroup > span{font-family:var(--display);font-weight:800;font-size:13px;color:var(--red)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{font:inherit;font-size:13px;font-weight:500;border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);padding:3px 12px;border-radius:999px;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.chips button:hover{border-color:var(--red);color:var(--red)}
+.chips button[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:var(--paper);font-weight:600}
+.chips button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.counter{margin-left:auto;font-size:13px;display:flex;align-items:baseline;gap:4px;color:var(--muted)}
+.counter b{font-family:var(--serif);font-weight:400;font-size:32px;line-height:1;color:var(--red)}
+
+/* mosaic */
+.mosaic{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.m-diff,.m-time,.m-int{grid-column:span 2}
+.m-rea,.m-for{grid-column:span 3}
+.cols{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;align-items:end;height:150px;padding-top:18px}
+.col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;height:100%}
+.col .bar{width:100%;max-width:42px;background:var(--red);transition:height .35s;min-height:3px}
+.col .bar.zero{background:var(--track)}
+.col .v{font-family:var(--mono);font-size:13px}
+.col .k{font-size:12px;color:var(--muted)}
+.avg{display:flex;align-items:baseline;gap:6px}
+.avg b{font-family:var(--serif);font-weight:400;font-size:40px;line-height:1;color:var(--red)}
+.split{display:flex;flex-direction:column;gap:12px}
+.splitrow{display:flex;flex-direction:column;gap:6px}
+.splitrow .top{display:flex;justify-content:space-between;font-size:13.5px}
+.splitrow .top b{font-family:var(--mono);font-weight:500}
+.track{height:14px;background:var(--track);overflow:hidden}
+.fill{height:100%;transition:width .35s}
+.ringwrap{display:flex;gap:16px;align-items:center}
+.ring{position:relative;width:118px;flex:none;aspect-ratio:1}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring .c b{font-family:var(--serif);font-weight:400;font-size:27px;line-height:.9;color:var(--red)}
+.ring .c span{font-size:11px;color:var(--muted)}
+.ilist{display:flex;flex-direction:column;gap:8px;font-size:13.5px;min-width:0}
+.ilist div{display:flex;align-items:center;gap:8px}
+.ilist i{width:11px;height:11px;flex:none;border:1.5px solid var(--ink)}
+.ilist b{font-family:var(--mono);font-weight:500;margin-left:auto;padding-left:8px}
+.hbars{display:flex;flex-direction:column;gap:10px}
+.hb{display:grid;grid-template-columns:132px minmax(0,1fr) 74px;gap:10px;align-items:center;font-size:13.5px}
+.hb .t{height:20px;background:var(--track);overflow:hidden}
+.hb .f{height:100%;transition:width .35s}
+.hb .c{text-align:right;font-size:12.5px;color:var(--muted);font-family:var(--mono)}
+.hb .c b{color:var(--ink);font-weight:500}
+.hb.top1 span:first-child{font-weight:700;color:var(--red)}
+
+/* insights */
+.insights{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.ins{background:var(--paper);border:1.5px solid var(--red);padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.ins .big{font-family:var(--serif);font-size:64px;line-height:.9;color:var(--red)}
+.ins .k{font-family:var(--display);font-weight:800;font-size:13px;color:var(--red)}
+.ins p{margin:0;font-size:13.5px}
+.ins.solid{background:var(--red)}
+.ins.solid .big,.ins.solid .k,.ins.solid p{color:var(--paper)}
+
+/* quotes */
+.quotes{columns:2 320px;column-gap:12px}
+.q{break-inside:avoid;margin:0 0 12px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;background:var(--paper);border:1.5px solid var(--red);position:relative}
+.q::before{content:"“";font-family:var(--serif);font-size:70px;line-height:.5;color:var(--red);height:22px;display:block}
+.q p{margin:0;white-space:pre-line;font-size:15px;line-height:1.7}
+.q .meta{display:flex;flex-wrap:wrap;gap:6px}
+.q .meta span{font-size:11.5px;font-weight:600;padding:1px 9px;border-radius:999px;border:1.2px solid var(--ink)}
+.q .meta span:first-child{background:var(--red);border-color:var(--red);color:var(--paper);font-family:var(--display);font-weight:800}
+.q.solid{background:var(--red);color:var(--paper)}
+.q.solid::before{color:var(--paper)}
+.q.solid .meta span{border-color:var(--paper)}
+.q.solid .meta span:first-child{background:var(--paper);color:var(--red)}
+
+/* table */
+.tablewrap{overflow-x:auto;background:var(--paper);border:1.5px solid var(--red)}
+table{border-collapse:collapse;width:100%;min-width:780px;font-size:13px}
+th,td{text-align:left;padding:9px 14px;border-bottom:1px solid #F3D2CB;vertical-align:top}
+th{font-family:var(--display);font-weight:800;color:var(--red);font-size:12.5px;cursor:pointer;user-select:none;white-space:nowrap;border-bottom:1.5px solid var(--red)}
+th:hover,th[aria-sort]{text-decoration:underline;text-underline-offset:4px}
+th[aria-sort]::after{content:" ▾";font-size:10px}
+th[aria-sort="ascending"]::after{content:" ▴"}
+tbody tr:hover{background:#FFF3F0}
+tr:last-child td{border-bottom:0}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:1px 9px;border-radius:999px;white-space:nowrap;border:1.2px solid var(--ink)}
+.dscore{font-family:var(--serif);font-size:22px;color:var(--red);line-height:1}
+
+/* footer */
+footer{margin-top:44px;display:flex;flex-direction:column;gap:12px}
+.barline{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 18px;border-top:1.5px solid var(--red);padding-top:10px;font-family:var(--mono);font-size:12px;color:var(--red);text-transform:uppercase;letter-spacing:.04em}
+.barcode{height:22px;width:120px;background:repeating-linear-gradient(90deg,var(--red) 0 2px,transparent 2px 4px,var(--red) 4px 5px,transparent 5px 8px,var(--red) 8px 11px,transparent 11px 13px)}
+.src{font-size:12px;color:var(--muted)}
+
+@media (max-width:860px){
+  .kpis,.insights{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mosaic{grid-template-columns:1fr}
+  .mosaic > *{grid-column:auto!important}
+  .exp{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .kpi .v{font-size:52px}
+  .insights{grid-template-columns:1fr}
+  .stackrow{grid-template-columns:1fr}
+  .hb{grid-template-columns:104px minmax(0,1fr) 66px}
+  .counter{margin-left:0}
+  .b1,.b5,.c1,.c2{display:none}
+  h2 .en{font-size:36px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
+</head>
+<body>
+
+
+<header class="hero inner">
+  <div class="cloud c1" aria-hidden="true"></div>
+  <div class="cloud c2" aria-hidden="true"></div>
+  <svg class="burst b1" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,0 58,36 96,22 66,50 100,70 60,64 56,100 46,66 10,88 34,56 0,40 38,38"/></svg>
+  <svg class="burst o b2" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,4 57,38 92,30 64,52 88,80 56,66 50,96 44,66 12,80 36,52 8,30 43,38"/></svg>
+  <svg class="burst b3" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,0 55,40 80,8 62,44 100,38 64,56 92,86 56,64 50,100 44,64 6,90 36,56 0,46 38,44 20,8 45,40"/></svg>
+  <svg class="burst b4" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,0 60,40 100,50 60,60 50,100 40,60 0,50 40,40"/></svg>
+  <svg class="burst o b5" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,4 58,40 96,50 58,60 50,96 42,60 4,50 42,40"/></svg>
+
+  <p class="quote">“참가해 보니, 어땠나요?”</p>
+  <p class="quote-en">2026 AELTS Translation Contest · Participant Review</p>
+  <h1><span>Contest</span><span>Review</span></h1>
+  <p class="ko">번역 콘테스트 참가 후기 설문 결과</p>
+  <div class="event"><span><b>2026. 10. 27 – 10. 29</b></span><span>응답 39명</span><span>제출 25 · 버튼 14</span>
+    <small>참가 경험은 39명 전체, 나머지 문항은 설문 제출 완료 25명 기준</small></div>
+
+  <div class="strip"><span>AELTS · KHU 응통과</span><span>Translation Contest 2026</span><span>N = 39</span></div>
+</header>
+
+<div class="inner">
+  <div class="kpis">
+    <div class="kpi"><span class="l">응답자</span><span class="v">39<small>명</small></span><span class="n">제출 25 · 버튼만 14</span></div>
+    <div class="kpi solid"><span class="l">긍정 평가</span><span class="v">82<small>%</small></span><span class="n">“좋았어요” 이상 32 / 39명</span></div>
+    <div class="kpi"><span class="l">재참가 의향</span><span class="v">92<small>%</small></span><span class="n">꼭 + 아마도 23 / 25명</span></div>
+    <div class="kpi"><span class="l">지문 난이도 평균</span><span class="v">3.24</span><span class="n">5점 척도 · 3점 17명</span></div>
+  </div>
+
+<main>
+  <section class="secwrap">
+    <div class="sechead"><h2><span class="en">Experience</span><span class="ko">참가 경험</span></h2><span class="note">응답 경로별 비교</span></div>
+    <div class="card">
+      <div class="exp">
+        <div class="donut" id="donut"></div>
+        <div class="stacks" id="exp"></div>
+      </div>
+      <div class="legend" id="expLegend"></div>
+      <div class="callout"><svg viewBox="0 0 100 100" aria-hidden="true"><polygon fill="#EE3B24" points="50,0 60,40 100,50 60,60 50,100 40,60 0,50 40,40"/></svg><span>버튼만 누른 14명 중 <b>4명</b>이 “아쉬웠어요”를 선택했지만, 설문을 제출한 25명 중에는 “아쉬웠어요”가 <b>0명</b>이었습니다. 부정적으로 평가한 참가자의 이유는 이번 설문에서 수집되지 않았습니다.</span></div>
+    </div>
+  </section>
+
+  <section class="secwrap">
+    <div class="sechead"><h2><span class="en">Explore</span><span class="ko">제출 응답 살펴보기</span></h2><span class="note">필터를 바꾸면 아래 그래프와 표가 함께 바뀝니다</span></div>
+    <div class="filters" role="group" aria-label="제출 응답 필터">
+      <div class="fgroup"><span>참가 경험</span><div class="chips" id="fExp"></div></div>
+      <div class="fgroup"><span>참가 의향</span><div class="chips" id="fInt"></div></div>
+      <span class="counter"><b id="nShown">25</b> / 25명</span>
+    </div>
+    <div class="mosaic">
+      <div class="card m-diff"><div class="sechead"><h3>지문 난이도</h3><span class="avg"><b id="avgDiff">3.25</b><span class="note">평균</span></span></div><div class="cols" id="diff"></div></div>
+      <div class="card m-time"><h3>제한 시간</h3><div class="split" id="time"></div></div>
+      <div class="card m-int"><h3>다음 참가 의향</h3><div class="ringwrap" id="intent"></div></div>
+      <div class="card m-rea"><div class="sechead"><h3>참가한 이유</h3><span class="note">복수 응답 · 응답자 대비 %</span></div><div class="hbars" id="reasons"></div></div>
+      <div class="card m-for"><div class="sechead"><h3>다음에 해 보고 싶은 형식</h3><span class="note">복수 응답 · 응답자 대비 %</span></div><div class="hbars" id="formats"></div></div>
+    </div>
+  </section>
+
+  <section class="secwrap">
+    <div class="sechead"><h2><span class="en">Takeaways</span><span class="ko">눈여겨볼 점</span></h2></div>
+    <div class="insights">
+      <div class="ins solid"><span class="k">참가 동기</span><span class="big">76%</span><p>“번역 실력 점검”(19명)이 가장 많았고 “교수님 · 친구 권유”(17명)가 뒤를 이었습니다. “이력 · 포트폴리오”는 7명(28%)에 그쳤습니다.</p></div>
+      <div class="ins"><span class="k">희망 형식</span><span class="big">12</span><p>영한 번역(15명), 문학 지문(14명)에 이어 영상 자막(12명) 수요가 높았습니다. AI 번역 후편집도 10명으로 한영 번역(9명)보다 많았습니다.</p></div>
+      <div class="ins"><span class="k">제한 시간</span><span class="big">0</span><p>시간이 부족했다는 응답은 없었습니다(적당 18, 여유 7). 자유 응답에서는 지문을 조금 더 길게 하자는 제안과 함께, 종이 사전 허용이나 단어집 배부를 요청하는 의견이 있었습니다.</p></div>
+      <div class="ins"><span class="k">유보 응답</span><span class="big">2</span><p>“잘 모르겠어요” 2명은 모두 “교수님 · 친구 권유”만을 참가 이유로 선택했습니다.</p></div>
+    </div>
+  </section>
+
+  <section class="secwrap">
+    <div class="sechead"><h2><span class="en">Voices</span><span class="ko">자유 응답</span></h2><span class="note">좋았던 점 · 아쉬웠던 점 · 25명 중 6명 작성 · 원문 그대로</span></div>
+    <div class="quotes" id="quotes"></div>
+  </section>
+
+  <section class="secwrap">
+    <div class="sechead"><h2><span class="en">All Responses</span><span class="ko">제출 응답 전체</span></h2><span class="note">열 제목을 누르면 정렬됩니다 · 위 필터가 함께 적용됩니다</span></div>
+    <div class="tablewrap"><table id="tbl"><thead><tr>
+      <th data-k="exp">참가 경험</th><th data-k="diff">난이도</th><th data-k="time">제한 시간</th><th data-k="intent">참가 의향</th><th data-k="reasons">참가 이유</th><th data-k="formats">희망 형식</th>
+    </tr></thead><tbody></tbody></table></div>
+  </section>
+</main>
+
+<footer>
+  <div class="barline"><span>AELTS Contest Review</span><span>2026. 10. 29 집계</span><span>Responses 39</span><span class="barcode" aria-hidden="true"></span></div>
+  <p class="src">출처: Google Forms “2026 AELTS 번역 콘테스트 참가 후기 (응답)” 시트의 ‘응답 보기’ 탭 (응답 번호별 최종 응답 기준).</p>
+</footer>
+</div>
+
+<script>
+const EXP=["아주 좋았어요","좋았어요","그저 그랬어요","아쉬웠어요"];
+const EXPC=["#EE3B24","#F69A86","#FFFFFF","#1B1B1B"];
+const EXPT=["#FFFFFF","#1B1B1B","#1B1B1B","#FFFFFF"];
+const INT={"꼭":"꼭 참가할래요","아마":"아마도요","모름":"잘 모르겠어요"};
+const INTC={"꼭":"#EE3B24","아마":"#F69A86","모름":"#FFFFFF"};
+const INTT={"꼭":"#FFFFFF","아마":"#1B1B1B","모름":"#1B1B1B"};
+const TIME={"적당":"적당했어요","여유":"여유 있었어요"};
+const REASONS=["번역 실력 점검","교수님 · 친구 권유","재미 · 호기심","시상 · 상금","이력 · 포트폴리오"];
+const FORMATS=["영한 번역","문학 지문","영상 자막","한영 번역","AI 번역 후편집 부문","광고 · 마케팅 문구","뉴스 · 시사 지문"];
+const S=[["좋았어요",3,"적당",["번역 실력 점검","이력 · 포트폴리오","교수님 · 친구 권유"],["광고 · 마케팅 문구","AI 번역 후편집 부문"],"아마"],["좋았어요",4,"적당",["교수님 · 친구 권유"],["문학 지문","AI 번역 후편집 부문"],"꼭"],["좋았어요",3,"여유",["번역 실력 점검","시상 · 상금","이력 · 포트폴리오","교수님 · 친구 권유","재미 · 호기심"],["한영 번역","영한 번역","문학 지문"],"꼭"],["좋았어요",3,"여유",["번역 실력 점검","시상 · 상금","재미 · 호기심"],["한영 번역","영한 번역","문학 지문","뉴스 · 시사 지문","영상 자막","AI 번역 후편집 부문"],"꼭"],["아주 좋았어요",3,"적당",["번역 실력 점검","교수님 · 친구 권유","재미 · 호기심"],["한영 번역","영한 번역","문학 지문","AI 번역 후편집 부문"],"꼭"],["그저 그랬어요",3,"적당",["교수님 · 친구 권유"],["영한 번역","뉴스 · 시사 지문"],"모름"],["아주 좋았어요",3,"적당",["번역 실력 점검","시상 · 상금","교수님 · 친구 권유","재미 · 호기심"],["한영 번역","영한 번역","문학 지문","뉴스 · 시사 지문","광고 · 마케팅 문구","영상 자막","AI 번역 후편집 부문"],"꼭"],["좋았어요",3,"적당",["번역 실력 점검","교수님 · 친구 권유"],["한영 번역","영한 번역"],"아마"],["아주 좋았어요",4,"적당",["번역 실력 점검","교수님 · 친구 권유","재미 · 호기심"],["영한 번역","문학 지문","영상 자막"],"꼭"],["좋았어요",3,"적당",["교수님 · 친구 권유"],["영한 번역","영상 자막"],"모름"],["아주 좋았어요",4,"여유",["번역 실력 점검","시상 · 상금","재미 · 호기심"],["문학 지문","광고 · 마케팅 문구"],"꼭"],["좋았어요",3,"적당",["번역 실력 점검","이력 · 포트폴리오","교수님 · 친구 권유"],["문학 지문","영상 자막"],"꼭"],["아주 좋았어요",4,"적당",["시상 · 상금","교수님 · 친구 권유"],["영한 번역"],"꼭"],["좋았어요",2,"적당",["번역 실력 점검","시상 · 상금","교수님 · 친구 권유","재미 · 호기심"],["영한 번역","문학 지문","뉴스 · 시사 지문","영상 자막","AI 번역 후편집 부문"],"아마"],["좋았어요",3,"적당",["번역 실력 점검","시상 · 상금","교수님 · 친구 권유","재미 · 호기심"],["문학 지문","광고 · 마케팅 문구","영상 자막","AI 번역 후편집 부문"],"꼭"],["아주 좋았어요",3,"적당",["번역 실력 점검","교수님 · 친구 권유"],["문학 지문","광고 · 마케팅 문구","AI 번역 후편집 부문"],"꼭"],["아주 좋았어요",3,"여유",["번역 실력 점검","시상 · 상금","이력 · 포트폴리오","재미 · 호기심"],["영한 번역"],"꼭"],["좋았어요",4,"여유",["번역 실력 점검","교수님 · 친구 권유"],["광고 · 마케팅 문구","영상 자막"],"아마"],["아주 좋았어요",3,"여유",["시상 · 상금"],["광고 · 마케팅 문구","영상 자막"],"아마"],["좋았어요",3,"적당",["교수님 · 친구 권유","재미 · 호기심"],["영상 자막","AI 번역 후편집 부문"],"꼭"],["좋았어요",4,"적당",["번역 실력 점검","시상 · 상금","이력 · 포트폴리오"],["한영 번역","영한 번역","뉴스 · 시사 지문","광고 · 마케팅 문구"],"꼭"],["좋았어요",3,"적당",["번역 실력 점검","재미 · 호기심"],["뉴스 · 시사 지문"],"아마"],["좋았어요",3,"적당",["번역 실력 점검","교수님 · 친구 권유","재미 · 호기심"],["한영 번역","영한 번역","문학 지문","영상 자막"],"아마"],["아주 좋았어요",3,"적당",["번역 실력 점검","시상 · 상금","이력 · 포트폴리오","재미 · 호기심"],["한영 번역","영한 번역","문학 지문","광고 · 마케팅 문구","영상 자막","AI 번역 후편집 부문"],"꼭"],["좋았어요",4,"여유",["번역 실력 점검","시상 · 상금","이력 · 포트폴리오","재미 · 호기심"],["한영 번역","영한 번역","문학 지문","뉴스 · 시사 지문"],"아마"]]
+  .map(r=>({exp:r[0],diff:r[1],time:r[2],reasons:r[3],formats:r[4],intent:r[5]}));
+const GROUPS=[["전체",{"아주 좋았어요":12,"좋았어요":20,"그저 그랬어요":3,"아쉬웠어요":4},39],
+  ["설문 제출",{"아주 좋았어요":9,"좋았어요":15,"그저 그랬어요":1,"아쉬웠어요":0},25],
+  ["버튼만 클릭",{"아주 좋았어요":3,"좋았어요":5,"그저 그랬어요":2,"아쉬웠어요":4},14]];
+const QUOTES=[
+ {t:"전자기기 사용은 금지하더라도 지류 사전 사용은 허가해주시거나, 지문 내 활용된 단어집을 만들어 배부해주셨으면 합니다(모르거나 헷갈리는 단어를 아예 찾아볼 수 없었고, 제공된 단어로는 충분하지 않아 문장 자체를 이해할 수 없는 경우가 발생해 곤란했습니다).",exp:"좋았어요",intent:"아마",tag:"사전 · 단어집"},
+ {t:"영한 번역에서 특히 밑에 단어들 해석을 알려줄 정도로 어려운 단어가 없었다고 생각함. 봉숭아꽃은 영어 단어가 주어진 게 이해가 되는데 영한 번역에 뜻이 주어진 단어들이 쉬운 편이라 아쉬웠음. (특히status quo 같은 기본 단어)",exp:"좋았어요",intent:"꼭",tag:"어휘 주석"},
+ {t:"저희 학과에는 통역은 몰라도 번역을 해볼 기회는 별로 없었다고 생각하는데, 번역을 굉장히 하고 싶었던 입장으로서 너무 좋은 도전 기회였다고 생각합니다. 다음 대회도 여건이 된다면 꼭 참가하도 싶습니다.\n문학과 비문학 지문을 모두 다루는 것이 좋았습니다. 다음 대회에선 짧은 문학과 비문학 지문을 언어당 하나씩 번역하거나, 이번 지문보다 살짝 긴 정도의 지문을 번역해 봐도 괜찮을 것 같습니다.\n\n먼저 신청해놓고 30분 지각해서 죄송했습니다...",exp:"좋았어요",intent:"꼭",tag:"지문 구성 · 길이",solid:1},
+ {t:"시간을 고려한 지문의 난이도가 적정했던 것 같아 좋았습니다!! 다음에도 참가하고 싶어요.",exp:"좋았어요",intent:"꼭",tag:"난이도 · 시간",solid:1},
+ {t:"미리 주제에 대해 알 수 있으면 좋을 것 같아요!",exp:"좋았어요",intent:"꼭",tag:"사전 안내"},
+ {t:"재밌었어요",exp:"좋았어요",intent:"아마",tag:"긍정"}];
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pct=(v,n)=>n?Math.round(v/n*100):0;
+function ringSVG(parts,width){
+  const tot=parts.reduce((a,p)=>a+p[0],0)||1;let off=0;
+  return `<svg viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="15.915" fill="none" stroke="#1B1B1B" stroke-width="${width+1.2}"/><circle cx="21" cy="21" r="15.915" fill="none" stroke="#E6F1F8" stroke-width="${width}"/>`+
+   parts.filter(p=>p[0]>0).map(([v,c])=>{const len=v/tot*100;const L=Math.max(len-0.7,0);const s=`<circle cx="21" cy="21" r="15.915" fill="none" stroke="${c}" stroke-width="${width}" stroke-dasharray="${L} ${100-L}" stroke-dashoffset="${-off}"/>`;off+=len;return s;}).join("")+`</svg>`;
+}
+const all=GROUPS[0][1];
+$("donut").innerHTML=ringSVG(EXP.map((e,i)=>[all[e],EXPC[i]]),7)+`<div class="center"><b>82%</b><span>긍정 평가<br>(전체 39명)</span></div>`;
+$("exp").innerHTML=GROUPS.map(([name,c,n])=>`<div class="stackrow"><div class="lbl">${name}<small>n = ${n}</small></div>
+ <div class="stack">${EXP.map((e,i)=>c[e]?`<span style="flex-grow:${c[e]};background:${EXPC[i]};color:${EXPT[i]}" title="${e}: ${c[e]}명 (${pct(c[e],n)}%)">${c[e]/n>=.1?pct(c[e],n)+"%":""}</span>`:"").join("")}</div></div>`).join("");
+$("expLegend").innerHTML=EXP.map((e,i)=>`<span><i style="background:${EXPC[i]}"></i>${e} <b>${all[e]}</b></span>`).join("");
+
+const state={exp:"all",intent:"all"};
+function chips(el,key,opts){
+  el.innerHTML=opts.map(([v,l])=>`<button type="button" data-v="${v}" aria-pressed="${v==="all"}">${l}</button>`).join("");
+  el.addEventListener("click",ev=>{const b=ev.target.closest("button");if(!b)return;state[key]=b.dataset.v;
+    el.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));render();});
+}
+chips($("fExp"),"exp",[["all","전체"],["아주 좋았어요","아주 좋았어요"],["좋았어요","좋았어요"],["그저 그랬어요","그저 그랬어요"]]);
+chips($("fInt"),"intent",[["all","전체"],["꼭","꼭"],["아마","아마도"],["모름","잘 모르겠어요"]]);
+
+function hbars(el,items,n,color){
+  el.innerHTML=items.map(([l,v],k)=>`<div class="hb${k===0&&v>0?" top1":""}"><span>${esc(l)}</span>
+   <div class="t" title="${esc(l)}: ${v}명"><div class="f" style="width:${n?v/n*100:0}%;background:${k===0?"#EE3B24":color}"></div></div>
+   <span class="c"><b>${v}</b> · ${pct(v,n)}%</span></div>`).join("");
+}
+let sortK=null,sortDir=1;
+function render(){
+  const R=S.filter(r=>(state.exp==="all"||r.exp===state.exp)&&(state.intent==="all"||r.intent===state.intent));
+  const n=R.length; $("nShown").textContent=n;
+  const dc=[1,2,3,4,5].map(k=>R.filter(r=>r.diff===k).length), dmax=Math.max(1,...dc);
+  $("diff").innerHTML=dc.map((v,i)=>`<div class="col"><span class="v">${v}</span><div class="bar${v?"":" zero"}" style="height:${v/dmax*100}%" title="${i+1}점: ${v}명"></div><span class="k">${i+1}점</span></div>`).join("");
+  $("avgDiff").textContent=n?(R.reduce((a,r)=>a+r.diff,0)/n).toFixed(2):"–";
+  const tv=[["적당",R.filter(r=>r.time==="적당").length,"#EE3B24"],["여유",R.filter(r=>r.time==="여유").length,"#F69A86"],["부족",0,"#1B1B1B"]];
+  $("time").innerHTML=tv.map(([k,v,c])=>`<div class="splitrow"><div class="top"><span>${k==="부족"?"부족했어요":TIME[k]}</span><span><b>${v}</b>명 · ${pct(v,n)}%</span></div><div class="track"><div class="fill" style="width:${pct(v,n)}%;background:${c}"></div></div></div>`).join("");
+  const iv=["꼭","아마","모름"].map(k=>[k,R.filter(r=>r.intent===k).length]);
+  const yes=iv[0][1]+iv[1][1];
+  $("intent").innerHTML=`<div class="ring">${ringSVG(iv.map(([k,v])=>[v,INTC[k]]),7)}<div class="c"><b>${pct(yes,n)}%</b><span>꼭 + 아마도</span></div></div>
+   <div class="ilist">${iv.map(([k,v])=>`<div><i style="background:${INTC[k]}"></i>${INT[k]}<b>${v}</b></div>`).join("")}</div>`;
+  const cnt=(keys,f)=>keys.map(k=>[k,R.filter(r=>r[f].includes(k)).length]).sort((a,b)=>b[1]-a[1]);
+  hbars($("reasons"),cnt(REASONS,"reasons"),n,"#F69A86");
+  hbars($("formats"),cnt(FORMATS,"formats"),n,"#F69A86");
+  let T=R.slice();
+  if(sortK){const g=r=>sortK==="exp"?EXP.indexOf(r.exp):sortK==="intent"?["꼭","아마","모름"].indexOf(r.intent):Array.isArray(r[sortK])?r[sortK].length:r[sortK];
+    T.sort((a,b)=>(g(a)>g(b)?1:g(a)<g(b)?-1:0)*sortDir);}
+  document.querySelector("#tbl tbody").innerHTML=T.length?T.map(r=>{const i=EXP.indexOf(r.exp);return `<tr>
+   <td><span class="pill" style="background:${EXPC[i]};color:${EXPT[i]}">${r.exp}</span></td>
+   <td><span class="dscore">${r.diff}</span></td><td style="white-space:nowrap">${TIME[r.time]}</td>
+   <td><span class="pill" style="background:${INTC[r.intent]};color:${INTT[r.intent]}">${INT[r.intent]}</span></td>
+   <td>${r.reasons.map(esc).join(", ")}</td><td>${r.formats.map(esc).join(", ")}</td></tr>`}).join("")
+   :`<tr><td colspan="6" class="note">이 조건에 해당하는 응답이 없습니다. 필터를 “전체”로 바꿔 보세요.</td></tr>`;
+}
+document.querySelectorAll("#tbl th").forEach(th=>th.addEventListener("click",()=>{
+  const k=th.dataset.k; sortDir=sortK===k?-sortDir:1; sortK=k;
+  document.querySelectorAll("#tbl th").forEach(x=>x.removeAttribute("aria-sort"));
+  th.setAttribute("aria-sort",sortDir>0?"ascending":"descending"); render();}));
+$("quotes").innerHTML=QUOTES.map(q=>`<figure class="q${q.solid?" solid":""}"><p>${esc(q.t)}</p><div class="meta"><span>${esc(q.tag)}</span><span>${q.exp}</span><span>${INT[q.intent]}</span></div></figure>`).join("");
+render();
+</script>
+
+</body>
+</html>
