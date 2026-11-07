@@ -90,6 +90,7 @@ svg [tabindex]:focus,svg [tabindex]:focus-visible{outline:none}
 .av small{display:block;font-size:9px;font-weight:500;margin-top:1px;line-height:1;font-family:'Noto Sans KR',sans-serif}
 .av.av-star{font-size:22px;background:#111;color:#F6C76A}
 .card.private .av{background:#fff;color:var(--ink)}
+.card .av.pick{background:#EF4E36;color:#fff;border-color:var(--ink)}
 .cname{font-weight:900;font-size:17.5px;line-height:1.25}
 .card.private .cname{font-weight:400;color:var(--muted)}
 .crole{font-size:13.5px;color:var(--muted);margin-top:2px}
@@ -186,8 +187,22 @@ body.intro-on{overflow:hidden}
  <div class="scrim" id="scrim"></div><aside class="panel" aria-live="polite"><div class="phead" id="phead"></div><div class="pbody" id="pbody"></div></aside>
 </div>
 <script>
-const ALUMNI=[{"key": "khu", "id": "", "org": "", "role": "", "now": "", "full": true, "star": true, "name": "박해인 (동문회장)", "sub": "경희대학교 응통과 부교수"}, {"key": "seoul_etc", "id": "16", "org": "프리랜서 방송인", "role": "아나운서, 경제 캐스터", "now": "뉴욕 방송국, 홍콩 베이스 항공사 승무원을 거쳐 현재 한국에서 방송인으로 활동"}, {"key": "hri", "id": "19", "org": "현대경제연구원", "role": "연구원", "now": "", "full": true, "name": "심유진"}, {"key": "my", "id": "16", "org": "BASF 바스프", "role": "창고비 마감", "now": "창고 비용 마감·요율 검증, SAP 기반 월별 물동량 대사 및 PR/PO 생성 업무 담당"}, {"key": "court", "id": "16", "org": "서울동부지방법원", "role": "재판연구원", "now": "경희대 법학전문대학원 졸업 후 변호사 자격 취득, 재판연구원으로 재직"}, {"key": "incheon", "id": "10", "org": "경찰청", "role": "수사", "now": ""}, {"key": "arirang", "id": "17", "org": "아리랑TV", "role": "보도기자", "now": "외교안보팀 국방부 출입기자"}, {"key": "hwaseong", "id": "20", "org": "대안학교", "role": "1,2학년 담임", "now": "파닉스·영단어·문법 지도, 도덕과 미술을 영어로 수업"}, {"key": "hwaseong", "id": "18", "org": "수원대학교 국제협력처", "role": "교직원", "now": "유학생 유치·관리, 입국 교환학생 관리, 교육국제화역량 인증제 준비 업무 담당"}, {"key": "sejong", "id": "11", "org": "한국개발연구원", "role": "전문연구원", "now": "국제개발협력 연구", "full": true, "name": "이세훈"}, {"key": "au", "id": "19", "org": "University of Wollongong", "role": "간호 석사", "now": "호주 교환학생 이후 호주 영주권 유학 준비 중"}, {"key": "seoul_etc", "id": "12", "org": "국민연금공단", "role": "사무직", "now": "국민연금공단 일반상담(반추납 등) 업무", "full": true, "name": "김준호"}, {"key": "mullae", "id": "12", "org": "삼정노무법인", "role": "공인노무사", "now": "기업자문, 노동사건, HR 컨설팅, 강의 등 공인노무사 업무 전반 수행"}, {"key": "hwaseong", "id": "16", "org": "삼성SDI", "role": "영업", "now": "여러 회사를 거쳐 현재 삼성SDI에서 현대차 대상 영업", "full": true, "name": "이윤이"}, {"key": "yeoksam", "id": "11", "org": "GS글로벌", "role": "해외영업", "now": "에너지 트레이딩", "full": true, "name": "심찬"}, {"key": "mofa", "id": "10", "org": "외교부", "role": "외교행정", "now": "한국 복귀 후 외빈 방한 및 대통령 순방 행사 의전 업무"}, {"key": "commtech", "id": "11", "org": "컴텍아시아코리아", "role": "데이터센터 커미셔닝", "now": "데이터센터 건설현장 전기·기계 부문 성능검증"}, {"key": "yeoksam", "id": "14", "org": "삼정KPMG", "role": "회계사", "now": "금융기관 재무자문 및 외부감사"}, {"key": "nh", "id": "11", "org": "농협은행(농협중앙회)", "role": "Investment Banking", "now": "해외 사모펀드·해외 인수금융 출자 및 해외기업 여신 업무"}, {"key": "eca", "id": "09", "org": "(주)이씨에이시스템", "role": "영업", "now": "견적 발송, 계약 서류 처리, 수출입 관리 업무"}, {"key": "siemens", "id": "11", "org": "지멘스인더스트리소프트웨어", "role": "통번역사", "now": "CAD/PLM 플랫폼 구축 프로젝트 통번역"}, {"key": "nj", "id": "20", "org": "한진 미주법인 뉴져지 지점", "role": "포워딩", "now": "해상 수출입 포워딩·현지 배송·고객 응대, 미국 서부 3PL 입출고·재고관리", "full": true, "name": "전재욱"}, {"key": "visa", "id": "14", "org": "비자코리아", "role": "AE (Account Executive)", "now": "해외 브랜드사 세일즈 및 사업개발, 봉사활동도 활발히 참여"}, {"key": "mullae", "id": "14", "org": "GS리테일(홈쇼핑)", "role": "인사(HR)", "now": "채용, 육성 등 HR 업무 전반"}, {"key": "anyang", "id": "16", "org": "한국애브비", "role": "HR", "now": "C&B 및 조직관리(Organization Management) 업무"}, {"key": "mbc", "id": "18", "org": "MBC", "role": "한영 통번역사", "now": "임원진 전담 통역, 방송·제작 현장 및 신사업 관련 한영 통번역"}, {"key": "seoul_etc", "id": "19", "org": "하나은행", "role": "영업점 업무", "now": "은행 영업점에서 외환 상담 및 영업, 주기적으로 자격증 취득", "full": true, "name": "김민정"}, {"key": "kal", "id": "18", "org": "대한항공", "role": "화물운송팀", "now": ""}, {"key": "seoul_etc", "id": "19", "org": "우리은행", "role": "개인대출", "now": "지점에서 근무"}, {"key": "seoul_etc", "id": "20", "org": "회사", "role": "인사", "now": "그룹·계열사 채용, AI 활용 시스템 도입, 조직문화 기획·운영 등 인사 업무", "full": true, "name": "이윤서"}, {"key": "khu", "id": "20", "org": "경희대학교 일반대학원", "role": "대학원생", "now": "미국 박사과정 지원 중"}, {"key": "lg", "id": "15", "org": "LG전자", "role": "플랫폼 서비스기획", "now": ""}, {"key": "hybe", "id": "11", "org": "HYBE", "role": "음악저작권 관리", "now": "회사에서 제작되는 음악의 저작권 관리 전반 담당", "full": true, "name": "최재원"}, {"key": "seoul_etc", "id": "14", "org": "프리랜서", "role": "영어MC", "now": "외국계 기업 마케터를 거쳐 현재 프리랜서 한영 진행자로 활동"}, {"key": "sidae", "id": "11", "org": "시대인재", "role": "영어강사", "now": "수능 영어 강사로 근무"}, {"key": "khu", "id": "18", "org": "경희대학교 일반대학원 빅데이터응용학과", "role": "석박통합과정", "now": "빅데이터응용학 공학 석박통합과정 3년차 (Social Computing, Deep Learning, Network Science)", "full": true, "name": "오석준"}, {"key": "sejong", "id": "04", "org": "재정경제부", "role": "통번역 전문관", "now": "재정경제부 대외경제 업무 통번역"}, {"key": "anyang", "id": "02", "org": "위버스컴퍼니", "role": "UX Writer", "now": "글로벌 플랫폼의 UX 담당", "full": true, "name": "김지은"}, {"key": "seoul_etc", "id": "21", "org": "", "role": "취업 준비", "now": "외교 · 국제교류 · 대외협력 분야 취업 준비 중"}, {"key": "lginnotek", "id": "10", "org": "LG이노텍", "role": "해외인사", "now": "해외법인 글로벌 인사 업무 담당"}, {"key": "yg", "id": "06", "org": "YG Entertainment", "role": "투어매니저", "now": "해외 투어 운영 업무 담당", "full": true, "name": "김현지"}, {"key": "ny", "id": "05", "org": "", "role": "", "now": "", "full": true, "name": "김현주"}, {"key": "oliveyoung", "id": "21", "org": "CJ올리브영", "role": "MD", "now": "올리브영 글로벌 MD, 역직구몰 기획전 및 고객사 소통"}, {"key": "hufs", "id": "22", "org": "한국외대 통번역대학원", "role": "대학원생", "now": "현대차 협력사 근무 후 한국외대 통번역대학원 진학"}, {"key": "koica", "id": "17", "org": "KOICA", "role": "", "now": ""}, {"key": "gwangju", "id": "00", "org": "광주교육대학교", "role": "조교수", "now": "예비 초등교사 대상 초등영어교육 강의", "full": true, "name": "송자영"}, {"key": "mofa", "id": "15", "org": "김앤장법률사무소", "role": "컨설턴트", "now": "금융기관 내부통제 컨설팅"}, {"key": "hufs", "id": "20", "org": "한국외대 통번역대학원", "role": "대학원생", "now": "통역 · 번역 공부 중"}, {"key": "seoul_etc", "id": "05", "org": "프리랜서", "role": "국제회의통역사", "now": "국제회의통역", "full": true, "name": "김범열"}, {"key": "gyeonggi", "id": "06", "org": "", "role": "말레이-인도네시아어 통번역", "now": "한국외대 인도-아세안어문번역학과 마인번역학 박사수료, 말레이-인도네시아어 통번역"}, {"key": "gwangmyeong", "id": "19", "org": "11번가", "role": "인하우스 통번역사", "now": "사내 회의 통역(순차 · 동시) 및 문서 번역 전담"}, {"key": "cheonan", "id": "04", "org": "주식회사 엠케이", "role": "사내이사", "now": "가맹사업", "full": true, "name": "진원주"}];
+const ALUMNI=[{"key": "khu", "id": "", "org": "", "role": "", "now": "", "full": true, "star": true, "name": "박해인 (동문회장)", "sub": "경희대학교 응통과 부교수"}, {"key": "seoul_etc", "id": "16", "org": "프리랜서 방송인", "role": "아나운서, 경제 캐스터", "now": "뉴욕 방송국, 홍콩 베이스 항공사 승무원을 거쳐 현재 한국에서 방송인으로 활동"}, {"key": "hri", "id": "19", "org": "현대경제연구원", "role": "연구원", "now": "", "full": true, "name": "심유진"}, {"key": "my", "id": "16", "org": "BASF 바스프", "role": "창고비 마감", "now": "창고 비용 마감·요율 검증, SAP 기반 월별 물동량 대사 및 PR/PO 생성 업무 담당"}, {"key": "court", "id": "16", "org": "서울동부지방법원", "role": "재판연구원", "now": "경희대 법학전문대학원 졸업 후 변호사 자격 취득, 재판연구원으로 재직", "pick": true}, {"key": "incheon", "id": "10", "org": "경찰청", "role": "수사", "now": "", "pick": true}, {"key": "arirang", "id": "17", "org": "아리랑TV", "role": "보도기자", "now": "외교안보팀 국방부 출입기자", "pick": true}, {"key": "hwaseong", "id": "20", "org": "대안학교", "role": "1,2학년 담임", "now": "파닉스·영단어·문법 지도, 도덕과 미술을 영어로 수업"}, {"key": "hwaseong", "id": "18", "org": "수원대학교 국제협력처", "role": "교직원", "now": "유학생 유치·관리, 입국 교환학생 관리, 교육국제화역량 인증제 준비 업무 담당"}, {"key": "sejong", "id": "11", "org": "한국개발연구원", "role": "전문연구원", "now": "국제개발협력 연구", "full": true, "name": "이세훈"}, {"key": "au", "id": "19", "org": "University of Wollongong", "role": "간호 석사", "now": "호주 교환학생 이후 호주 영주권 유학 준비 중"}, {"key": "seoul_etc", "id": "12", "org": "국민연금공단", "role": "사무직", "now": "국민연금공단 일반상담(반추납 등) 업무", "full": true, "name": "김준호"}, {"key": "mullae", "id": "12", "org": "삼정노무법인", "role": "공인노무사", "now": "기업자문, 노동사건, HR 컨설팅, 강의 등 공인노무사 업무 전반 수행"}, {"key": "hwaseong", "id": "16", "org": "삼성SDI", "role": "영업", "now": "여러 회사를 거쳐 현재 삼성SDI에서 현대차 대상 영업", "full": true, "name": "이윤이", "pick": true}, {"key": "yeoksam", "id": "11", "org": "GS글로벌", "role": "해외영업", "now": "에너지 트레이딩", "full": true, "name": "심찬"}, {"key": "mofa", "id": "10", "org": "외교부", "role": "외교행정", "now": "한국 복귀 후 외빈 방한 및 대통령 순방 행사 의전 업무", "pick": true}, {"key": "commtech", "id": "11", "org": "컴텍아시아코리아", "role": "데이터센터 커미셔닝", "now": "데이터센터 건설현장 전기·기계 부문 성능검증"}, {"key": "yeoksam", "id": "14", "org": "삼정KPMG", "role": "회계사", "now": "금융기관 재무자문 및 외부감사"}, {"key": "nh", "id": "11", "org": "농협은행(농협중앙회)", "role": "Investment Banking", "now": "해외 사모펀드·해외 인수금융 출자 및 해외기업 여신 업무"}, {"key": "eca", "id": "09", "org": "(주)이씨에이시스템", "role": "영업", "now": "견적 발송, 계약 서류 처리, 수출입 관리 업무"}, {"key": "siemens", "id": "11", "org": "지멘스인더스트리소프트웨어", "role": "통번역사", "now": "CAD/PLM 플랫폼 구축 프로젝트 통번역"}, {"key": "nj", "id": "20", "org": "한진 미주법인 뉴져지 지점", "role": "포워딩", "now": "해상 수출입 포워딩·현지 배송·고객 응대, 미국 서부 3PL 입출고·재고관리", "full": true, "name": "전재욱"}, {"key": "visa", "id": "14", "org": "비자코리아", "role": "AE (Account Executive)", "now": "해외 브랜드사 세일즈 및 사업개발, 봉사활동도 활발히 참여"}, {"key": "mullae", "id": "14", "org": "GS리테일(홈쇼핑)", "role": "인사(HR)", "now": "채용, 육성 등 HR 업무 전반"}, {"key": "anyang", "id": "16", "org": "한국애브비", "role": "HR", "now": "C&B 및 조직관리(Organization Management) 업무"}, {"key": "mbc", "id": "18", "org": "MBC", "role": "한영 통번역사", "now": "임원진 전담 통역, 방송·제작 현장 및 신사업 관련 한영 통번역"}, {"key": "seoul_etc", "id": "19", "org": "하나은행", "role": "영업점 업무", "now": "은행 영업점에서 외환 상담 및 영업, 주기적으로 자격증 취득", "full": true, "name": "김민정"}, {"key": "kal", "id": "18", "org": "대한항공", "role": "화물운송팀", "now": "", "pick": true}, {"key": "seoul_etc", "id": "19", "org": "우리은행", "role": "개인대출", "now": "지점에서 근무"}, {"key": "seoul_etc", "id": "20", "org": "회사", "role": "인사", "now": "그룹·계열사 채용, AI 활용 시스템 도입, 조직문화 기획·운영 등 인사 업무", "full": true, "name": "이윤서"}, {"key": "khu", "id": "20", "org": "경희대학교 일반대학원", "role": "대학원생", "now": "미국 박사과정 지원 중"}, {"key": "lg", "id": "15", "org": "LG전자", "role": "플랫폼 서비스기획", "now": ""}, {"key": "hybe", "id": "11", "org": "HYBE", "role": "음악저작권 관리", "now": "회사에서 제작되는 음악의 저작권 관리 전반 담당", "full": true, "name": "최재원"}, {"key": "seoul_etc", "id": "14", "org": "프리랜서", "role": "영어MC", "now": "외국계 기업 마케터를 거쳐 현재 프리랜서 한영 진행자로 활동"}, {"key": "sidae", "id": "11", "org": "시대인재", "role": "영어강사", "now": "수능 영어 강사로 근무"}, {"key": "khu", "id": "18", "org": "경희대학교 일반대학원 빅데이터응용학과", "role": "석박통합과정", "now": "빅데이터응용학 공학 석박통합과정 3년차 (Social Computing, Deep Learning, Network Science)", "full": true, "name": "오석준", "pick": true}, {"key": "sejong", "id": "04", "org": "재정경제부", "role": "통번역 전문관", "now": "재정경제부 대외경제 업무 통번역"}, {"key": "anyang", "id": "02", "org": "위버스컴퍼니", "role": "UX Writer", "now": "글로벌 플랫폼의 UX 담당", "full": true, "name": "김지은"}, {"key": "seoul_etc", "id": "21", "org": "", "role": "취업 준비", "now": "외교 · 국제교류 · 대외협력 분야 취업 준비 중"}, {"key": "lginnotek", "id": "10", "org": "LG이노텍", "role": "해외인사", "now": "해외법인 글로벌 인사 업무 담당"}, {"key": "yg", "id": "06", "org": "YG Entertainment", "role": "투어매니저", "now": "해외 투어 운영 업무 담당", "full": true, "name": "김현지", "pick": true}, {"key": "ny", "id": "05", "org": "", "role": "", "now": "", "full": true, "name": "김현주"}, {"key": "oliveyoung", "id": "21", "org": "CJ올리브영", "role": "MD", "now": "올리브영 글로벌 MD, 역직구몰 기획전 및 고객사 소통", "pick": true}, {"key": "hufs", "id": "22", "org": "한국외대 통번역대학원", "role": "대학원생", "now": "현대차 협력사 근무 후 한국외대 통번역대학원 진학"}, {"key": "koica", "id": "17", "org": "KOICA", "role": "", "now": "", "pick": true}, {"key": "gwangju", "id": "00", "org": "광주교육대학교", "role": "조교수", "now": "예비 초등교사 대상 초등영어교육 강의", "full": true, "name": "송자영"}, {"key": "mofa", "id": "15", "org": "김앤장법률사무소", "role": "컨설턴트", "now": "금융기관 내부통제 컨설팅", "pick": true}, {"key": "hufs", "id": "20", "org": "한국외대 통번역대학원", "role": "대학원생", "now": "통역 · 번역 공부 중"}, {"key": "seoul_etc", "id": "05", "org": "프리랜서", "role": "국제회의통역사", "now": "국제회의통역", "full": true, "name": "김범열"}, {"key": "gyeonggi", "id": "06", "org": "", "role": "말레이-인도네시아어 통번역", "now": "한국외대 인도-아세안어문번역학과 마인번역학 박사수료, 말레이-인도네시아어 통번역"}, {"key": "gwangmyeong", "id": "19", "org": "11번가", "role": "인하우스 통번역사", "now": "사내 회의 통역(순차 · 동시) 및 문서 번역 전담"}, {"key": "cheonan", "id": "04", "org": "주식회사 엠케이", "role": "사내이사", "now": "가맹사업", "full": true, "name": "진원주"}];
 
+
+/* ---------- live data from Google Sheet (Apps Script) ---------- */
+const SHEET_URL="";
+const KNOWN_TS=new Set(["2026-10-28T12:20:21", "2026-10-28T12:22:02", "2026-10-28T12:53:08", "2026-10-28T13:14:14", "2026-10-28T13:18:26", "2026-10-28T13:35:33", "2026-10-28T13:42:43", "2026-10-28T13:50:15", "2026-10-28T14:05:11", "2026-10-28T17:35:22", "2026-10-28T17:44:48", "2026-10-28T17:59:05", "2026-10-28T18:12:08", "2026-10-28T18:25:15", "2026-10-28T19:29:12", "2026-10-28T20:03:14", "2026-10-28T20:07:12", "2026-10-28T20:07:49", "2026-10-28T20:25:37", "2026-10-28T21:41:00", "2026-10-28T22:01:26", "2026-10-29T00:07:12", "2026-10-29T09:01:21", "2026-10-29T09:06:46", "2026-10-29T09:38:30", "2026-10-29T10:11:47", "2026-10-29T10:35:21", "2026-10-29T11:04:12", "2026-10-29T11:06:49", "2026-10-29T12:09:49", "2026-10-29T13:21:01", "2026-10-29T15:30:23", "2026-10-29T17:07:51", "2026-10-29T19:58:36", "2026-10-30T11:02:51", "2026-10-30T12:07:40", "2026-10-30T12:46:03", "2026-10-30T14:13:31", "2026-10-30T15:10:08", "2026-10-30T17:36:54", "2026-10-31T03:01:45", "2026-10-31T13:12:05", "2026-10-31T13:46:38", "2026-11-01T00:11:48", "2026-11-01T17:11:03", "2026-11-01T21:20:51", "2026-11-03T09:29:59", "2026-11-03T22:49:06", "2026-11-05T07:24:00", "2026-11-05T12:09:20", "2026-11-06T23:16:24"]);
+const NEWROWS=[];
+async function loadSheet(){
+  if(!/^https:/.test(SHEET_URL))return;
+  const ctl=new AbortController();const tm=setTimeout(()=>ctl.abort(),4500);
+  const r=await fetch(SHEET_URL,{signal:ctl.signal});clearTimeout(tm);
+  const j=await r.json();(j.rows||[]).forEach(x=>{if(x&&x.ts&&!KNOWN_TS.has(x.ts))NEWROWS.push(x);});}
+const CITY_KEYS=[[/서울|서욺|seoul/i,"seoul"],[/인천|incheon/i,"incheon"],[/안양/,"anyang"],[/화성|동탄/,"hwaseong"],[/광명/,"gwangmyeong"],[/세종/,"sejong"],[/광주/,"gwangju"],[/천안/,"cheonan"],[/뉴저지|뉴져지|new ?jersey/i,"nj"],[/뉴욕|new ?york/i,"ny"],[/말레이시아|malaysia/i,"my"],[/울릉공|호주|wollongong|australia/i,"au"],[/경기/,"gyeonggi"]];
+const cityKey=c=>{for(const[re,k]of CITY_KEYS)if(re.test(c||""))return k;return "other";};
+loadSheet().catch(()=>{}).finally(()=>MAIN());
+function MAIN(){
 
 const NS="http://www.w3.org/2000/svg";
 const el=(t,a={},p)=>{const e=document.createElementNS(NS,t);for(const k in a)if(a[k]!=null)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;};
@@ -251,10 +266,51 @@ const PINS={
  hufs:   {n:19,name:"한국외대 통번역대학원",area:"동대문구 이문동 일대",ll:[127.12,37.5915],tag:[-70,24]},
  lg:     {n:12,name:"LG전자",area:"영등포구 여의도 일대 (본사 기준)",ll:[126.928,37.528],tag:[30,30]},
 };
+
+const OUTPINS={
+ incheon:{name:"경찰청",area:"인천 거주",ll:[126.73,37.52],tag:[12,-32]},
+ kal:{name:"대한항공",area:"인천 근무",ll:[126.727,37.462],tag:[-12,12]},
+ anyang:{name:"한국애브비 · 위버스컴퍼니",area:"안양 거주",ll:[126.955,37.394],tag:[14,-10]},
+ gwangmyeong:{name:"11번가",area:"광명 근무 · 유플래닛 타워",ll:[126.885,37.417],tag:[-62,14]},
+ koica:{name:"KOICA",area:"성남 · 본부 기준",ll:[127.105,37.433],tag:[-92,16]},
+ hwaseong:{name:"수원대학교 · 삼성SDI · 대안학교 ↓",area:"화성 · 동탄 거주 · 지도 남쪽 약 15km",ll:[127.07,37.36],tag:[-300,-30]}
+};
+/* ---------- add new sheet rows (live) ---------- */
+const NEWKEYS=new Set();
+{const norm=s=>String(s||"").replace(/\s|\(주\)|주식회사|㈜/g,"").toLowerCase();
+ const inSeoulBox=(lo,la)=>lo>126.76&&lo<127.19&&la>37.41&&la<37.72;
+ const BASE_PINS=Object.keys(PINS);let dn=0;
+ NEWROWS.forEach(r=>{
+  const a={key:"",id:String(r.id||"").padStart(2,"0"),org:r.org||"",role:r.role||"",now:r.now||""};
+  if(r.full){a.full=true;a.name=r.name||"";}
+  let k=cityKey(r.city);
+  if(k==="seoul"){
+    const no=norm(a.org);
+    let hit=no&&Object.keys(PINS).find(pk=>PINS[pk].name.split(" · ").some(n=>norm(n)===no));
+    if(!hit&&r.status==="ok"&&inSeoulBox(+r.lng,+r.lat)){
+      const [x,y]=P(+r.lng,+r.lat);
+      hit=Object.keys(PINS).find(pk=>{const[px,py]=P(...PINS[pk].ll);return Math.hypot(px-x,py-y)<6;});
+      if(hit){if(!PINS[hit].name.split(" · ").some(n=>norm(n)===no))PINS[hit].name+=" · "+a.org;}
+      else{hit="dyn"+(++dn);PINS[hit]={n:0,name:a.org,area:r.area||"서울",ll:[+r.lng,+r.lat],tag:null};}
+    }
+    k=hit||"seoul_etc";
+  }else if(k==="other"){a.role=[a.role,r.city].filter(Boolean).join(" · ");}
+  a.key=k;NEWKEYS.add(k);ALUMNI.push(a);});
+ Object.keys(OUTPINS).forEach(k=>{if(!NEWKEYS.has(k))return;const os=[...new Set(ALUMNI.filter(x=>x.key===k).map(x=>orgName(x.org)))];OUTPINS[k].name=os.join(" · ")+(k==="hwaseong"?" ↓":"");});
+ /* automatic label placement for new pins */
+ const boxes=[];const ov=(a,b)=>Math.max(0,Math.min(a[0]+a[2],b[0]+b[2])-Math.max(a[0],b[0]))*Math.max(0,Math.min(a[1]+a[3],b[1]+b[3])-Math.max(a[1],b[1]));
+ Object.values(PINS).forEach(p=>{const[x,y]=P(...p.ll);boxes.push([x-11,y-31,22,32]);if(p.tag)boxes.push([x+p.tag[0],y+p.tag[1],tw(p.name)+42,22]);});
+ {const[x,y]=P(127.052,37.597);boxes.push([x-51,y-110,150,140]);}
+ Object.values(OUTPINS).forEach(p=>{const[x,y]=P(...p.ll);boxes.push([x-11,y-31,22,32]);boxes.push([x+p.tag[0],y+p.tag[1],tw(p.name)+42,22]);});
+ Object.entries(PINS).filter(([k,p])=>!p.tag).forEach(([k,p])=>{const[x,y]=P(...p.ll),w=tw(p.name)+42;
+  const C=[[14,-34],[14,6],[-w-14,-34],[-w-14,6],[-w/2,-58],[-w/2,10],[22,-14],[-w-22,-14],[24,-60],[-w-24,-60],[24,30],[-w-24,30],[-w/2,-84],[-w/2,36]];
+  let best=C[0],bs=1e9;C.forEach((c,i)=>{const b=[x+c[0],y+c[1],w,22];const s=boxes.reduce((t,o)=>t+ov(b,o),0)+i*2;if(s<bs){bs=s;best=c;}});
+  p.tag=best;boxes.push([x+best[0],y+best[1],w,22]);});
+}
 const EDGES={
  seoul_etc:{l1:"서울",l2:"근무지 미표시",x:176,y:696,r:46,etc:true},
 };
-const TITLES={...Object.fromEntries(Object.entries(PINS).map(([k,v])=>[k,v.name])),seoul_etc:"서울 · 근무지 미표시",khu:"경희대학교",incheon:"인천",kal:"대한항공",anyang:"안양",hwaseong:"화성 · 동탄",sejong:"세종",gwangju:"광주",cheonan:"천안",gyeonggi:"경기 · 지역 미기재",koica:"KOICA",gwangmyeong:"11번가",ny:"미국 뉴욕",nj:"미국 뉴저지",my:"말레이시아",au:"호주 울릉공"};
+const TITLES={...Object.fromEntries(Object.entries(PINS).map(([k,v])=>[k,v.name])),seoul_etc:"서울 · 근무지 미표시",khu:"경희대학교",incheon:"인천",kal:"대한항공",anyang:"안양",hwaseong:"화성 · 동탄",sejong:"세종",gwangju:"광주",cheonan:"천안",gyeonggi:"경기 · 지역 미기재",other:"기타 지역",koica:"KOICA",gwangmyeong:"11번가",ny:"미국 뉴욕",nj:"미국 뉴저지",my:"말레이시아",au:"호주 울릉공"};
 const byKey={};ALUMNI.forEach(a=>{(byKey[a.key]??=[]).push(a);});
 const marks=document.getElementById("marks"),leaders=document.getElementById("leaders"),edges=document.getElementById("edges");
 const NODES={};
@@ -303,14 +359,6 @@ Object.entries(PINS).forEach(([k,p])=>{const[x,y]=P(...p.ll),n=(byKey[k]||[]).le
   NODES[k]=g;bind(g,k);});
 
 /* ---------- nearby cities as pins on the Seoul map ---------- */
-const OUTPINS={
- incheon:{name:"경찰청",area:"인천 거주",ll:[126.73,37.52],tag:[12,-32]},
- kal:{name:"대한항공",area:"인천 근무",ll:[126.727,37.462],tag:[-12,12]},
- anyang:{name:"한국애브비 · 위버스컴퍼니",area:"안양 거주",ll:[126.955,37.394],tag:[14,-10]},
- gwangmyeong:{name:"11번가",area:"광명 근무 · 유플래닛 타워",ll:[126.885,37.417],tag:[-62,14]},
- koica:{name:"KOICA",area:"성남 · 본부 기준",ll:[127.105,37.433],tag:[-92,16]},
- hwaseong:{name:"수원대학교 · 삼성SDI · 대안학교 ↓",area:"화성 · 동탄 거주 · 지도 남쪽 약 15km",ll:[127.07,37.36],tag:[-300,-30]}
-};
 Object.entries(OUTPINS).forEach(([k,p])=>{const[x,y]=P(...p.ll),n=(byKey[k]||[]).length;
   const g=el("g",{class:"pin",tabindex:0,role:"button","aria-label":`${p.name} 동문 ${n}명`},marks);
   const[tx,ty]=p.tag;const w=tw(p.name)+String(n).length*8+34;
@@ -427,9 +475,9 @@ function row(k,num,sq){const n=(byKey[k]||[]).length;const sub=PINS[k]?PINS[k].a
   const ic=(PINS[k]||k==="khu")?`<svg class="pi" viewBox="-12 -32 24 34" width="18" height="24"><path d="M0,0 C-3,-7 -10,-12 -10,-19 A10,10 0 1 1 10,-19 C10,-12 3,-7 0,0Z" fill="#fff" stroke="#111" stroke-width="2"/><circle cx="0" cy="-19" r="3.6" fill="#111"/></svg>`:`<span class="num sq"><span>${num}</span></span>`;
   return `<li><button data-k="${k}">${ic}<span class="nm">${esc(TITLES[k])}${sub?`<small>${sub}</small>`:""}</span><span class="ct">${n}</span></button></li>`;}
 const PIN_IC=`<svg class="pi" viewBox="-12 -32 24 34" width="18" height="24"><path d="M0,0 C-3,-7 -10,-12 -10,-19 A10,10 0 1 1 10,-19 C10,-12 3,-7 0,0Z" fill="#fff" stroke="#111" stroke-width="2"/><circle cx="0" cy="-19" r="3.6" fill="#111"/></svg>`;
-const REGIONS=[["인천 · Incheon",["incheon","kal"]],["안양 · Anyang",["anyang"]],["광명 · Gwangmyeong",["gwangmyeong"]],["화성 · 동탄 · Hwaseong",["hwaseong"]],["성남 · Seongnam",["koica"]],["천안 · Cheonan",["cheonan"]],["세종 · Sejong",["sejong"]],["광주 · Gwangju",["gwangju"]],["경기 · Gyeonggi",["gyeonggi"]],["해외 · Abroad",["ny","nj","my","au"]]];
-const REG_SUB={incheon:"인천 거주",kal:"인천 근무",anyang:"안양 거주",hwaseong:"화성 · 동탄 거주",sejong:"세종 거주",cheonan:"천안 거주",gwangju:"광주 거주",gyeonggi:"경기 거주 · 세부 지역 미기재",koica:"성남 · 본부 기준",gwangmyeong:"광명 근무",ny:"미국 뉴욕",nj:"미국 뉴저지",my:"말레이시아",au:"호주 울릉공"};
-const orgName=o=>o==="회사"?"기업":(o||"소속 미기재");
+const REGIONS=[["인천 · Incheon",["incheon","kal"]],["안양 · Anyang",["anyang"]],["광명 · Gwangmyeong",["gwangmyeong"]],["화성 · 동탄 · Hwaseong",["hwaseong"]],["성남 · Seongnam",["koica"]],["천안 · Cheonan",["cheonan"]],["세종 · Sejong",["sejong"]],["광주 · Gwangju",["gwangju"]],["경기 · Gyeonggi",["gyeonggi"]],["해외 · Abroad",["ny","nj","my","au"]]];if((byKey.other||[]).length)REGIONS.splice(REGIONS.length-1,0,["기타 지역 · Other",["other"]]);
+const REG_SUB={incheon:"인천 거주",kal:"인천 근무",anyang:"안양 거주",hwaseong:"화성 · 동탄 거주",sejong:"세종 거주",cheonan:"천안 거주",gwangju:"광주 거주",gyeonggi:"경기 거주 · 세부 지역 미기재",other:"기타 지역",koica:"성남 · 본부 기준",gwangmyeong:"광명 근무",ny:"미국 뉴욕",nj:"미국 뉴저지",my:"말레이시아",au:"호주 울릉공"};
+function orgName(o){return o==="회사"?"기업":(o||"소속 미기재");}
 function orgRows(k){const list=byKey[k]||[];const orgs=[...new Set(list.map(a=>orgName(a.org)))];
   return orgs.map(o=>{const n=list.filter(a=>orgName(a.org)===o).length;
     return `<li><button data-k="${k}" data-org="${esc(o)}">${PIN_IC}<span class="nm">${esc(o)}<small>${REG_SUB[k]||""}</small></span><span class="ct">${n}</span></button></li>`;}).join("");}
@@ -444,7 +492,7 @@ function home(){document.body.classList.remove("sheet-open");setActive(null);
   pbody.querySelectorAll("button[data-k]").forEach(b=>b.onclick=()=>show(b.dataset.k,b.dataset.org));}
 function card(a){if(a.star)return `<div class="card star"><div class="ctop"><div class="av av-star" aria-label="동문회장">★</div><div><div class="cname">${esc(a.name)}</div><div class="crole">${esc(a.sub)}</div></div></div></div>`;
   const nm=a.full?esc(a.name):"응통 동문",sub=[a.org,a.role].filter(Boolean).map(esc).join(" · ");
-  return `<div class="card${a.full?"":" private"}"><div class="ctop"><div class="av">${esc(a.id)}<small>학번</small></div><div><div class="cname">${nm}</div><div class="crole">${sub}</div></div></div>${a.now?`<div class="cnow">${esc(a.now)}</div>`:""}</div>`;}
+  return `<div class="card${a.full?"":" private"}"><div class="ctop"><div class="av${a.pick?" pick":""}">${esc(a.id)}<small>학번</small></div><div><div class="cname">${nm}</div><div class="crole">${sub}</div></div></div>${a.now?`<div class="cnow">${esc(a.now)}</div>`:""}</div>`;}
 function show(k,org){setActive(k);const list=[...(byKey[k]||[])].filter(a=>!org||orgName(a.org)===org).sort((a,b)=>(b.star?1:0)-(a.star?1:0)||+a.id-+b.id);
   const orgs=[...new Set(list.map(a=>a.org==="회사"?"기업":a.org).filter(Boolean))].join(" · ");
   const area=org?`<span class="loc">${REG_SUB[k]||esc(TITLES[k])}</span>`:OUTPINS[k]?`<span class="loc">${OUTPINS[k].area} · ${esc(orgs)}</span>`:(k==="sejong"||k==="cheonan")?`<span class="loc">${REG_SUB[k]} · ${esc(orgs)}</span>`:k==="khu"?`<span class="loc">동대문구 회기동 · 서울캠퍼스</span>`:PINS[k]?`<span class="loc">${PINS[k].area}</span>`:(orgs?`<span class="loc">${esc(orgs)}</span>`:"");
@@ -468,12 +516,14 @@ function layout(){
   NODES.seoul_etc&&NODES.seoul_etc.setAttribute("transform",`translate(${x0+16+50},${50+H-16-50})`);
 }
 layout();addEventListener("resize",layout);
+window.__layout=layout;
+}
 /* ---------- intro sequence ---------- */
 (function(){
   const box=document.getElementById("intro"),i1=box.querySelector(".i1"),i2=box.querySelector(".i2"),i3=box.querySelector(".i3");
   let done=false;const T=[];const later=(f,ms)=>T.push(setTimeout(f,ms));
   function finish(){if(done)return;done=true;T.forEach(clearTimeout);box.classList.add("out");document.body.classList.remove("intro-on");
-    try{sessionStorage.setItem("aeltsIntro","1")}catch(e){}setTimeout(()=>box.remove(),800);layout();}
+    try{sessionStorage.setItem("aeltsIntro","1")}catch(e){}setTimeout(()=>box.remove(),800);window.__layout&&window.__layout();}
   let seen=false;try{seen=sessionStorage.getItem("aeltsIntro")==="1"}catch(e){}
   const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   if(seen||location.hash==="#map"){box.remove();return;}
