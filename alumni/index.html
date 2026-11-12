@@ -207,7 +207,7 @@ function MAIN(){
 const NS="http://www.w3.org/2000/svg";
 const el=(t,a={},p)=>{const e=document.createElementNS(NS,t);for(const k in a)if(a[k]!=null)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;};
 const esc=s=>String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
-const P=(lo,la)=>[50+(lo-126.72)*1400,105+(37.73-la)*1763];
+const MAP_DY=window.matchMedia("(max-width:860px)").matches?0:35;const P=(lo,la)=>[50+(lo-126.72)*1400,105-MAP_DY+(37.73-la)*1763];
 const pts=a=>a.map(p=>P(...p));
 function smooth(pts){let d=`M${pts[0][0]},${pts[0][1]}`;const n=pts.length;
   for(let i=0;i<n-1;i++){const p0=pts[Math.max(i-1,0)],p1=pts[i],p2=pts[i+1],p3=pts[Math.min(i+2,n-1)];
@@ -251,7 +251,7 @@ const PINS={
  skku:   {n:23,name:"성균관대학교",area:"종로구 명륜동 일대 (인문사회과학캠퍼스)",ll:[126.9935,37.5876],tag:[-60,-108]},
  nh:     {n:3,name:"농협은행 · 대림",area:"중구 · 종로구 돈의문 일대",ll:[126.966,37.566],tag:[-118,-12]},
  visa:   {n:4,name:"비자코리아 · 서울특별시청 · 삼양라운드스퀘어",area:"중구 을지로 · 명동 · 시청 일대",ll:[126.987,37.567],tag:[20,38]},
- mbc:    {n:5,name:"MBC",area:"마포구 상암동 일대",ll:[126.891,37.581],tag:[-84,-50]},
+ mbc:    {n:5,name:"MBC",area:"마포구 상암동 일대",ll:[126.891,37.581],tag:MAP_DY?[-28,-58]:[-84,-50]},
  mullae: {n:6,name:"GS리테일(홈쇼핑) · 삼정노무법인",area:"영등포구 문래동 일대",ll:[126.894,37.515],tag:[-243,4]},
  eca:    {n:7,name:"(주)이씨에이시스템",area:"구로구 구로동 일대",ll:[126.897,37.485],tag:[-146,30]},
  yeoksam:{n:8,name:"삼정KPMG · GS글로벌",area:"강남구 역삼동 일대",ll:[127.037,37.501],tag:[0,-54]},
