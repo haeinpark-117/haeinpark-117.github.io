@@ -801,6 +801,7 @@ body.H svg#map{position:relative;z-index:1}
 body.H .tbar{position:absolute;z-index:2;border:none!important;background:none;pointer-events:none;padding:0}
 body.H .tt1{color:#111!important;text-shadow:none!important;padding:0}
 body.H .tt2{padding:0}
+@media (min-width:861px) and (max-width:1366px){.app{grid-template-columns:1fr 300px!important}.panel .phead{padding:18px 18px 12px}.pbody{padding:10px 14px 24px}}
 /* A : headline top-left */
 body.HA .tbar{left:36px;top:30px;flex-direction:column;align-items:flex-start;gap:12px}
 body.HA .tt1{font-size:clamp(46px,4.4vw,70px);line-height:.92}
@@ -843,7 +844,9 @@ function place(){document.body.classList.toggle("H",isD());document.body.classLi
   const c=document.getElementById("cliprect");c.setAttribute("x",x0);c.setAttribute("y",y0);c.setAttribute("width",W);c.setAttribute("height",H);
   const ab=document.getElementById("abroadG"),kr=document.getElementById("koreaG");
   const iy=64+(V==="B"?28*H/R.height:0);
-  ab.setAttribute("transform",V==="B"?`translate(${x0+16},${iy}) scale(.8)`:`translate(${x0+16},${iy})`);kr.setAttribute("transform",V==="B"?`translate(${x0+W-16-170},${50+H0-16-232})`:`translate(${x0+W-16-170},${iy})`);
+  const k=Math.max(.55,Math.min(1,W/1180)),ka=.8*k;
+  ab.setAttribute("transform",V==="B"?`translate(${x0+12},${iy}) scale(${ka})`:`translate(${x0+16},${iy})`);
+  kr.setAttribute("transform",V==="B"?`translate(${x0+W-12-170*k},${50+H0-12-232*k}) scale(${k})`:`translate(${x0+W-16-170},${iy})`);
   const e=[...document.querySelectorAll('#map g[aria-label]')].find(g=>/근무지 미표시/.test(g.getAttribute('aria-label')));
   if(e)e.setAttribute("transform",`translate(${x0+66},${50+H0-66})`);}
 const run=()=>requestAnimationFrame(()=>{window.__layout&&window.__layout();place();});
@@ -887,7 +890,7 @@ function start(){
   const tt=document.querySelector(".tbar .tt1");if(!tt)return setTimeout(start,100);
   tt.classList.add("mx","m"+V);tt.innerHTML='<span class="ln"><span>RE:CONNECT</span></span><span class="ln"><span>AELTS</span></span>';
   const lns=[...tt.querySelectorAll(".ln")];
-  const measure=t=>{const m=document.createElement("span");m.style.cssText="position:absolute;visibility:hidden;white-space:nowrap";m.textContent=t;tt.appendChild(m);const w=m.getBoundingClientRect().width;m.remove();return Math.ceil(w)+4;};
+  const measure=t=>{const m=document.createElement("span");m.style.cssText="position:absolute;visibility:hidden;white-space:nowrap";m.textContent=t;tt.appendChild(m);const w=m.getBoundingClientRect().width;m.remove();return Math.ceil(w+parseFloat(getComputedStyle(tt).fontSize)*.18);};
   lns.forEach((l,i)=>l.style.width=measure(i?"AELTS":"RE:CONNECT")+"px");
   dispatchEvent(new Event("resize"));
   addEventListener("resize",()=>requestAnimationFrame(()=>lns.forEach(l=>{const sp=l.querySelector("span:not(.out)");if(sp)l.style.width=measure(sp.textContent)+"px";})));
