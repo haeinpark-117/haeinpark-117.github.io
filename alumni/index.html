@@ -919,5 +919,95 @@ function start(){
 (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>setTimeout(start,200));
 })();
 </script>
+
+<!-- panel B -->
+<style>
+.lsw3{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:9999;background:#111;border-radius:999px;padding:6px;display:flex;gap:4px;box-shadow:0 8px 28px rgba(0,0,0,.3)}
+.lsw3 button{border:0;background:transparent;color:#fff;font:700 13px 'Noto Sans KR',sans-serif;padding:8px 15px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.lsw3 button b{font-family:Montserrat,sans-serif;font-weight:800;margin-right:5px;color:#F0542C}.lsw3 button.on{background:#fff;color:#111}
+.ph2 a{text-decoration:none;color:inherit}.ph2 p{word-break:keep-all}
+.ph2 .an{font-family:Anton,'Noto Sans KR',sans-serif;font-weight:400;letter-spacing:.01em}
+.ph2 .ar{font:400 18px/1 Anton,sans-serif;transition:transform .25s;display:inline-block}
+.ph2 a:hover .ar{transform:translateX(4px)}
+/* A poster head */
+.pA h2{font-size:34px!important;margin:4px 0 6px!important;letter-spacing:-.03em!important}
+.pA .nums{display:flex;margin-top:16px;border-top:2px solid #111;padding-top:10px}
+.pA .nums div{flex:1}.pA .nums div+div{border-left:1px solid #ccc;padding-left:12px}
+.pA .nums b{display:block;font:800 30px/1 Montserrat,sans-serif;color:#2335F2;letter-spacing:-.02em}
+.pA .nums span{font-size:12px;color:#666}
+.pA .go{display:flex;flex-direction:column;gap:7px;margin-top:16px}
+.pA .go a{position:relative;display:flex;align-items:center;gap:12px;padding:11px 34px 10px 12px;clip-path:polygon(0 0,100% 0,calc(100% - 14px) 100%,0 100%);transition:padding .25s}
+.pA .go a:hover{padding-left:18px}
+.pA .go .ic{width:40px;height:30px;flex:none;position:relative}
+.pA .go .t{display:flex;flex-direction:column}.pA .go .t .an{font-size:19px;line-height:1}.pA .go .t small{font:500 12px 'Noto Sans KR',sans-serif;margin-top:3px;opacity:.9}
+.pA .go .ar{position:absolute;right:24px;top:50%;margin-top:-9px}
+.pA .o{background:#F0542C;color:#111}.pA .k{background:#111;color:#fff}
+.ic .s{position:absolute;left:0;height:5px;background:#111;clip-path:polygon(0 0,100% 0,calc(100% - 3px) 100%,0 100%)}
+.ic.yr{font:400 30px/30px Anton,sans-serif;color:#2335F2;letter-spacing:-.01em;text-align:left;overflow:hidden}
+/* B tile grid */
+.pB{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pB .hd{grid-column:1/-1;margin-bottom:8px}
+.pB .hd .kicker{line-height:1}
+.pB .hd h2{margin:10px 0 0!important;line-height:1.1!important;font-size:28px!important}
+.pB .hd p{margin:10px 0 0!important;font-size:13.5px!important;line-height:1.6!important;word-break:keep-all}
+.pB .st{border:1.5px solid #111;padding:12px 12px 11px;display:flex;flex-direction:column;gap:7px}
+.pB .st b{font:800 26px/1 Montserrat,sans-serif;color:#2335F2;letter-spacing:-.02em}
+.pB .st span{font-size:12px;line-height:1;color:#666}
+.pB .st.main{background:#2335F2;border-color:#2335F2}.pB .st.main b{color:#fff}.pB .st.main span{color:#DDE0FF}
+.pB .lk{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pB .lk a{border:1.5px solid #111;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;min-width:0}
+.pB .lk a:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 #111}
+.pB .th{height:74px;position:relative;overflow:hidden;border-bottom:1.5px solid #111}
+.pB .th .s{position:absolute;left:0;height:8px;clip-path:polygon(0 0,100% 0,calc(100% - 5px) 100%,0 100%)}
+.pB .th.yr{display:flex;align-items:flex-end;padding:0 10px 9px}
+.pB .th.yr .bn{font:400 58px/.8 Anton,sans-serif;color:#111}
+.pB .th.yr .tl{position:absolute;left:56%;right:12px;bottom:12px;height:2px;background:#111}
+.pB .th.yr .tl i{position:absolute;bottom:2px;width:4px;background:#111}
+.pB .th.yr .tl em{position:absolute;bottom:-5px;width:12px;height:12px;border-radius:50%;background:#F0542C;border:2px solid #fff;box-shadow:0 0 0 1.5px #111;margin-left:-6px;animation:dot 4s ease-in-out infinite}
+@keyframes dot{0%,100%{left:15%}50%{left:85%}}
+.pB .cap{padding:11px 12px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.pB .cap>div{display:flex;flex-direction:column;gap:6px;min-width:0}
+.pB .cap .an{font-size:16px;line-height:1;white-space:nowrap}
+.pB .cap small{font:500 11.5px/1.2 'Noto Sans KR',sans-serif;color:#555;white-space:nowrap;letter-spacing:-.01em}
+.pB .cap{display:block}.pB .lk a .ar{position:absolute;right:0;top:0;width:24px;height:24px;background:#111;color:#fff;font-size:14px;line-height:24px;text-align:center;z-index:2}.pB .lk a:hover .ar{transform:none;background:#F0542C;color:#111}.pB .lk a{position:relative}
+@media (max-width:860px){.pB .th.yr .tl{left:60%}.pB .hd h2{font-size:24px!important}.pB .th{height:58px}.pB .th.yr .bn{font-size:46px}.pB .st b{font-size:22px}}
+/* C site nav */
+.pC .nav{display:flex;border:1.5px solid #111;margin:-4px 0 18px}
+.pC .nav a{flex:1;text-align:center;padding:9px 4px 8px;border-right:1.5px solid #111;transition:background .2s,color .2s;line-height:1}
+.pC .nav a:last-child{border-right:0}
+.pC .nav a .an{font-size:13px;display:block;white-space:nowrap}.pC .nav a small{display:block;font:500 10.5px 'Noto Sans KR',sans-serif;color:#777;margin-top:4px}
+.pC .nav a.on{background:#111;color:#fff}.pC .nav a.on small{color:#bbb}
+.pC .nav a:not(.on):hover{background:#F0542C}.pC .nav a:not(.on):hover small{color:#111}
+.pC h2{margin:2px 0 4px!important}
+.pC .line{margin-top:14px;display:flex;align-items:baseline;gap:14px;font-size:12.5px;color:#666;border-top:1.5px solid #111;padding-top:10px}
+.pC .line b{font:800 24px/1 Montserrat,sans-serif;color:#2335F2;margin-right:4px}
+@media (max-width:860px){.pA h2{font-size:28px!important}.pA .nums b{font-size:24px}.pB .th{height:54px}}
+</style>
+<script>
+(function(){
+if(!document.querySelector('link[href*="family=Anton"]')){const l=document.createElement("link");l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Anton&display=swap";document.head.appendChild(l);}
+const V="B";
+
+const U1="paths.html",U2="classof.html";
+const sl=(cols,h,gap,top)=>cols.map(([w,c],i)=>`<i class="s" style="top:${top+i*gap}px;width:${w}%;background:${c};height:${h}px"></i>`).join("");
+function build(n,se,ab){
+ const head=`<div class="kicker">RE:CONNECT AELTS · 2026</div><h2>응통MAP</h2><p>지도 위 핀이나 동그라미를 누르면 동문 근황이 열립니다.</p>`;
+ if(V==="A")return `<div class="ph2 pA">${head}
+  <div class="nums"><div><b>${n}</b><span>참여 동문</span></div><div><b>${se}</b><span>서울</span></div><div><b>${ab}</b><span>해외</span></div></div>
+  <div class="go"><a class="o" href="${U1}"><span class="ic">${sl([[100,"#111"],[70,"#111"],[52,"#111"],[38,"#111"]],5,8,1)}</span><span class="t"><span class="an">WHERE WE WENT</span><small>직업군으로 보는 응통의 길</small></span><span class="ar">→</span></a>
+  <a class="k" href="${U2}"><span class="ic yr">01</span><span class="t"><span class="an">CLASS OF 98 → 22</span><small>학번으로 만나는 응통</small></span><span class="ar">→</span></a></div></div>`;
+ if(V==="B")return `<div class="ph2 pB"><div class="hd"><div class="kicker">RE:CONNECT AELTS · 2026</div><h2>응통MAP</h2><p>지도 위 핀이나 동그라미를 누르면<br>동문 근황이 열립니다.</p></div>
+  <div class="st main"><b>${n}</b><span>참여 동문</span></div><div class="st"><b>${se}</b><span>서울</span></div><div class="st"><b>${ab}</b><span>해외</span></div>
+  <div class="lk"><a href="${U1}"><div class="th">${sl([[80,"#F0542C"],[62,"#2335F2"],[48,"#111"],[40,"#F0542C"],[32,"#2335F2"]],8,13,8)}</div><div class="cap"><div><span class="an">WHERE WE WENT</span><small>직업군으로 보는 응통</small></div></div><span class="ar">↗</span></a>
+  <a href="${U2}"><div class="th yr"><span class="bn">01</span><span class="tl">${[6,10,4,14,8,12,16,6].map((h,i)=>`<i style="left:${i*13}%;height:${h}px"></i>`).join("")}<em></em></span></div><div class="cap"><div><span class="an">CLASS OF</span><small>학번으로 보는 응통</small></div></div><span class="ar">↗</span></a></div></div>`;
+ return `<div class="ph2 pC"><nav class="nav"><a class="on" href="#"><span class="an">MAP</span><small>응통맵</small></a><a href="${U1}"><span class="an">WHERE WE WENT</span><small>직업군</small></a><a href="${U2}"><span class="an">CLASS OF</span><small>학번</small></a></nav>${head}
+  <div class="line"><span><b>${n}</b>참여 동문</span><span><b>${se}</b>서울</span><span><b>${ab}</b>해외</span></div></div>`;}
+function mount(){const ph=document.getElementById("phead"),st=ph&&ph.querySelector(".stats");if(!st||ph.querySelector(".ph2"))return;
+ const v=[...st.querySelectorAll(".stat b")].map(b=>b.textContent);ph.innerHTML=build(...v);
+ if(V==="A")ph.querySelectorAll(".go a").forEach((a,i)=>a.animate([{transform:"translateX(-104%)"},{transform:"none"}],{duration:700,delay:150+i*120,easing:"cubic-bezier(.7,0,.2,1)",fill:"both"}));
+ dispatchEvent(new Event("resize"));}
+const ph=document.getElementById("phead");if(ph){mount();new MutationObserver(mount).observe(ph,{childList:true});}
+})();
+</script>
 </body>
 </html>

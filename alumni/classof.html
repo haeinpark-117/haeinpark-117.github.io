@@ -1,0 +1,159 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CLASS OF · 응통MAP</title><meta name="description" content="학번으로 만나는 응용영어통번역학과 동문">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@600;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<!--LF-->
+<style>
+:root{--O:#F0542C;--B:#2335F2;--K:#111}
+*{box-sizing:border-box}html,body{margin:0;background:#fff;color:#111;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100%}
+#stage{position:fixed;inset:0}
+.sw{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:9;background:#111;border-radius:999px;padding:6px;display:flex;gap:4px;box-shadow:0 8px 28px rgba(0,0,0,.3)}
+.sw button{border:0;background:transparent;color:#fff;font:700 13px 'Noto Sans KR';padding:8px 15px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.sw button b{font-family:Montserrat;font-weight:800;margin-right:5px;color:#F0542C}.sw button.on{background:#fff;color:#111}
+.rp{position:fixed;right:18px;top:14px;z-index:9;font:600 12px Montserrat;letter-spacing:.16em;background:none;border:0;color:#888;cursor:pointer}
+.hd{position:absolute;left:48px;top:34px}.hd .k{font:800 13px Montserrat;letter-spacing:.24em;color:var(--O)}.hd .h{font:400 70px/1 Anton;margin-top:6px}.hd .s{font:500 22px/1.25 'Noto Sans KR';color:var(--B);margin-top:6px;letter-spacing:-.02em}
+.lg{position:absolute;right:48px;top:44px;display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:flex-end;max-width:560px;font:500 12px 'Noto Sans KR'}
+.lg span{display:inline-flex;align-items:center;gap:6px}.lg i{width:12px;height:12px;display:inline-block}
+.tg2{position:absolute;right:48px;top:104px;display:flex;border:1.5px solid #111;border-radius:999px;padding:3px;font:700 12px 'Noto Sans KR'}
+.tg2 button{border:0;background:none;padding:5px 12px;border-radius:999px;cursor:pointer;font:inherit}.tg2 button.on{background:#111;color:#fff}
+/* D */
+.sq{position:absolute;transition:background .5s,box-shadow .5s;cursor:pointer}
+.sq:hover{outline:2px solid #111;outline-offset:1px;z-index:2}
+.xl{position:absolute;font:400 16px Anton;text-align:center;color:#111}
+.xl.mute{color:#ccc}
+.cn{position:absolute;font:400 15px Anton;text-align:center;color:#888}
+.base{position:absolute;height:2px;background:#111}
+.tip{position:fixed;z-index:20;pointer-events:none;background:#111;color:#fff;padding:8px 11px;font:500 12.5px/1.4 'Noto Sans KR';opacity:0;transition:opacity .15s;white-space:nowrap}
+.tip b{font:400 15px Anton;margin-right:6px;color:#F0542C}
+.note{position:absolute;font:500 12px 'Noto Sans KR';color:#666}
+/* E */
+.er{position:absolute;display:flex;align-items:center}
+.er .lab{width:150px;flex:none;text-align:right;padding-right:18px}.er .lab b{display:block;font:400 34px/1 Anton}.er .lab span{font:500 12.5px 'Noto Sans KR';color:#555}
+.er .bar{flex:1;display:flex;height:100%;}
+.er .seg{height:100%;display:flex;align-items:center;justify-content:center;font:400 18px Anton;overflow:hidden;transition:flex-grow 1s cubic-bezier(.2,.9,.3,1);flex-basis:0;min-width:0}
+.er .ab{width:150px;flex:none;padding-left:18px;display:flex;align-items:center;gap:8px}
+.er .ab .d{display:flex;gap:3px}.er .ab .d i{width:12px;height:12px;border:1.5px solid #2335F2}.er .ab .d i.on{background:#2335F2}
+.er .ab span{font:500 12px 'Noto Sans KR';color:#555}
+.ch{position:absolute;font:800 11px Montserrat;letter-spacing:.2em;color:#888}
+/* F */
+.big{position:absolute;font:400 1px/0.8 Anton;overflow:hidden}
+.big span{display:block}
+.cards{position:absolute;display:flex;flex-direction:column;gap:10px}
+.cd{display:flex;align-items:stretch;border:2px solid #111;background:#fff;min-height:58px}
+.cd .c{width:14px;flex:none}.cd .t{padding:9px 14px;display:flex;flex-direction:column;justify-content:center}
+.cd .t b{font:700 18px/1.25 'Noto Sans KR';letter-spacing:-.01em}.cd .t em{font:400 13px/1.35 'Noto Sans KR';font-style:normal;color:#555}
+.cd .f{margin-left:auto;padding:0 14px;display:flex;align-items:center;font:400 15px Anton;letter-spacing:.02em;white-space:nowrap}
+.tl{position:absolute;height:2px;background:#111}
+.tl i{position:absolute;top:-4px;width:2px;height:10px;background:#111}
+.tl .yr{position:absolute;top:12px;font:400 12px Anton;transform:translateX(-50%);color:#aaa}
+.tl .mk{position:absolute;top:-9px;width:20px;height:20px;border-radius:50%;background:#F0542C;transform:translateX(-50%);transition:left .7s cubic-bezier(.7,0,.2,1)}
+.fct{position:absolute;font:500 14px 'Noto Sans KR';color:#555}.fct b{font:400 26px Anton;color:#111;margin-right:4px}
+
+.tl2{position:absolute;height:60px;cursor:pointer;touch-action:none;user-select:none}
+.tl2 .ln{position:absolute;left:0;right:0;bottom:22px;height:2px;background:#111}
+.tl2 .yt{position:absolute;bottom:0;width:26px;height:60px;margin-left:-13px;border:0;background:none;padding:0;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+.tl2 .yt .bar{width:8px;background:#111;margin-bottom:4px;transition:background .2s}
+.tl2 .yt .yl{font:400 12px Anton;color:#999;height:14px;transition:color .2s}
+.tl2 .yt.no .yl{color:#ddd}.tl2 .yt.on .yl{color:#111}.tl2 .yt.on .bar{background:#F0542C}
+.tl2 .yt:hover .bar{background:#2335F2}
+.tl2 .mk{position:absolute;bottom:13px;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:#F0542C;border:3px solid #fff;box-shadow:0 0 0 2px #111;transition:transform .15s;pointer-events:none;will-change:left}
+.tl2 .mk.dr{transform:scale(1.25)}
+.tl2 .mt{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);background:#111;color:#fff;font:400 13px Anton;padding:3px 7px 2px}
+.nv{position:absolute;width:34px;height:34px;border:2px solid #111;border-radius:50%;background:#fff;font:400 22px/1 Anton;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.nv:hover{background:#111;color:#fff}
+.pl{position:absolute;right:48px;top:44px;border:1.5px solid #111;background:#fff;border-radius:999px;padding:7px 14px;font:700 12px 'Noto Sans KR';cursor:pointer}.pl.on{background:#111;color:#fff}
+.cd.star{border-color:#2335F2}.cd .t b i{font:700 11px 'Noto Sans KR';font-style:normal;color:#2335F2;margin-left:6px}
+.home{position:fixed;left:18px;top:14px;z-index:9;font:600 12px Montserrat;letter-spacing:.16em;color:#111;text-decoration:none}.home:hover{color:#F0542C}
+@media (max-width:760px){.tl2 .yt:nth-of-type(even) .yl{visibility:hidden}.tl2 .yt{width:14px;margin-left:-7px}.tl2 .yt .bar{width:5px}.cd{min-height:48px}.cd .t b{font-size:15px}.cd .t em{font-size:12px}.cd .f{font-size:12px;padding:0 10px}.pl{top:18px;right:16px}}
+.sw,.rp{display:none!important}.hd{top:48px!important}.pl{top:48px!important}@media (max-width:760px){.pl{top:8px!important;padding:5px 11px}}
+</style></head><body><div id="stage"></div><a class="home" href="./">← 응통MAP</a><div class="tip" id="tip"></div><button class="rp" id="rp">↻ REPLAY</button>
+<script>window.PROD=1;
+const RAW=[{"id": "01", "org": "경희대학교", "role": "응통과 부교수 · 동문회장", "key": "khu", "c": "ED", "star": true}, {"id": "16", "org": "프리랜서 방송인", "role": "아나운서, 경제 캐스터", "key": "seoul_etc", "c": "MD"}, {"id": "19", "org": "현대경제연구원", "role": "연구원", "key": "hri", "c": "ED"}, {"id": "16", "org": "BASF 바스프", "role": "창고비 마감", "key": "my", "c": "GB"}, {"id": "16", "org": "서울동부지방법원", "role": "재판연구원", "key": "court", "c": "FN"}, {"id": "10", "org": "경찰청", "role": "수사", "key": "incheon", "c": "PU"}, {"id": "17", "org": "아리랑TV", "role": "보도기자", "key": "arirang", "c": "MD"}, {"id": "20", "org": "대안학교", "role": "1,2학년 담임", "key": "hwaseong", "c": "ED"}, {"id": "18", "org": "수원대학교 국제협력처", "role": "교직원", "key": "hwaseong", "c": "ED"}, {"id": "11", "org": "한국개발연구원", "role": "전문연구원", "key": "sejong", "c": "ED"}, {"id": "19", "org": "University of Wollongong", "role": "간호 석사", "key": "au", "c": "ED"}, {"id": "12", "org": "국민연금공단", "role": "사무직", "key": "seoul_etc", "c": "PU"}, {"id": "12", "org": "삼정노무법인", "role": "공인노무사", "key": "mullae", "c": "FN"}, {"id": "16", "org": "삼성SDI", "role": "영업", "key": "hwaseong", "c": "GB"}, {"id": "11", "org": "GS글로벌", "role": "해외영업", "key": "yeoksam", "c": "GB"}, {"id": "10", "org": "외교부", "role": "외교행정", "key": "mofa", "c": "PU"}, {"id": "11", "org": "컴텍아시아코리아", "role": "데이터센터 커미셔닝", "key": "commtech", "c": "IT"}, {"id": "14", "org": "삼정KPMG", "role": "회계사", "key": "yeoksam", "c": "FN"}, {"id": "11", "org": "농협은행(농협중앙회)", "role": "Investment Banking", "key": "nh", "c": "FN"}, {"id": "09", "org": "(주)이씨에이시스템", "role": "영업", "key": "eca", "c": "GB"}, {"id": "11", "org": "지멘스인더스트리소프트웨어", "role": "통번역사", "key": "siemens", "c": "TR"}, {"id": "20", "org": "한진 미주법인 뉴져지 지점", "role": "포워딩", "key": "nj", "c": "GB"}, {"id": "14", "org": "비자코리아", "role": "AE (Account Executive)", "key": "visa", "c": "GB"}, {"id": "14", "org": "GS리테일(홈쇼핑)", "role": "인사(HR)", "key": "mullae", "c": "HR"}, {"id": "16", "org": "한국애브비", "role": "HR", "key": "anyang", "c": "HR"}, {"id": "18", "org": "MBC", "role": "한영 통번역사", "key": "mbc", "c": "TR"}, {"id": "19", "org": "하나은행", "role": "영업점 업무", "key": "seoul_etc", "c": "FN"}, {"id": "18", "org": "대한항공", "role": "화물운송팀", "key": "kal", "c": "GB"}, {"id": "19", "org": "우리은행", "role": "개인대출", "key": "seoul_etc", "c": "FN"}, {"id": "20", "org": "회사", "role": "인사", "key": "seoul_etc", "c": "HR"}, {"id": "20", "org": "경희대학교 일반대학원", "role": "대학원생", "key": "khu", "c": "ED"}, {"id": "15", "org": "LG전자", "role": "플랫폼 서비스기획", "key": "lg", "c": "GB"}, {"id": "11", "org": "HYBE", "role": "음악저작권 관리", "key": "hybe", "c": "MD"}, {"id": "14", "org": "프리랜서", "role": "영어MC", "key": "seoul_etc", "c": "MD"}, {"id": "11", "org": "시대인재", "role": "영어강사", "key": "sidae", "c": "ED"}, {"id": "18", "org": "경희대학교 일반대학원 빅데이터응용학과", "role": "석박통합과정", "key": "khu", "c": "ED"}, {"id": "04", "org": "재정경제부", "role": "통번역 전문관", "key": "sejong", "c": "TR"}, {"id": "02", "org": "위버스컴퍼니", "role": "UX Writer", "key": "anyang", "c": "MD"}, {"id": "21", "org": "", "role": "취업 준비", "key": "seoul_etc", "c": "ETC"}, {"id": "10", "org": "LG이노텍", "role": "해외인사", "key": "lginnotek", "c": "HR"}, {"id": "06", "org": "YG Entertainment", "role": "투어매니저", "key": "yg", "c": "MD"}, {"id": "05", "org": "", "role": "", "key": "ny", "c": "ETC"}, {"id": "21", "org": "CJ올리브영", "role": "MD", "key": "oliveyoung", "c": "GB"}, {"id": "22", "org": "한국외대 통번역대학원", "role": "대학원생", "key": "hufs", "c": "TR"}, {"id": "17", "org": "KOICA", "role": "", "key": "koica", "c": "PU"}, {"id": "00", "org": "광주교육대학교", "role": "조교수", "key": "gwangju", "c": "ED"}, {"id": "15", "org": "김앤장법률사무소", "role": "컨설턴트", "key": "mofa", "c": "FN"}, {"id": "20", "org": "한국외대 통번역대학원", "role": "대학원생", "key": "hufs", "c": "TR"}, {"id": "05", "org": "프리랜서", "role": "국제회의통역사", "key": "seoul_etc", "c": "TR"}, {"id": "06", "org": "", "role": "말레이-인도네시아어 통번역", "key": "gyeonggi", "c": "TR"}, {"id": "19", "org": "11번가", "role": "인하우스 통번역사", "key": "gwangmyeong", "c": "TR"}, {"id": "04", "org": "주식회사 엠케이", "role": "사내이사", "key": "cheonan", "c": "GB"}, {"id": "21", "org": "신용보증기금", "role": "", "key": "incheon", "c": "PU"}, {"id": "06", "org": "서울대학교", "role": "교직원", "key": "snu", "c": "ED"}, {"id": "19", "org": "기아", "role": "해외영업", "key": "hmg", "c": "GB"}, {"id": "19", "org": "클리오", "role": "아마존MD", "key": "clio", "c": "GB"}, {"id": "21", "org": "EY", "role": "금융컨설팅", "key": "lg", "c": "FN"}, {"id": "21", "org": "현대자동차", "role": "글로벌사업", "key": "hmg", "c": "GB"}, {"id": "07", "org": "삼양라운드스퀘어", "role": "전략기획", "key": "visa", "c": "GB"}, {"id": "14", "org": "국내 바이오 기업", "role": "마케터", "key": "seoul_etc", "c": "GB"}, {"id": "02", "org": "WHO", "role": "Mental Health and Psychosocial Support", "key": "mnl", "c": "PU"}, {"id": "18", "org": "고등학교", "role": "교사", "key": "cheorwon", "c": "ED"}, {"id": "14", "org": "", "role": "", "key": "unknown", "c": "ETC"}, {"id": "06", "org": "서울특별시청", "role": "행정공무원(4급)", "key": "visa", "c": "PU"}, {"id": "01", "org": "대림", "role": "인프라사업개발", "key": "nh", "c": "GB"}, {"id": "17", "org": "An AI company", "role": "AI auditor", "key": "sha", "c": "IT"}, {"id": "98", "org": "블루엘리펀트(BLUE ELEPHANT)", "role": "해외영업", "key": "clio", "c": "GB"}, {"id": "19", "org": "서울대학교병원", "role": "사무직 (기획 · 인사 관련)", "key": "hri", "c": "HR"}, {"id": "20", "org": "효성티앤씨", "role": "글로벌 이커머스 MD/마케터(아마존)", "key": "commtech", "c": "GB"}, {"id": "19", "org": "CJ올리브영", "role": "국내 MD", "key": "oliveyoung", "c": "GB"}, {"id": "06", "org": "성균관대학교", "role": "연구 보조", "key": "skku", "c": "ED"}, {"id": "03", "org": "Mount Royal University", "role": "교직원", "key": "yyc", "c": "ED"}, {"id": "00", "org": "오뚜기재팬", "role": "로지스틱스", "key": "tyo", "c": "GB"}];const ALL=RAW.map(d=>({...d,c:(d.c==="IT"||d.c==="ETC")?"OT":d.c}));
+const DATA=ALL.filter(d=>!isNaN(+d.id));
+const C=[["GB","글로벌 비즈니스","GLOBAL BUSINESS"],["ED","교육 · 연구","EDUCATION"],["FN","금융 · 법률","FINANCE & LAW"],["TR","통번역 · 언어","TRANSLATION"],["PU","공공 · 국제기구","PUBLIC SECTOR"],["MD","미디어 · 엔터","MEDIA"],["HR","인사 · HR","PEOPLE"],["OT","그 밖의 길","OTHER PATHS"]];
+const O="#F0542C",B="#2335F2",K="#111",W_="#fff";
+const COL={GB:O,ED:B,FN:K,TR:"#9AA3FF",PU:"#F7A68F",MD:"#5A66F5",HR:"#555",OT:"#E8E8E8"};
+const FG=c=>["FN","HR","ED","MD"].includes(c)?"#fff":"#111";
+const AB=new Set(["ny","nj","my","au","mnl","sha","yyc","tyo"]);
+const yk=id=>(+id<50?+id+100:+id),Y2=n=>String(n%100).padStart(2,"0");
+const sh=o=>(o||"").replace(/\(.*?\)/g,"").replace(/^주식회사\s*/,"").trim();
+const YRS=[];for(let y=98;y<=122;y++)YRS.push(y);
+const st=document.getElementById("stage"),tip=document.getElementById("tip");let RAF=[];let V="F",T=[],MODE="f";
+const L=(f,ms)=>T.push(setTimeout(f,ms));
+const sw=document.createElement("div");sw.className="sw";[["D","학번 타임라인"],["E","세대별 구성"],["F","학번 롤"]].forEach(([k,n])=>{const b=document.createElement("button");b.dataset.k=k;b.innerHTML="<b>"+k+"</b>"+n;b.onclick=()=>{V=k;MODE="f";run();};sw.appendChild(b);});document.body.appendChild(sw);
+document.getElementById("rp").onclick=()=>run();
+const legend=()=>`<div class="lg">${C.map(([k,n,en])=>`<span><i style="background:${COL[k]};${k==="OT"?"box-shadow:inset 0 0 0 1px #999":""}"></i>${n}</span>`).join("")}</div>`;
+const show=(e,d)=>{tip.innerHTML=`<b>${d.id}</b>${sh(d.org)||"기관 미기재"}${d.role?" · "+d.role:""}`;tip.style.opacity=1;tip.style.left=Math.min(e.clientX+14,innerWidth-tip.offsetWidth-10)+"px";tip.style.top=(e.clientY+14)+"px";};
+const R={
+D(){const Wd=innerWidth,H=innerHeight,M=48,n=YRS.length,cw=(Wd-2*M)/n,by={};DATA.forEach(d=>(by[yk(d.id)]=by[yk(d.id)]||[]).push(d));
+ const mx=Math.max(...Object.values(by).map(a=>a.length)),base=H-150,s=Math.floor(Math.min(cw-6,(base-210)/mx-4));
+ let h=`<div class="hd"><div class="k">RE:CONNECT AELTS · CLASS OF</div><div class="h">98 → 22</div><div class="s">학번으로 줄 세운 응통 ${DATA.length}명</div></div>${legend()}
+  <div class="tg2"><button data-m="f" class="${MODE==="f"?"on":""}">분야별 색</button><button data-m="a" class="${MODE==="a"?"on":""}">국내 · 해외</button></div><div class="base" style="left:${M}px;top:${base+2}px;width:${Wd-2*M}px"></div>`;
+ YRS.forEach((y,i)=>{const a=(by[y]||[]).sort((p,q)=>C.findIndex(c=>c[0]===p.c)-C.findIndex(c=>c[0]===q.c)),x=M+i*cw+(cw-s)/2;
+  h+=`<div class="xl ${a.length?"":"mute"}" style="left:${M+i*cw}px;width:${cw}px;top:${base+12}px">${Y2(y)}</div>`;
+  if(a.length)h+=`<div class="cn" style="left:${M+i*cw}px;width:${cw}px;top:${base-a.length*(s+4)-24}px">${a.length}</div>`;
+  a.forEach((d,j)=>{h+=`<div class="sq" data-y="${y}" data-j="${j}" style="left:${x}px;top:${base-(j+1)*(s+4)+2}px;width:${s}px;height:${s}px"></div>`;});});
+ h+=`<div class="note" style="left:${M}px;top:${base+40}px">학번이 없는 칸은 응답자가 없는 학번입니다.</div>`;
+ st.innerHTML=h;const sq=[...st.querySelectorAll(".sq")];
+ sq.forEach(e=>{const d=by[+e.dataset.y][+e.dataset.j];e._d=d;e.onmousemove=ev=>show(ev,d);e.onmouseleave=()=>tip.style.opacity=0;});
+ const paint=()=>sq.forEach(e=>{const d=e._d;if(MODE==="f"){e.style.background=COL[d.c];e.style.boxShadow=d.c==="OT"?"inset 0 0 0 1.5px #999":"none";}else{const ab=AB.has(d.key);e.style.background=ab?B:"#fff";e.style.boxShadow=ab?"none":"inset 0 0 0 2px #111";}});
+ paint();sq.forEach(e=>e.animate([{transform:`translateY(${-H}px)`},{transform:"none"}],{duration:700,delay:(+e.dataset.y-98)*45+ +e.dataset.j*60,easing:"cubic-bezier(.2,.9,.3,1)",fill:"both"}));
+ st.querySelectorAll(".tg2 button").forEach(b=>b.onclick=()=>{MODE=b.dataset.m;st.querySelectorAll(".tg2 button").forEach(x=>x.classList.toggle("on",x===b));paint();
+   st.querySelector(".lg").innerHTML=MODE==="f"?legend().replace(/^<div class="lg">|<\/div>$/g,""):`<span><i style="box-shadow:inset 0 0 0 2px #111"></i>국내 ${DATA.filter(d=>!AB.has(d.key)).length}명</span><span><i style="background:${B}"></i>해외 ${DATA.filter(d=>AB.has(d.key)).length}명</span>`;});},
+E(){const Wd=innerWidth,H=innerHeight,ERA=[["98–05",98,105],["06–10",106,110],["11–15",111,115],["16–19",116,119],["20–22",120,122]];
+ const top=200,rh=Math.min(86,(H-top-110)/ERA.length-14),M=48;
+ let h=`<div class="hd"><div class="k">RE:CONNECT AELTS · GENERATIONS</div><div class="h">FIVE ERAS</div><div class="s">세대별로 본 응통의 분야 구성</div></div>${legend()}
+  <div class="ch" style="left:${M}px;width:150px;text-align:right;padding-right:18px;top:${top-26}px">학번대</div><div class="ch" style="right:${M}px;width:150px;padding-left:18px;top:${top-26}px">해외 근무</div>`;
+ ERA.forEach(([lab,a,b],i)=>{const L=DATA.filter(d=>yk(d.id)>=a&&yk(d.id)<=b),ab=L.filter(d=>AB.has(d.key)).length;
+  h+=`<div class="er" style="left:${M}px;right:${M}px;top:${top+i*(rh+14)}px;height:${rh}px"><div class="lab"><b>${lab}</b><span>${L.length}명</span></div><div class="bar">`;
+  C.forEach(([k])=>{const c=L.filter(d=>d.c===k).length;if(c)h+=`<div class="seg" data-g="${c}" style="background:${COL[k]};color:${FG(k)};${k==="OT"?"box-shadow:inset 0 0 0 1.5px #999;":""}flex-grow:0">${c}</div>`;});
+  h+=`</div><div class="ab"><span class="d">${L.map(d=>AB.has(d.key)).sort((x,y)=>y-x).slice(0,0).join("")}${Array.from({length:Math.min(L.length,0)}).join("")}</span><b style="font:400 30px Anton;color:${ab?B:"#ccc"}">${ab}</b><span>/ ${L.length}명</span></div></div>`;});
+ h+=`<div class="note" style="left:${M+150}px;top:${top+ERA.length*(rh+14)+6}px">막대 안의 숫자는 인원입니다. 학번대 구간은 시각화를 위해 나눈 것이며, 설문 응답자 기준이라 세대별 인원 차이가 큽니다.</div>`;
+ st.innerHTML=h;const segs=[...st.querySelectorAll(".seg")];
+ segs.forEach((s,i)=>L(()=>s.style.flexGrow=s.dataset.g,200+i*40));},
+F(){const Wd=innerWidth,H=innerHeight,M=innerWidth<760?18:48,by={};DATA.forEach(d=>(by[yk(d.id)]=by[yk(d.id)]||[]).push(d));
+ const mxc=Math.max(...Object.values(by).map(a=>a.length)),N=YRS.length;
+ /* fit the numeral to its box using real glyph bounds */
+ const cv=document.createElement("canvas").getContext("2d");cv.font="100px Anton";let wE=0,aE=0,dE=0;
+ YRS.forEach(y=>{const m=cv.measureText(Y2(y));wE=Math.max(wE,m.actualBoundingBoxLeft+m.actualBoundingBoxRight);aE=Math.max(aE,m.actualBoundingBoxAscent);dE=Math.max(dE,m.actualBoundingBoxDescent);});
+ const mob=Wd<760,bx=M,by0=mob?156:Math.max(150,Math.round(H*.17)),bw=mob?Wd-2*M:Math.min(Wd*.42,560),bh=mob?Math.min(H*.2,170):H-by0-232,fs=Math.min(bw/wE,bh/(aE+dE))*100,gh=(aE+dE)*fs/100,gw=wE*fs/100;
+ let h=`<div class="hd" style="${mob?"left:18px;top:50px":""}"><div class="k">RE:CONNECT AELTS · ROLL CALL</div><div class="h" style="font-size:${mob?34:44}px">CLASS OF</div><div class="s" style="font-size:16px;color:#888">점을 끌거나 스크롤해 보세요 · ← → 키</div></div>
+  <svg id="big" style="position:absolute;left:${bx}px;top:${by0}px;overflow:visible" width="${gw}" height="${gh}"><g id="bg"><text id="bt" x="0" y="${aE*fs/100}" style="font:400 ${fs}px Anton"></text></g></svg>
+  <div class="fct" id="fct" style="left:${M}px;top:${by0+gh+18}px"></div>
+  <div class="cards" id="cards" style="${mob?`left:${M}px;right:${M}px;top:${by0+gh+56}px;bottom:${window.PROD?118:150}px`:`left:${M+Math.max(gw,bw*.8)+40}px;right:${M}px;top:${H*.15}px;bottom:190px`};overflow:auto;padding:4px"></div>
+  <div class="tl2" id="tl" style="left:${M+(mob?22:40)}px;right:${M+(mob?22:40)}px;bottom:${window.PROD?(mob?40:56):96}px">
+   <div class="ln"></div>${YRS.map((y,i)=>{const c=(by[y]||[]).length;return `<button class="yt ${c?"":"no"}" data-i="${i}" style="left:${i/(N-1)*100}%"><span class="bar" style="height:${c?6+c/mxc*44:0}px"></span><span class="yl">${Y2(y)}</span></button>`;}).join("")}
+   <span class="mk" id="mk"><span class="mt" id="mt"></span></span></div>
+  <button class="nv" id="pv" style="left:${M-(mob?12:14)}px;bottom:${(window.PROD?(mob?40:56):96)-12}px;${mob?"width:26px;height:26px;font-size:16px":""}">‹</button><button class="nv" id="nx" style="right:${M-(mob?12:14)}px;bottom:${(window.PROD?(mob?40:56):96)-12}px;${mob?"width:26px;height:26px;font-size:16px":""}">›</button>
+  <button class="pl" id="pl">▶ 자동 재생</button>`;
+ st.innerHTML=h;const bt=st.querySelector("#bt"),bg=st.querySelector("#bg"),cards=st.querySelector("#cards"),mk=st.querySelector("#mk"),mt=st.querySelector("#mt"),fct=st.querySelector("#fct"),tl=st.querySelector("#tl"),pl=st.querySelector("#pl");
+ let cur=-1,auto=null,pos=0,tgt=0,snapT=null;
+ const has=YRS.map(y=>(by[y]||[]).length>0);
+ function show(i){if(i===cur)return;const dir=i>cur?1:-1;cur=i;const y=YRS[i],L=by[y]||[];
+  st.querySelectorAll(".yt").forEach((b,q)=>b.classList.toggle("on",q===i));mt.textContent=Y2(y);
+  bt.textContent=Y2(y);bt.style.fill=L.length?(L.some(d=>d.star)?B:K):"#ddd";
+  bg.getAnimations().forEach(x=>x.cancel());bg.animate([{transform:`translateY(${dir*gh*.12}px)`,opacity:.15},{transform:"none",opacity:1}],{duration:260,easing:"cubic-bezier(.2,.9,.3,1)"});
+  const ab=L.filter(d=>AB.has(d.key)).length,fl=new Set(L.map(d=>d.c)).size;
+  fct.innerHTML=L.length?`<b>${L.length}</b>명 &nbsp;·&nbsp; <b>${fl}</b>개 분야${ab?` &nbsp;·&nbsp; 해외 <b>${ab}</b>`:""}`:`아직 응답한 ${Y2(y)}학번 동문이 없어요`;
+  const S=[...L].sort((p,q)=>(q.star?1:0)-(p.star?1:0));
+  cards.innerHTML=S.map(d=>{const c=C.find(x=>x[0]===d.c);return `<div class="cd${d.star?" star":""}"><span class="c" style="background:${COL[d.c]}"></span><span class="t"><b>${sh(d.org)&&sh(d.org)!=="회사"?sh(d.org):"기관 미기재"}${d.star?' <i>★ 동문회장</i>':""}</b>${d.role?`<em>${d.role}</em>`:""}</span><span class="f">${c[2]}</span></div>`;}).join("");
+  [...cards.children].forEach((e,q)=>e.animate([{opacity:0,transform:`translateX(${dir*30}px)`},{opacity:1,transform:"none"}],{duration:300,delay:q*40,easing:"cubic-bezier(.2,.9,.3,1)",fill:"both"}));}
+ /* smooth marker: eased follow of a continuous target */
+ const clamp=v=>Math.max(0,Math.min(N-1,v));const go=i=>{tgt=clamp(i);};
+ const o={a:1};RAF.push(o);(function f(){if(!o.a)return;pos+=(tgt-pos)*.18;if(Math.abs(tgt-pos)<.001)pos=tgt;mk.style.left=(pos/(N-1)*100)+"%";show(Math.round(pos));requestAnimationFrame(f);})();
+ const snap=(d=0)=>{clearTimeout(snapT);snapT=setTimeout(()=>{tgt=clamp(Math.round(tgt));},d);};
+ const stop=()=>{if(auto){clearInterval(auto);auto=null;pl.textContent="▶ 자동 재생";pl.classList.remove("on");}};
+ const nextHas=(i,d)=>{let j=i+d;while(j>=0&&j<N&&!has[j])j+=d;return j<0||j>=N?i:j;};
+ pl.onclick=()=>{if(auto)return stop();pl.textContent="❚❚ 멈춤";pl.classList.add("on");auto=setInterval(()=>{if(document.hidden)return;let j=nextHas(Math.round(tgt),1);if(j===Math.round(tgt))j=has.indexOf(true);go(j);},2400);T.push(auto);};
+ const fx=x=>{const r=tl.getBoundingClientRect();return clamp((x-r.left)/r.width*(N-1));};
+ let drag=false;
+ tl.addEventListener("pointerdown",e=>{stop();drag=true;tl.setPointerCapture(e.pointerId);mk.classList.add("dr");tgt=fx(e.clientX);});
+ tl.addEventListener("pointermove",e=>{if(drag)tgt=fx(e.clientX);});
+ const up=()=>{if(!drag)return;drag=false;mk.classList.remove("dr");snap(0);};tl.addEventListener("pointerup",up);tl.addEventListener("pointercancel",up);
+ st.addEventListener("wheel",e=>{if(V!=="F"||e.target.closest(".cards"))return;e.preventDefault();stop();const d=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;tgt=clamp(tgt+d/90);snap(160);},{passive:false});
+ st.querySelector("#pv").onclick=()=>{stop();go(nextHas(Math.round(tgt),-1));};st.querySelector("#nx").onclick=()=>{stop();go(nextHas(Math.round(tgt),1));};
+ KEY=e=>{if(V!=="F")return;if(e.key==="ArrowRight"){stop();go(nextHas(Math.round(tgt),1));}if(e.key==="ArrowLeft"){stop();go(nextHas(Math.round(tgt),-1));}};
+ show(0);}
+};
+function run(){T.forEach(x=>{clearTimeout(x);clearInterval(x)});T=[];RAF.forEach(r=>r.a=0);RAF=[];tip.style.opacity=0;[...sw.children].forEach(b=>b.classList.toggle("on",b.dataset.k===V));R[V]();}
+let KEY=null;addEventListener("keydown",e=>KEY&&KEY(e));let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(run,200);});
+(document.fonts?Promise.all([document.fonts.ready,document.fonts.load("100px Anton","0123456789").catch(()=>0)]):Promise.resolve()).then(run);
+</script></body></html>

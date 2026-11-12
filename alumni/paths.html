@@ -1,0 +1,184 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WHERE WE WENT · 응통MAP</title><meta name="description" content="응통 동문이 걸어간 길: 직업군으로 보는 응용영어통번역학과 동문">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&family=Montserrat:wght@600;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<!--LF-->
+<style>
+:root{--O:#F0542C;--B:#2335F2;--K:#111}
+*{box-sizing:border-box}html,body{margin:0;background:#fff;color:#111;font-family:'Noto Sans KR',sans-serif;overflow:hidden;height:100%}
+.an{font-family:Anton,'Black Han Sans',sans-serif}.bh{font-family:'Black Han Sans','Noto Sans KR',sans-serif}.mo{font-family:Montserrat,sans-serif;font-weight:800}
+#stage{position:fixed;inset:0;overflow:hidden}
+.sw{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:9;background:#111;border-radius:999px;padding:6px;display:flex;gap:4px;box-shadow:0 8px 28px rgba(0,0,0,.3)}
+.sw button{border:0;background:transparent;color:#fff;font:700 13px 'Noto Sans KR';padding:8px 15px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.sw button b{font-family:Montserrat;font-weight:800;margin-right:5px;color:#F0542C}.sw button.on{background:#fff;color:#111}
+.rp{position:fixed;right:18px;top:14px;z-index:9;font:600 12px Montserrat;letter-spacing:.16em;background:none;border:0;color:#888;cursor:pointer}
+/* A marquee wall */
+.wall{position:absolute;inset:0;display:flex;flex-direction:column}
+.row{position:relative;overflow:hidden;display:flex;align-items:center;white-space:nowrap}
+.row .tr{display:flex;align-items:center;will-change:transform}
+.row .it{display:inline-flex;align-items:center;gap:.25em;padding-right:.6em;line-height:.9}
+.row .it .n{font-family:Anton}.row .it .en{font-family:Anton}.row .it .ko{font-family:'Black Han Sans';font-size:.62em}
+.row .it .dot{width:.28em;height:.28em;border-radius:50%;background:currentColor;margin:0 .15em}
+.cap{position:absolute;left:24px;top:18px;z-index:3;background:#fff;padding:10px 14px;border:2px solid #111}
+.cap .k{font:800 12px Montserrat;letter-spacing:.2em;color:var(--O)}.cap .h{font:400 34px/1 Anton;margin-top:4px}.cap .s{font:400 18px 'Black Han Sans';color:var(--B)}
+/* B slabs */
+.slab{position:absolute;left:0;height:0;cursor:pointer;transition:filter .2s}
+.slab:hover{filter:brightness(1.08)}
+.slab .in{position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;padding-right:22px;gap:16px}
+.slab .num{font:400 1em Anton;line-height:.8}.slab .lab{display:flex;flex-direction:column;align-items:flex-start}
+.slab .lab .en{font:400 .34em Anton;letter-spacing:.02em;line-height:1}.slab .lab .ko{font:400 .2em 'Black Han Sans';margin-top:.15em}
+.slab .org{position:absolute;left:24px;top:50%;transform:translateY(-50%);font:700 13px 'Noto Sans KR';opacity:0;transition:opacity .2s;max-width:45%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slab:hover .org{opacity:.9}
+.hd{position:absolute;right:40px;top:30px;text-align:right;z-index:3}
+.hd .k{font:800 13px Montserrat;letter-spacing:.24em;color:var(--O)}.hd .h{font:400 84px/0.95 Anton}.hd .s{font:400 30px 'Black Han Sans';color:var(--B)}
+/* C tiles */
+.tile{position:absolute;display:flex;align-items:center;justify-content:center;font:400 22px Anton;transition:left .9s cubic-bezier(.7,0,.2,1),top .9s cubic-bezier(.7,0,.2,1),width .9s cubic-bezier(.7,0,.2,1),height .9s cubic-bezier(.7,0,.2,1),font-size .9s,background .5s,color .5s}
+.leg{position:absolute;display:flex;flex-direction:column;justify-content:center;transition:opacity .5s}
+.leg .en{font:400 24px/1 Anton;white-space:nowrap}.leg .ko{font:400 13px/1.2 'Noto Sans KR',sans-serif;color:#444;margin-top:4px;letter-spacing:-.01em;white-space:nowrap}.leg .ko b{font:400 15px Anton;margin-left:3px}.leg .n{font:400 46px/1 Anton}
+.chd{position:absolute;left:48px;top:34px}.chd .k{font:800 13px Montserrat;letter-spacing:.24em;color:var(--O)}.chd .h{font:400 74px/1 Anton;margin-top:6px}.chd .s{font:500 24px/1.2 'Noto Sans KR',sans-serif;color:var(--B);margin-top:6px;letter-spacing:-.02em}
+@media (max-width:760px){.chd{top:44px!important}.chd .h{font-size:50px!important}.chd .s{font-size:19px!important}}
+
+.hd .tip{font:500 12px 'Noto Sans KR',sans-serif;color:#888;margin-top:10px;letter-spacing:.02em}
+.slab .dt{position:absolute;left:28px;top:22px;padding-bottom:2px;opacity:0;transition:opacity .4s .5s;overflow:visible;font-size:14px}
+.slab.sel .dt{opacity:1}.slab.sel .org{display:none}.slab.sel{cursor:zoom-out}
+.slab.sel .in{align-items:flex-start;padding-top:18px}
+.slab.thin .in,.slab.thin .org{opacity:0}.slab .mini{position:absolute;left:14px;top:50%;transform:translateY(-50%);font:400 14px/1 Anton;opacity:0;transition:opacity .3s .2s;white-space:nowrap}.slab .mini small{font:500 11px "Noto Sans KR";margin-left:4px}.slab.thin .mini{opacity:1}.slab .in{transition:opacity .3s}
+.dl{display:grid;grid-template-columns:1fr 1fr;column-gap:28px;align-content:start;padding-bottom:4px}
+.row2{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid currentColor;border-color:color-mix(in srgb,currentColor 25%,transparent)}
+.row2 .ids{display:flex;gap:3px;flex:none;padding:1px 0}
+.row2 .ids i{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;height:24px;min-width:28px;font:400 14px/1 Anton,sans-serif;font-style:normal;padding:0 5px;border:1.5px solid currentColor;overflow:visible}
+.row2 .tx{display:flex;flex-direction:column;min-width:0}
+.row2 .tx b{font:700 15px/1.3 'Noto Sans KR',sans-serif;letter-spacing:-.01em}
+.row2 .tx em{font:400 12.5px/1.35 'Noto Sans KR',sans-serif;font-style:normal;opacity:.75}
+.fx{position:fixed;inset:0;z-index:20;padding:44px 56px 170px;display:grid;grid-template-columns:minmax(300px,38%) 1fr;gap:48px;overflow-y:auto;align-items:start}.fx .fh{position:sticky;top:0}
+.fx .x{position:fixed!important}.fx .x,.dw .x{position:absolute;right:22px;top:16px;border:0;background:none;color:inherit;font:400 26px Anton;cursor:pointer;z-index:2}
+.fx .k{font:800 12px Montserrat;letter-spacing:.24em}
+.fx .big,.dw .big{display:flex;flex-direction:column;margin-top:14px}
+.fx .big .n{font:400 210px/.85 Anton}.fx .big .e{display:block;font:400 64px/.95 Anton;margin-top:14px}.fx .big .o{display:block;font:500 28px 'Noto Sans KR';margin-top:10px}
+.st3{display:flex;gap:22px;margin-top:22px;font:500 14px 'Noto Sans KR',sans-serif}.st3 b{font:400 24px Anton;margin-right:5px}
+.fx .fl{overflow:visible;padding-top:34px;padding-right:10px}
+.fx .nav{position:fixed;z-index:3;left:56px;right:56px;bottom:84px;display:flex;justify-content:space-between;pointer-events:none}
+.fx .nav button{pointer-events:auto;border:0;background:none;color:inherit;font:400 20px Anton;letter-spacing:.02em;cursor:pointer;opacity:.85}
+.fx .nav button:hover{opacity:1;text-decoration:underline}
+.dw{position:fixed;right:0;top:0;bottom:0;width:min(460px,100%);z-index:20;background:#fff;border-left:2px solid #111;display:flex;flex-direction:column;box-shadow:-20px 0 40px rgba(0,0,0,.12)}
+.dw .dh{padding:30px 28px 22px;position:relative}
+.dw .big{flex-direction:row;align-items:flex-end;gap:14px;margin:0}.dw .big .n{font:400 96px/.82 Anton}.dw .big .e{display:block;font:400 30px/1 Anton}.dw .big .o{display:block;font:500 16px 'Noto Sans KR';margin-top:4px}
+.dw .st3{margin-top:16px;font-size:13px}.dw .st3 b{font-size:20px}
+.dw .db{overflow:auto;padding:8px 28px 150px;flex:1;min-height:0}.dw .dl{grid-template-columns:1fr}
+.sw2{position:fixed;left:50%;bottom:70px;transform:translateX(-50%);z-index:30;display:flex;align-items:center;gap:2px;background:#fff;border:1.5px solid #111;border-radius:999px;padding:4px;font:500 12px 'Noto Sans KR',sans-serif}
+.sw2 span{padding:0 8px 0 10px;color:#888}.sw2 button{border:0;background:none;font:700 12px 'Noto Sans KR';padding:6px 12px;border-radius:999px;cursor:pointer}
+.sw2 button.on{background:#111;color:#fff}
+.dw .db{-webkit-mask-image:linear-gradient(#000 calc(100% - 70px),transparent);mask-image:linear-gradient(#000 calc(100% - 70px),transparent)}
+@media (max-width:760px){.hd{left:16px!important;right:16px!important;top:20px!important;text-align:left!important}.hd .h{font-size:50px!important}.hd .h br{display:none}.hd .s{font-size:22px!important}.hd .tip{margin-top:6px}.slab .org{display:none}.slab .in{gap:10px}}
+.home{position:fixed;left:18px;top:14px;z-index:9;font:600 12px Montserrat;letter-spacing:.16em;color:#111;text-decoration:none;background:#fff;padding:2px 0}
+.home:hover{color:#F0542C}
+.sw,.sw2,.rp{display:none!important}body:has(.dw) .home,body:has(.fx) .home{display:none}.hd{top:44px!important}
+@media (max-width:760px){.hd{top:46px!important}}
+</style></head><body><div id="stage"></div><a class="home" href="./">← 응통MAP</a><button class="rp" id="rp">↻ REPLAY</button>
+<script>window.PROD=1;
+const RAW=[{"id": "01", "org": "경희대학교", "role": "응통과 부교수 · 동문회장", "key": "khu", "c": "ED", "star": true}, {"id": "16", "org": "프리랜서 방송인", "role": "아나운서, 경제 캐스터", "key": "seoul_etc", "c": "MD"}, {"id": "19", "org": "현대경제연구원", "role": "연구원", "key": "hri", "c": "ED"}, {"id": "16", "org": "BASF 바스프", "role": "창고비 마감", "key": "my", "c": "GB"}, {"id": "16", "org": "서울동부지방법원", "role": "재판연구원", "key": "court", "c": "FN"}, {"id": "10", "org": "경찰청", "role": "수사", "key": "incheon", "c": "PU"}, {"id": "17", "org": "아리랑TV", "role": "보도기자", "key": "arirang", "c": "MD"}, {"id": "20", "org": "대안학교", "role": "1,2학년 담임", "key": "hwaseong", "c": "ED"}, {"id": "18", "org": "수원대학교 국제협력처", "role": "교직원", "key": "hwaseong", "c": "ED"}, {"id": "11", "org": "한국개발연구원", "role": "전문연구원", "key": "sejong", "c": "ED"}, {"id": "19", "org": "University of Wollongong", "role": "간호 석사", "key": "au", "c": "ED"}, {"id": "12", "org": "국민연금공단", "role": "사무직", "key": "seoul_etc", "c": "PU"}, {"id": "12", "org": "삼정노무법인", "role": "공인노무사", "key": "mullae", "c": "FN"}, {"id": "16", "org": "삼성SDI", "role": "영업", "key": "hwaseong", "c": "GB"}, {"id": "11", "org": "GS글로벌", "role": "해외영업", "key": "yeoksam", "c": "GB"}, {"id": "10", "org": "외교부", "role": "외교행정", "key": "mofa", "c": "PU"}, {"id": "11", "org": "컴텍아시아코리아", "role": "데이터센터 커미셔닝", "key": "commtech", "c": "IT"}, {"id": "14", "org": "삼정KPMG", "role": "회계사", "key": "yeoksam", "c": "FN"}, {"id": "11", "org": "농협은행(농협중앙회)", "role": "Investment Banking", "key": "nh", "c": "FN"}, {"id": "09", "org": "(주)이씨에이시스템", "role": "영업", "key": "eca", "c": "GB"}, {"id": "11", "org": "지멘스인더스트리소프트웨어", "role": "통번역사", "key": "siemens", "c": "TR"}, {"id": "20", "org": "한진 미주법인 뉴져지 지점", "role": "포워딩", "key": "nj", "c": "GB"}, {"id": "14", "org": "비자코리아", "role": "AE (Account Executive)", "key": "visa", "c": "GB"}, {"id": "14", "org": "GS리테일(홈쇼핑)", "role": "인사(HR)", "key": "mullae", "c": "HR"}, {"id": "16", "org": "한국애브비", "role": "HR", "key": "anyang", "c": "HR"}, {"id": "18", "org": "MBC", "role": "한영 통번역사", "key": "mbc", "c": "TR"}, {"id": "19", "org": "하나은행", "role": "영업점 업무", "key": "seoul_etc", "c": "FN"}, {"id": "18", "org": "대한항공", "role": "화물운송팀", "key": "kal", "c": "GB"}, {"id": "19", "org": "우리은행", "role": "개인대출", "key": "seoul_etc", "c": "FN"}, {"id": "20", "org": "회사", "role": "인사", "key": "seoul_etc", "c": "HR"}, {"id": "20", "org": "경희대학교 일반대학원", "role": "대학원생", "key": "khu", "c": "ED"}, {"id": "15", "org": "LG전자", "role": "플랫폼 서비스기획", "key": "lg", "c": "GB"}, {"id": "11", "org": "HYBE", "role": "음악저작권 관리", "key": "hybe", "c": "MD"}, {"id": "14", "org": "프리랜서", "role": "영어MC", "key": "seoul_etc", "c": "MD"}, {"id": "11", "org": "시대인재", "role": "영어강사", "key": "sidae", "c": "ED"}, {"id": "18", "org": "경희대학교 일반대학원 빅데이터응용학과", "role": "석박통합과정", "key": "khu", "c": "ED"}, {"id": "04", "org": "재정경제부", "role": "통번역 전문관", "key": "sejong", "c": "TR"}, {"id": "02", "org": "위버스컴퍼니", "role": "UX Writer", "key": "anyang", "c": "MD"}, {"id": "21", "org": "", "role": "취업 준비", "key": "seoul_etc", "c": "ETC"}, {"id": "10", "org": "LG이노텍", "role": "해외인사", "key": "lginnotek", "c": "HR"}, {"id": "06", "org": "YG Entertainment", "role": "투어매니저", "key": "yg", "c": "MD"}, {"id": "05", "org": "", "role": "", "key": "ny", "c": "ETC"}, {"id": "21", "org": "CJ올리브영", "role": "MD", "key": "oliveyoung", "c": "GB"}, {"id": "22", "org": "한국외대 통번역대학원", "role": "대학원생", "key": "hufs", "c": "TR"}, {"id": "17", "org": "KOICA", "role": "", "key": "koica", "c": "PU"}, {"id": "00", "org": "광주교육대학교", "role": "조교수", "key": "gwangju", "c": "ED"}, {"id": "15", "org": "김앤장법률사무소", "role": "컨설턴트", "key": "mofa", "c": "FN"}, {"id": "20", "org": "한국외대 통번역대학원", "role": "대학원생", "key": "hufs", "c": "TR"}, {"id": "05", "org": "프리랜서", "role": "국제회의통역사", "key": "seoul_etc", "c": "TR"}, {"id": "06", "org": "", "role": "말레이-인도네시아어 통번역", "key": "gyeonggi", "c": "TR"}, {"id": "19", "org": "11번가", "role": "인하우스 통번역사", "key": "gwangmyeong", "c": "TR"}, {"id": "04", "org": "주식회사 엠케이", "role": "사내이사", "key": "cheonan", "c": "GB"}, {"id": "21", "org": "신용보증기금", "role": "", "key": "incheon", "c": "PU"}, {"id": "06", "org": "서울대학교", "role": "교직원", "key": "snu", "c": "ED"}, {"id": "19", "org": "기아", "role": "해외영업", "key": "hmg", "c": "GB"}, {"id": "19", "org": "클리오", "role": "아마존MD", "key": "clio", "c": "GB"}, {"id": "21", "org": "EY", "role": "금융컨설팅", "key": "lg", "c": "FN"}, {"id": "21", "org": "현대자동차", "role": "글로벌사업", "key": "hmg", "c": "GB"}, {"id": "07", "org": "삼양라운드스퀘어", "role": "전략기획", "key": "visa", "c": "GB"}, {"id": "14", "org": "국내 바이오 기업", "role": "마케터", "key": "seoul_etc", "c": "GB"}, {"id": "02", "org": "WHO", "role": "Mental Health and Psychosocial Support", "key": "mnl", "c": "PU"}, {"id": "18", "org": "고등학교", "role": "교사", "key": "cheorwon", "c": "ED"}, {"id": "14", "org": "", "role": "", "key": "unknown", "c": "ETC"}, {"id": "06", "org": "서울특별시청", "role": "행정공무원(4급)", "key": "visa", "c": "PU"}, {"id": "01", "org": "대림", "role": "인프라사업개발", "key": "nh", "c": "GB"}, {"id": "17", "org": "An AI company", "role": "AI auditor", "key": "sha", "c": "IT"}, {"id": "98", "org": "블루엘리펀트(BLUE ELEPHANT)", "role": "해외영업", "key": "clio", "c": "GB"}, {"id": "19", "org": "서울대학교병원", "role": "사무직 (기획 · 인사 관련)", "key": "hri", "c": "HR"}, {"id": "20", "org": "효성티앤씨", "role": "글로벌 이커머스 MD/마케터(아마존)", "key": "commtech", "c": "GB"}, {"id": "19", "org": "CJ올리브영", "role": "국내 MD", "key": "oliveyoung", "c": "GB"}, {"id": "06", "org": "성균관대학교", "role": "연구 보조", "key": "skku", "c": "ED"}, {"id": "03", "org": "Mount Royal University", "role": "교직원", "key": "yyc", "c": "ED"}, {"id": "00", "org": "오뚜기재팬", "role": "로지스틱스", "key": "tyo", "c": "GB"}];const DATA=RAW.map(d=>({...d,c:(d.c==="IT"||d.c==="ETC")?"OT":d.c}));
+const C=[["GB","글로벌 비즈니스","GLOBAL BUSINESS"],["ED","교육 · 연구","EDUCATION"],["FN","금융 · 법률","FINANCE & LAW"],["TR","통번역 · 언어","TRANSLATION"],["PU","공공 · 국제기구","PUBLIC SECTOR"],["MD","미디어 · 엔터","MEDIA"],["HR","인사 · HR","PEOPLE"],["OT","그 밖의 길","OTHER PATHS"]];
+const O="#F0542C",B="#2335F2",K="#111",W_="#fff";
+const cats=C.filter(([k])=>DATA.some(d=>d.c===k)),cnt=k=>DATA.filter(d=>d.c===k).length,tot=DATA.length;
+const PAL=[[O,K],[B,W_],[K,W_],[W_,K],[O,W_],[B,W_],[K,O],[W_,B]];
+const sh=o=>(o||"").replace(/\(.*?\)/g,"").replace(/^주식회사\s*/,"").trim();
+const orgs=k=>[...new Set(DATA.filter(d=>d.c===k).map(d=>sh(d.org)).filter(Boolean))];
+const st=document.getElementById("stage");let V="B",T=[],RAF=[];
+const L=(f,ms)=>T.push(setTimeout(f,ms));const loop=f=>{const o={a:1};(function g(t){if(!o.a)return;f(t);requestAnimationFrame(g);})(performance.now());RAF.push(o);};
+const sw=document.createElement("div");sw.className="sw";[["A","타이포 월"],["B","기울어진 슬랩"],["C","73 타일"]].forEach(([k,n])=>{const b=document.createElement("button");b.dataset.k=k;b.innerHTML="<b>"+k+"</b>"+n;b.onclick=()=>{V=k;run();};sw.appendChild(b);});document.body.appendChild(sw);
+document.getElementById("rp").onclick=()=>run();
+
+let BX="3",DEMO=false;
+const yk2=id=>isNaN(+id)?999:(+id<50?+id+100:+id);
+function grp(k){const m=new Map();DATA.filter(d=>d.c===k).forEach(d=>{const o=(sh(d.org)&&sh(d.org)!=="회사")?sh(d.org):"기관 미기재";if(!m.has(o))m.set(o,{ids:[],roles:new Set()});const e=m.get(o);e.ids.push(d.id);if(d.role)e.roles.add(d.role.trim());});
+ return [...m.entries()].map(([o,e])=>({o,ids:e.ids.sort((a,b)=>yk2(a)-yk2(b)),roles:[...e.roles]})).sort((a,b)=>(b.ids.includes('★')-a.ids.includes('★'))||b.ids.length-a.ids.length||yk2(a.ids[0])-yk2(b.ids[0]));}
+function det(k){return `<div class="dl">${grp(k).map(g=>`<div class="row2"><span class="ids">${g.ids.map(x=>`<i>${x}</i>`).join("")}</span><span class="tx"><b>${g.o}</b>${g.roles.length?`<em>${g.roles.join(" · ")}</em>`:""}</span></div>`).join("")}</div>`;}
+function stat(k){const L=DATA.filter(d=>d.c===k&&!isNaN(+d.id)).map(d=>d.id).sort((a,b)=>yk2(a)-yk2(b)),g=grp(k).length;return `<div class="st3"><span><b>${g}</b>곳의 기관</span><span><b>${L[0]}–${L[L.length-1]}</b>학번</span></div>`;}
+const R={
+A(){const H=innerHeight;let h=`<div class="wall">`;
+ cats.forEach(([k,n,en],i)=>{const c=cnt(k),hh=Math.max(46,H*c/tot),[bg,fg]=PAL[i%PAL.length],fs=hh*.86;
+  const item=`<span class="it"><span class="n">${c}</span><span class="en">${en}</span><span class="ko">${n}</span><span class="dot"></span></span>`;
+  h+=`<div class="row" style="height:${hh}px;background:${bg};color:${fg};font-size:${fs}px;border-bottom:${bg===W_?"2px solid #111":"0"}" data-i="${i}"><div class="tr">${item.repeat(8)}</div></div>`;});
+ h+=`</div><div class="cap"><div class="k">RE:CONNECT AELTS · 2026</div><div class="h">ONE MAJOR, ${tot} STORIES</div><div class="s">하나의 전공, ${tot}명의 이야기</div></div>`;st.innerHTML=h;
+ const rows=[...st.querySelectorAll(".row")];const tot_h=rows.reduce((s,r)=>s+r.offsetHeight,0),sc=H/tot_h;if(sc<1)rows.forEach(r=>{r.style.height=r.offsetHeight*sc+"px";r.style.fontSize=parseFloat(r.style.fontSize)*sc+"px";});
+ rows.forEach((r,i)=>{const tr=r.querySelector(".tr"),half=tr.scrollWidth/2,dir=i%2?1:-1,sp=40+(cats.length-i)*10;let x=dir>0?-half:0;
+   r.animate([{transform:`translateX(${dir*-100}%)`},{transform:"none"}],{duration:900,delay:i*90,easing:"cubic-bezier(.2,.9,.3,1)",fill:"both"});
+   let last=performance.now();loop(t=>{const dt=(t-last)/1000;last=t;x+=dir*sp*dt;if(dir<0&&x<-half)x+=half;if(dir>0&&x>0)x-=half;tr.style.transform=`translateX(${x}px)`;});});},
+B(){const Wd=innerWidth,H=innerHeight,mob=Wd<760,max=Math.max(...cats.map(([k])=>cnt(k))),top=mob?168:40,gap=mob?7:10,BOT=window.PROD?(mob?24:40):80,hh=(H-top-BOT-gap*(cats.length-1))/cats.length,SW=mob?Wd-12:Wd-400;
+ let h=`<div class="hd"><div class="k">RE:CONNECT AELTS</div><div class="h">WHERE <br>WE WENT</div><div class="s">응통이 걸어간 길</div><div class="tip">분야를 눌러 보세요 · TAP A FIELD</div></div>`;
+ cats.forEach(([k,n,en],i)=>{const c=cnt(k),w=SW*((mob?.5:.3)+(mob?.5:.7)*c/max),[bg,fg]=PAL[i%PAL.length],y=top+i*(hh+gap),fs=mob?Math.min(hh*.8,46):hh*1.05;const o=orgs(k);
+  h+=`<div class="slab" data-i="${i}" data-k="${k}" data-w="${w}" style="top:${y}px;height:${hh}px;width:${w}px;background:${bg};color:${fg};border:${bg===W_?"2px solid #111":"0"};clip-path:polygon(0 0,100% 0,calc(100% - ${hh*.55}px) 100%,0 100%);font-size:${fs}px">
+   <div class="org">${o.slice(0,5).join(" · ")}${o.length>5?" 외":""}</div><div class="dt"></div><div class="mini">${c}&nbsp; ${en} <small>${n}</small></div><div class="in" style="padding-right:${hh*.6+12}px"><span class="num">${c}</span><span class="lab"><span class="en">${en}</span><span class="ko">${n}</span></span></div></div>`;});
+ st.innerHTML=h;const S=[...st.querySelectorAll(".slab")];
+ S.forEach((s,i)=>s.animate([{transform:"translateX(-105%)"},{transform:"none"}],{duration:900,delay:250+i*110,easing:"cubic-bezier(.7,0,.2,1)",fill:"both"}));
+ st.querySelector(".hd").animate([{opacity:0,transform:"translateY(-20px)"},{opacity:1,transform:"none"}],{duration:700,fill:"both"});
+ let sel=-1,j=0;
+ L(()=>{const id=setInterval(()=>{if(sel>=0||st.querySelector(".fx,.dw"))return;S.forEach((e,k)=>{e.style.transition="transform .5s cubic-bezier(.2,.9,.3,1)";e.style.transform=k===j%S.length?"translateX(28px)":"none";});j++;},1500);T.push(id);},2200);
+ const still=()=>S.forEach(e=>{e.style.transform="none";});
+ /* --- mode 1 : expand in place --- */
+ function expand(i){sel=(sel===i)?-1:i;still();const thin=22,big=H-top-80-(S.length-1)*(thin+gap);let y=top,need=0;
+  S.forEach((s,k)=>{const dt=s.querySelector(".dt");if(k===sel){dt.innerHTML=det(s.dataset.k);dt.style.right=(hh*.6+330)+"px";dt.style.width=(SW-(hh*.6+330)-28)+"px";need=dt.scrollHeight+48;}else dt.innerHTML="";});
+  S.forEach((s,k)=>{s.style.transition="top .6s cubic-bezier(.7,0,.2,1),height .6s cubic-bezier(.7,0,.2,1),width .6s cubic-bezier(.7,0,.2,1)";
+   const hgt=sel<0?hh:(k===sel?Math.max(big,need):thin);s.style.top=y+"px";s.style.height=hgt+"px";s.style.width=(sel<0?+s.dataset.w:(k===sel?SW:+s.dataset.w*.75))+"px";
+   s.style.clipPath=`polygon(0 0,100% 0,calc(100% - ${Math.min(hgt,hh)*.55}px) 100%,0 100%)`;
+   s.classList.toggle("sel",k===sel);s.classList.toggle("thin",sel>=0&&k!==sel);y+=hgt+gap;});
+  let sp=st.querySelector(".spc");if(!sp){sp=document.createElement("div");sp.className="spc";sp.style.cssText="position:absolute;left:0;width:1px;height:1px";st.appendChild(sp);}
+  sp.style.top=(y+110)+"px";st.style.overflowY=(y+110>H)?"auto":"hidden";if(sel<0)st.scrollTop=0;}
+ /* --- mode 2 : full-screen takeover --- */
+ function full(i){const [k,n,en]=cats[i],[bg,fg]=PAL[i%PAL.length],c=cnt(k);let fx=st.querySelector(".fx");const first=!fx;
+  if(!fx){fx=document.createElement("div");fx.className="fx";st.appendChild(fx);}
+  fx.style.background=bg;fx.style.color=fg;const acc=bg===O?W_:bg===W_?B:O;
+  const pv=cats[(i+cats.length-1)%cats.length],nx=cats[(i+1)%cats.length];
+  fx.innerHTML=`<button class="x">✕</button><div class="fh"><div class="k" style="color:${acc}">WHERE WE WENT · ${String(i+1).padStart(2,"0")} / ${String(cats.length).padStart(2,"0")}</div>
+   <div class="big"><span class="n">${c}</span><span><span class="e">${en}</span><span class="o">${n}</span></span></div>${stat(k)}</div>
+   <div class="fl">${det(k)}</div><div class="nav"><button data-d="-1">← ${pv[2]}</button><button data-d="1">${nx[2]} →</button></div>`;
+  fx.querySelector(".x").onclick=()=>{fx.animate([{clipPath:"inset(0 0 0 0)"},{clipPath:"inset(0 100% 0 0)"}],{duration:450,easing:"cubic-bezier(.7,0,.2,1)"}).onfinish=()=>fx.remove();};
+  fx.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>full((i+ +b.dataset.d+cats.length)%cats.length));
+  if(first)fx.animate([{clipPath:`polygon(0 ${S[i].offsetTop}px,${S[i].offsetWidth}px ${S[i].offsetTop}px,${S[i].offsetWidth}px ${S[i].offsetTop+S[i].offsetHeight}px,0 ${S[i].offsetTop+S[i].offsetHeight}px)`},{clipPath:`polygon(0 0,${Wd}px 0,${Wd}px ${H}px,0 ${H}px)`}],{duration:650,easing:"cubic-bezier(.7,0,.2,1)"});
+  else fx.querySelector(".big").animate([{transform:"translateY(30px)",opacity:0},{transform:"none",opacity:1}],{duration:450,easing:"cubic-bezier(.2,.9,.3,1)"});
+  [...fx.querySelectorAll(".row2")].forEach((r,q)=>r.animate([{opacity:0,transform:"translateY(12px)"},{opacity:1,transform:"none"}],{duration:400,delay:200+q*35,fill:"both"}));}
+ /* --- mode 3 : side drawer --- */
+ function drawer(i){const [k,n,en]=cats[i],[bg,fg]=PAL[i%PAL.length],c=cnt(k);let dw=st.querySelector(".dw");const first=!dw;
+  if(!dw){dw=document.createElement("div");dw.className="dw";st.appendChild(dw);}
+  S.forEach((s,q)=>{s.style.transition="transform .4s cubic-bezier(.2,.9,.3,1),opacity .3s";s.style.transform=q===i?"translateX(28px)":"none";s.style.opacity=q===i?1:.35;});
+  dw.innerHTML=`<div class="dh" style="background:${bg};color:${fg};${bg===W_?"border-bottom:2px solid #111":""}"><button class="x">✕</button><div class="big"><span class="n">${c}</span><span><span class="e">${en}</span><span class="o">${n}</span></span></div>${stat(k)}</div><div class="db">${det(k)}</div>`;
+  dw.querySelector(".x").onclick=()=>{dw.animate([{transform:"none"},{transform:"translateX(100%)"}],{duration:380,easing:"cubic-bezier(.7,0,.2,1)"}).onfinish=()=>dw.remove();S.forEach(s=>{s.style.transform="none";s.style.opacity=1;});};
+  if(first)dw.animate([{transform:"translateX(100%)"},{transform:"none"}],{duration:500,easing:"cubic-bezier(.2,.9,.3,1)"});
+  [...dw.querySelectorAll(".row2")].forEach((r,q)=>r.animate([{opacity:0,transform:"translateX(16px)"},{opacity:1,transform:"none"}],{duration:350,delay:120+q*30,fill:"both"}));}
+ S.forEach((s,i)=>s.onclick=()=>(BX==="1"?expand:BX==="2"?full:drawer)(i));
+ addEventListener("keydown",e=>{if(e.key==="Escape"){const x=st.querySelector(".fx .x,.dw .x");if(x)x.click();else if(sel>=0)expand(sel);}});
+ /* sub switch */
+ const s2=document.createElement("div");s2.className="sw2";s2.innerHTML=`<span>클릭하면</span>`+[["1","펼침"],["2","전체 화면"],["3","옆 패널"]].map(([k,n])=>`<button data-x="${k}" class="${BX===k?"on":""}">${n}</button>`).join("");
+ st.appendChild(s2);s2.querySelectorAll("button").forEach(b=>b.onclick=()=>{BX=b.dataset.x;run();});
+ if(DEMO)L(()=>S[2].click(),2600);},
+C(){const Wd=innerWidth,H=innerHeight,mob=Wd<760,M=mob?16:48,g=mob?3:6,LW=mob?0:230,LG=mob?0:22,LH=mob?20:0,GG=mob?6:10;
+ let h=`<div class="chd" style="left:${M}px"><div class="k">RE:CONNECT AELTS · ${tot} ALUMNI</div><div class="h" id="h1">BY CLASS YEAR</div><div class="s" id="h2">학번순으로 모인 응통</div></div><div id="legs"></div><div id="ylab"></div>`;
+ const yk=id=>isNaN(+id)?999:(+id<50?+id+100:+id);const byY=[...DATA].sort((a,b)=>yk(a.id)-yk(b.id));
+ byY.forEach((d,i)=>{h+=`<div class="tile" data-i="${i}"></div>`;});st.innerHTML=h;
+ const tiles=[...st.querySelectorAll(".tile")];const colOf=k=>PAL[cats.findIndex(c=>c[0]===k)%PAL.length];
+ tiles.forEach((t,i)=>{t._d=byY[i];t.textContent=byY[i].id;});
+ /* shared grid frame: header bottom → switcher top */
+ const hb=st.querySelector(".chd").getBoundingClientRect().bottom,oy=Math.round(hb+(mob?24:36)),gx=M+LW+LG,AW=Wd-gx-M,AH=H-oy-(mob?80:96);
+ const cols=mob?8:12,yr=Math.ceil(tot/cols),size=Math.floor(Math.min(AW/cols-g,AH/yr-g));
+ const per=mob?10:20,nR=cats.reduce((s,[k])=>s+Math.ceil(cnt(k)/per),0),s2=Math.floor(Math.min(AW/per-g,(AH-GG*(cats.length-1)-LH*cats.length)/nR-g));
+ const put=(t,x,y,s)=>{t.style.left=x+"px";t.style.top=y+"px";t.style.width=t.style.height=s+"px";t.style.fontSize=Math.round(s*.44)+"px";};
+ const NY=byY.filter(d=>!isNaN(+d.id)),ys=[...new Set(NY.map(d=>d.id))],first=NY[0].id,last=NY[NY.length-1].id;
+ const yl=st.querySelector("#ylab");yl.className="leg";
+ yl.style.cssText=`left:${M}px;top:${oy}px;width:${LW}px;height:${yr*(size+g)-g}px;align-items:flex-end;justify-content:flex-start;text-align:right;transition:opacity .5s`;
+ yl.innerHTML=`<span class="en">${first} → ${last}</span><span class="ko">${ys.length}개 학번 · ${NY.length}명</span><span class="ko" style="color:#2335F2">★ 박해인 교수 (동문회장)</span>`;
+ function layoutYear(){st.querySelector("#h1").textContent="BY CLASS YEAR";st.querySelector("#h2").textContent="학번순으로 모인 응통";
+  st.querySelector("#legs").style.opacity=0;yl.style.opacity=mob?0:1;
+  tiles.forEach((t,i)=>{put(t,gx+(i%cols)*(size+g),oy+Math.floor(i/cols)*(size+g),size);const sr=t._d.star;t.style.background=sr?B:"#fff";t.style.color=sr?"#fff":K;t.style.boxShadow=sr?"none":"inset 0 0 0 2px #111";});}
+ function layoutField(){st.querySelector("#h1").textContent="BY FIELD";st.querySelector("#h2").textContent="분야별로 다시 모인 응통";yl.style.opacity=0;
+  let y=oy,lh="";
+  cats.forEach(([k,n,en])=>{const list=tiles.filter(t=>t._d.c===k),[bg,fg]=colOf(k),rows=Math.ceil(list.length/per),bh=rows*(s2+g)-g,acc=(bg===W_||bg===K)?O:bg;
+   if(mob){lh+=`<div class="leg" style="left:${M}px;top:${y}px;height:${LH-4}px;flex-direction:row;align-items:baseline;gap:6px"><span class="en" style="font-size:14px">${en}</span><span class="ko" style="margin:0;font-size:11px">${n} <b style="color:${acc};font-size:13px">${list.length}</b></span></div>`;y+=LH;}
+   list.forEach((t,j)=>{put(t,gx+(j%per)*(s2+g),y+Math.floor(j/per)*(s2+g),s2);t.style.background=bg;t.style.color=fg;t.style.boxShadow=bg===W_?"inset 0 0 0 2px #111":"none";});
+   if(!mob)lh+=`<div class="leg" style="left:${M}px;top:${y}px;width:${LW}px;height:${bh}px;align-items:flex-end;text-align:right"><span class="en" style="font-size:${Math.round(Math.min(mob?14:24,s2*.5))}px">${en}</span><span class="ko">${n} <b style="color:${acc}">${list.length}</b></span></div>`;
+   y+=bh+g+GG;});
+  const lg=st.querySelector("#legs");lg.innerHTML=lh;lg.style.opacity=1;}
+ tiles.forEach(t=>put(t,Math.random()*Wd,H+60,size));
+ L(layoutYear,80);let f=false;L(()=>{const id=setInterval(()=>{f=!f;f?layoutField():layoutYear();},3600);T.push(id);},1800);}
+};
+function run(){st.style.overflowY="hidden";st.scrollTop=0;T.forEach(x=>{clearTimeout(x);clearInterval(x)});T=[];RAF.forEach(r=>r.a=0);RAF=[];[...sw.children].forEach(b=>b.classList.toggle("on",b.dataset.k===V));R[V]();}
+addEventListener("resize",()=>run());
+(document.fonts?document.fonts.ready:Promise.resolve()).then(run);
+</script></body></html>
