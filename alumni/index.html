@@ -879,7 +879,7 @@ addEventListener("resize",()=>run());run();setTimeout(run,300);
 </style>
 <script>
 (function(){
-const P=[["RE:CONNECT","AELTS",0],["TOWARDS","GLOBAL EMINENCE",1],["RE:CONNECT","AELTS",0],["TOWARDS","GLOBAL AELTS",1]];
+const P=[["RE:CONNECT","AELTS",0],["TOWARDS","GLOBAL EMINENCE",1],["TOWARDS","GLOBAL AELTS",1]];
 const _m=/aeltsQ=(\w)/.exec(window.name||"");const V="A";
 const s=document.createElement("div");s.className="qsw";
 [["A","롤링"],["B","스크램블"],["C","타이핑"],["D","글자 흩날림"]].forEach(([k,n])=>{const b=document.createElement("button");b.innerHTML="<b>"+k+"</b>"+n;if(k===V)b.className="on";
@@ -897,7 +897,7 @@ function start(){
   let k=0;
   const setW=(l,t)=>l.style.width=measure(t)+"px";
   const go={
-   A(n){[n[0],n[1]].forEach((t,i)=>{const l=lns[i];setTimeout(()=>{const sp=[...l.querySelectorAll(":scope>span")];sp.slice(0,-1).forEach(x=>x.remove());const o=sp[sp.length-1],e=document.createElement("span");e.className="in"+(i&&n[2]?" blue":"");e.textContent=t;l.appendChild(e);setW(l,t);
+   A(n){[n[0],n[1]].forEach((t,i)=>{const l=lns[i];const cur=l.querySelector(":scope>span:last-child");if(cur&&cur.textContent===t)return;setTimeout(()=>{const sp=[...l.querySelectorAll(":scope>span")];sp.slice(0,-1).forEach(x=>x.remove());const o=sp[sp.length-1],e=document.createElement("span");e.className="in"+(i&&n[2]?" blue":"");e.textContent=t;l.appendChild(e);setW(l,t);
      requestAnimationFrame(()=>requestAnimationFrame(()=>{o.classList.add("out");e.classList.remove("in");}));setTimeout(()=>o.remove(),500);},i*90);});},
    B(n){const C="ABCDEFGHIJKLMNOPQRSTUVWXYZ:#*/";[n[0],n[1]].forEach((t,i)=>{const l=lns[i],sp=l.querySelector("span");setW(l,t);sp.className=(i&&n[2])?"blue":"";
      const from=sp.textContent,L=Math.max(from.length,t.length);let f=0;const tot=22;
