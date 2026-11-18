@@ -1015,5 +1015,41 @@ function yroll(ph){clearInterval(window.__yr);const bn=ph.querySelector(".th.yr 
 const ph=document.getElementById("phead");if(ph){mount();new MutationObserver(mount).observe(ph,{childList:true});}
 })();
 </script>
+
+<!-- compact panel + H numeral -->
+<style>
+/* compact panel head */
+.pB{gap:8px!important}
+.pB .hd{margin-bottom:2px!important}
+.pB .hd h2{margin:8px 0 0!important;font-size:26px!important}
+.pB .hd p{margin:6px 0 0!important;font-size:13px!important;line-height:1.5!important}
+.pB .st{padding:8px 11px 8px!important;gap:4px!important}
+.pB .st b{font-size:20px!important}
+.pB .st span{font-size:11.5px!important}
+.pB .lk{gap:6px!important;grid-template-columns:1fr!important}
+.pB .lk a{flex-direction:row!important;align-items:stretch;min-height:44px}
+.pB .th{height:auto!important;width:72px;flex:none;border-bottom:0!important;border-right:1.5px solid #111}
+.pB .th .s{height:6px!important}
+.pB .th.yr{padding:0!important;justify-content:center;align-items:center!important}
+.pB .th.yr .bn{font-size:32px!important;line-height:1!important;display:block;transform:translateY(var(--bny,0px));color:transparent!important;-webkit-text-stroke:1.3px #111;transition:color .35s ease}
+.pB .th.yr .bn.on{color:#F0542C!important}
+.pB .th.yr .tl{display:none}
+.pB .cap{padding:7px 34px 7px 12px!important;display:flex!important;align-items:center}
+.pB .cap>div{gap:3px!important}
+.pB .cap .an{font-size:15px!important}
+.pB .cap small{font-size:11.5px!important}
+.pB .lk a .ar{width:20px!important;height:20px!important;line-height:20px!important;font-size:12px!important}
+@media (max-width:860px){.pB .th{width:64px}}
+</style>
+<script>
+/* re-space thumbnail slabs for the narrow thumb */
+(function(){const f=()=>{document.querySelectorAll('.pB .lk a:first-child .th .s').forEach((e,i)=>{e.style.top=(6+i*7.5)+'px';});};
+const fix=()=>{const b=document.querySelector('.pB .th.yr .bn');if(!b||b.__fx)return;b.__fx=1;const cv=document.createElement('canvas').getContext('2d');const cs=getComputedStyle(b);cv.font=cs.fontWeight+' '+cs.fontSize+' '+cs.fontFamily;const m=cv.measureText('00');const fs=parseFloat(cs.fontSize);const asc=m.fontBoundingBoxAscent||fs*.9,desc=m.fontBoundingBoxDescent||fs*.2;const inkTop=asc-m.actualBoundingBoxAscent,inkBot=asc+m.actualBoundingBoxDescent,lh=fs,half=(asc+desc-lh)/2;const mid=(inkTop+inkBot)/2-half;b.style.setProperty('--bny',(lh/2-mid).toFixed(1)+'px');};
+const ph=document.getElementById('phead');if(ph){f();fix();(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>{document.querySelectorAll('.pB .th.yr .bn').forEach(b=>b.__fx=0);fix();});new MutationObserver(()=>{f();fix();}).observe(ph,{childList:true,subtree:true});}})();
+(function(){let mo=null,tm=null;const hook=()=>{const b=document.querySelector('.pB .th.yr .bn');if(!b||b.__h)return;b.__h=1;
+ const fill=()=>{b.classList.remove('on');clearTimeout(tm);tm=setTimeout(()=>b.classList.add('on'),250);};fill();
+ new MutationObserver(fill).observe(b,{childList:true,characterData:true,subtree:true});};
+ const ph=document.getElementById('phead');if(ph){hook();new MutationObserver(hook).observe(ph,{childList:true,subtree:true});}})();
+</script>
 </body>
 </html>
