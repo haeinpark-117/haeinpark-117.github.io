@@ -92,6 +92,7 @@ function grp(k){const m=new Map();DATA.filter(d=>d.c===k).forEach(d=>{const o=(s
  return [...m.entries()].map(([o,e])=>({o,ids:e.ids.sort((a,b)=>yk2(a)-yk2(b)),roles:[...e.roles]})).sort((a,b)=>(b.ids.includes('★')-a.ids.includes('★'))||b.ids.length-a.ids.length||yk2(a.ids[0])-yk2(b.ids[0]));}
 function det(k){return `<div class="dl">${grp(k).map(g=>`<div class="row2"><span class="ids">${g.ids.map(x=>`<i>${x}</i>`).join("")}</span><span class="tx"><b>${g.o}</b>${g.roles.length?`<em>${g.roles.join(" · ")}</em>`:""}</span></div>`).join("")}</div>`;}
 function stat(k){const L=DATA.filter(d=>d.c===k&&!isNaN(+d.id)).map(d=>d.id).sort((a,b)=>yk2(a)-yk2(b)),g=grp(k).length;return `<div class="st3"><span><b>${g}</b>곳의 기관</span><span><b>${L[0]}–${L[L.length-1]}</b>학번</span></div>`;}
+const outl=(w,h,k)=>{const s=`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><polygon points="0,0 ${w},0 ${w-k},${h} 0,${h}" fill="none" stroke="#111" stroke-width="4"/></svg>`;return `url('data:image/svg+xml,${encodeURIComponent(s).replace(/'/g,"%27")}')`;};
 const R={
 A(){const H=innerHeight;let h=`<div class="wall">`;
  cats.forEach(([k,n,en],i)=>{const c=cnt(k),hh=Math.max(46,H*c/tot),[bg,fg]=PAL[i%PAL.length],fs=hh*.86;
@@ -105,7 +106,7 @@ A(){const H=innerHeight;let h=`<div class="wall">`;
 B(){const Wd=innerWidth,H=innerHeight,mob=Wd<760,max=Math.max(...cats.map(([k])=>cnt(k))),top=mob?168:40,gap=mob?7:10,BOT=window.PROD?(mob?24:40):80,hh=(H-top-BOT-gap*(cats.length-1))/cats.length,SW=mob?Wd-12:Wd-400;
  let h=`<div class="hd"><div class="k">RE:CONNECT AELTS</div><div class="h">WHERE <br>WE WENT</div><div class="s">응통이 걸어간 길</div><div class="tip">분야를 눌러 보세요 · TAP A FIELD</div></div>`;
  cats.forEach(([k,n,en],i)=>{const c=cnt(k),w=SW*((mob?.5:.3)+(mob?.5:.7)*c/max),[bg,fg]=PAL[i%PAL.length],y=top+i*(hh+gap),fs=mob?Math.min(hh*.8,46):hh*1.05;const o=orgs(k);
-  h+=`<div class="slab" data-i="${i}" data-k="${k}" data-w="${w}" style="top:${y}px;height:${hh}px;width:${w}px;background:${bg};color:${fg};border:${bg===W_?"2px solid #111":"0"};clip-path:polygon(0 0,100% 0,calc(100% - ${hh*.55}px) 100%,0 100%);font-size:${fs}px">
+  h+=`<div class="slab" data-i="${i}" data-k="${k}" data-w="${w}" style="top:${y}px;height:${hh}px;width:${w}px;background:${bg};color:${fg};border:0;${bg===W_?`background-image:${outl(w,hh,hh*.55)};background-size:100% 100%;`:""}clip-path:polygon(0 0,100% 0,calc(100% - ${hh*.55}px) 100%,0 100%);font-size:${fs}px">
    <div class="org">${o.slice(0,5).join(" · ")}${o.length>5?" 외":""}</div><div class="dt"></div><div class="mini">${c}&nbsp; ${en} <small>${n}</small></div><div class="in" style="padding-right:${hh*.6+12}px"><span class="num">${c}</span><span class="lab"><span class="en">${en}</span><span class="ko">${n}</span></span></div></div>`;});
  st.innerHTML=h;const S=[...st.querySelectorAll(".slab")];
  S.forEach((s,i)=>s.animate([{transform:"translateX(-105%)"},{transform:"none"}],{duration:900,delay:250+i*110,easing:"cubic-bezier(.7,0,.2,1)",fill:"both"}));
