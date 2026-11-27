@@ -499,7 +499,7 @@ function home(){document.body.classList.remove("sheet-open");setActive(null);
   pbody.querySelectorAll("button[data-k]").forEach(b=>b.onclick=()=>show(b.dataset.k,b.dataset.org));}
 function card(a){if(a.star)return `<div class="card star"><div class="ctop"><div class="av av-star" aria-label="동문회장">★</div><div><div class="cname">${esc(a.name)}</div><div class="crole">${esc(a.sub)}</div></div></div></div>`;
   const nm=a.full?esc(a.name):"응통 동문",sub=[a.org,a.role].filter(Boolean).map(esc).join(" · ");
-  return `<div class="card${a.full?"":" private"}"><div class="ctop"><div class="av${a.pick?" pick":""}">${esc(a.id)}<small>학번</small></div><div><div class="cname">${nm}</div><div class="crole">${sub}</div></div></div>${a.now?`<div class="cnow">${esc(a.now)}</div>`:""}</div>`;}
+  return `<div class="card${a.full?"":" private"}"><div class="ctop"><div class="av">${esc(a.id)}<small>학번</small></div><div><div class="cname">${nm}</div><div class="crole">${sub}</div></div></div>${a.now?`<div class="cnow">${esc(a.now)}</div>`:""}</div>`;}
 function show(k,org){setActive(k);const list=[...(byKey[k]||[])].filter(a=>!org||orgName(a.org)===org).sort((a,b)=>(b.star?1:0)-(a.star?1:0)||+a.id-+b.id);
   const orgs=[...new Set(list.map(a=>a.org==="회사"?"기업":a.org).filter(Boolean))].join(" · ");
   const area=org?`<span class="loc">${REG_SUB[k]||esc(TITLES[k])}</span>`:OUTPINS[k]?`<span class="loc">${OUTPINS[k].area} · ${esc(orgs)}</span>`:(k==="sejong"||k==="cheonan"||k==="cheorwon")?`<span class="loc">${REG_SUB[k]} · ${esc(orgs)}</span>`:k==="khu"?`<span class="loc">동대문구 회기동 · 서울캠퍼스</span>`:PINS[k]?`<span class="loc">${PINS[k].area}</span>`:(orgs?`<span class="loc">${esc(orgs)}</span>`:"");
